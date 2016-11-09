@@ -18,7 +18,6 @@ const App = () => (
   </Provider>
 );
 
-
 const Home = () => <h1>Hello from Home!</h1>;
 
 
