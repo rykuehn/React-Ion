@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
-import configureStore from './store/configureStore';
+import configureStore from '../store/configureStore';
 import Index from './index';
 import NotFound from './NotFound';
 
-const store = createStore(configureStore)
+const store = configureStore();
 
 const App = () => (
   <Provider store={store}>

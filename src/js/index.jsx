@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Link } from 'react-router';
-import Header from '../components/Header';
+import Header from '../containers/Header';
 
 require('../scss/index.scss');
 
