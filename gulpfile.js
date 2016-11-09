@@ -7,7 +7,7 @@ gulp.task('copy', function() {
   //  return gulp.src(folder)
   //             .pipe(gulp.dest('./dist/'));
   gulp.src(folders[0])
-      .pipe(gulp.dest('./dist/view'));
+      .pipe(gulp.dest('./dist/'));
 
   gulp.src(folders[1])
       .pipe(gulp.dest('./dist/'));
