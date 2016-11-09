@@ -1,8 +1,9 @@
-var gulp = require('gulp');
-var del = require('del');
+const gulp = require('gulp');
+const del = require('del');
+const sass = require('gulp-sass');
 
 gulp.task('copy', function() {
-  var folders = ['src/**/*.html', 'src/**/*.css', 'src/lib/**/*', 'src/**/*.png'];
+  const folders = ['src/**/*.html', 'src/lib/**/*', 'src/**/*.png'];
   // folders.map(function(folder) {
   //  return gulp.src(folder)
   //             .pipe(gulp.dest('./dist/'));
@@ -10,19 +11,26 @@ gulp.task('copy', function() {
       .pipe(gulp.dest('./dist/'));
 
   gulp.src(folders[1])
-      .pipe(gulp.dest('./dist/'));
+      .pipe(gulp.dest('./dist/lib'));
 
   gulp.src(folders[2])
-      .pipe(gulp.dest('./dist/lib'));
-  
-  gulp.src(folders[3])
       .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('clean', function() {
   return del.sync([
-    './dist/**'
+    './dist/**',
   ]);
+});
+
+gulp.task('sass', function () {
+  return gulp.src('./src/scss/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./src/css'));
+});
+
+gulp.task('sass:watch', function () {
+  gulp.watch('./src/scss/**/*.scss', ['sass']);
 });
 
 gulp.task('build', ['clean', 'copy']);

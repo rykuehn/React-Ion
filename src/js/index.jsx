@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 
+require('../scss/index.scss');
+
 export default class App extends Component {
   render() {
     return (
-      <div>Test</div>
-    )
+      <div className="test">Test</div>
+    );
   }
 }
 
