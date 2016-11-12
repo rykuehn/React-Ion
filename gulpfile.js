@@ -23,6 +23,12 @@ gulp.task('clean', function() {
   ]);
 });
 
+gulp.task('clear-user', function() {
+  return del.sync([
+    './user/**',
+  ]);
+});
+
 gulp.task('sass', function () {
   return gulp.src('./src/scss/**/*.scss')
     .pipe(sass().on('error', sass.logError))
