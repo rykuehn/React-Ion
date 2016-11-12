@@ -24,13 +24,6 @@ export function randomColor() {
   return color;
 }
 
-function resetSliders() {
-  setTimeout(() => {
-    this.height.value = this.getValue('height');
-    this.flex.value = this.getValue('flex');
-  }, 20);
-}
-
 export function mapComponents(components, selected) {
   const mapped = [];
 
@@ -38,10 +31,7 @@ export function mapComponents(components, selected) {
     if (c.children) {
       mapped.push(
         <Block
-          setSelected={() => {
-            setSelected();
-            
-          }}
+          setSelected={() => setSelected() }
           key={c.id}
           id={c.id}
           selected={selected}
