@@ -1,28 +1,27 @@
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
-// import { Provider } from 'react-redux';
-// import { Link } from 'react-router';
-// import Header from '../containers/Header';
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { randomColor, mapComponents } from '../lib/helpers';
-import { updateProps, addChild, getValue } from '../actions/routes';
-// import { setNextId } from '../actions/nextId';
-
-
-require('../scss/index.scss');
+import { randomColor, mapComponents, getValue } from '../lib/helpers';
+import { updateProps, addChild } from '../actions/routes';
 
 class Index extends Component {
-  // componentDidMount() {
-  //   this.height.value = getValue('height');
-  //   this.flex.value = getValue('flex');
-  // }
+  componentDidMount() {
+    this.resetSliders();
+  }
+
+  resetSliders() {
+    const context = this;
+    setTimeout(() => {
+      context.height.value = getValue('height', context.props.selected, context.props.routes);
+      context.flex.value = getValue('flex', context.props.selected, context.props.routes);
+    }, 0);
+  }
 
   render() {
     const { updateProps, routes, selected, addChild, nextId } = this.props;
+    this.resetSliders();
     return (
-      <div className="App">
+      <div style={{ height: '100vh' }}>
         <div style={{ marginBottom: '20px', marginTop: '20px' }}>
           <div style={{ marginBottom: '20px' }}>
             Height
@@ -48,7 +47,7 @@ class Index extends Component {
           <div style={{ marginBottom: '20px' }}>
             <button
               onClick={() => {
-                addChild('BLOCK', { color: randomColor(), flex: 1, height:20}, selected, nextId);
+                addChild('BLOCK', { color: randomColor(), flex: 1, height: 20 }, selected, nextId);
                 // setTimeout(()=>setNextId(), 100);
               }}
             > ADD BLOCK

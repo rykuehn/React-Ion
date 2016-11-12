@@ -9,7 +9,7 @@ const initialState = [{
   },
   children: [],
   type: 'block',
-  name: 'root',
+  name: 'Index',
 }];
 
 const routes = (routes = initialState, action) => {

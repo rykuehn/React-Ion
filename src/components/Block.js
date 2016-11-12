@@ -6,7 +6,6 @@ import { setSelected } from '../actions/selected';
 class Block extends React.Component {
   render() {
     const { color, height, id, setSelected, selected, flex } = this.props;
-    console.log('FROM BLOCK', height, flex)
 
     const boxStyle = {
       flex,
@@ -21,7 +20,6 @@ class Block extends React.Component {
       flexWrap: 'wrap',
       cursor: 'pointer',
       boxSizing: 'border-box',
-      overflow: 'auto',
       boxShadow: selected === id ? 'inset 0 0 0 6px red' : null,
     };
 
