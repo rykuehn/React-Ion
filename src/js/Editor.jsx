@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { randomColor, mapComponents, getValue } from '../lib/helpers';
 import { updateProps, addChild } from '../actions/routes';
 
-class Index extends Component {
+class Editor extends Component {
   componentDidMount() {
     this.resetSliders();
   }
@@ -13,25 +13,39 @@ class Index extends Component {
     const context = this;
     setTimeout(() => {
       context.height.value = getValue('height', context.props.selected, context.props.routes);
+      context.width.value = getValue('width', context.props.selected, context.props.routes);
       context.flex.value = getValue('flex', context.props.selected, context.props.routes);
-    }, 0);
+    });
   }
 
   render() {
     const { updateProps, routes, selected, addChild, nextId } = this.props;
+    console.log(JSON.stringify(routes));
     this.resetSliders();
+
     return (
-      <div style={{ height: '100vh' }}>
+      <div style={{ minHeight: '100vh', flexDirection: 'column' }}>
         <div style={{ marginBottom: '20px', marginTop: '20px' }}>
           <div style={{ marginBottom: '20px' }}>
             Height
             <input
               type="range"
               min={0}
-              max={100}
-              step={10}
+              max={10000}
+              step={100}
               ref={i => this.height = i}
               onChange={() => updateProps('height', this.height.value, selected)}
+            />
+          </div>
+          <div style={{ marginBottom: '20px' }}>
+            Width
+            <input
+              type="range"
+              min={0}
+              max={100}
+              step={10}
+              ref={i => this.width = i}
+              onChange={() => updateProps('width', this.width.value, selected)}
             />
           </div>
           <div style={{ marginBottom: '20px' }}>
@@ -41,16 +55,38 @@ class Index extends Component {
               min={0}
               max={10}
               ref={i => this.flex = i}
-              onChange={() => updateProps('flex', this.flex.value, selected)}
+              onChange={() => updateProps(
+                'flex', this.flex.value, selected,
+              )}
             />
+          </div>
+          <div style={{ marginBottom: '20px' }}>
+            Direction
+            <button onClick={() => updateProps('flexDirection', 'row', selected)}>
+              Row
+            </button>
+            <button onClick={() => updateProps('flexDirection', 'column', selected)}>
+              Column
+            </button>
           </div>
           <div style={{ marginBottom: '20px' }}>
             <button
               onClick={() => {
-                addChild('BLOCK', { color: randomColor(), flex: 1, height: 20 }, selected, nextId);
-                // setTimeout(()=>setNextId(), 100);
+                addChild('Block', { backgroundColor: randomColor(), flex: 1, height: 20, width: 20, flexDirection: 'row' }, selected, nextId);
               }}
             > ADD BLOCK
+            </button>
+            
+          </div>
+          <div style={{ marginBottom: '20px' }}>
+            <input
+              type="text"
+              placeholder="your text here"
+              ref={i => this.text = i}
+            />
+            <button
+              onClick={() => addChild('Text', { content: this.text.value }, selected, nextId)}
+            > ADD TEXT
             </button>
           </div>
           <br />
@@ -73,4 +109,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ updateProps, addChild, getValue }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+export default connect(mapStateToProps, mapDispatchToProps)(Editor);
