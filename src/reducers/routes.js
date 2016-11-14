@@ -5,7 +5,8 @@ const initialState = [{
   props: {
     backgroundColor: 'rgba(0,0,0,.1)',
     flex: 1,
-    height: 1080,
+    height: [1080, 'px'],
+    width: null,
   },
   children: [],
   componentType: 'Block',
