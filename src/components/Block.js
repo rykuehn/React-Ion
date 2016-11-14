@@ -13,24 +13,28 @@ const Block = ({
   flex,
   flexDirection,
   children,
+  backgroundImage,
 }) => {
+
   const boxStyle = {
     flex,
     flexDirection,
     backgroundColor,
+    backgroundImage: backgroundImage ? `url(${backgroundImage})` : null,
+    backgroundSize: 'cover',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: `${height}px`,
-    width: `${width}%`,
+    height: height[0] + height[1],
+    width: width ? width[0] + width[1] : null,
     maxHeight: '100%',
+    maxWidth: '100%',
     padding: '20px',
     margin: '20px',
     position: 'relative',
     flexWrap: 'wrap',
     cursor: 'pointer',
     boxSizing: 'border-box',
-    overflow: 'auto',
     boxShadow: selected === id ? 'inset 0 0 0 6px red' : null,
   };
 
