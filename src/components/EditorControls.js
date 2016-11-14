@@ -67,7 +67,11 @@ export default class EditorControls extends React.Component {
               max={100}
               step={10}
               ref={i => this.width = i}
-              onChange={() => updateProps('width', [this.width.value, '%'], selected)}
+              onChange={() => updateProps(
+                'width',
+                [this.width.value, '%'],
+                selected,
+              )}
             />
           </div>
           <div style={{ marginBottom: '20px' }}>
@@ -84,11 +88,21 @@ export default class EditorControls extends React.Component {
           </div>
           <div style={{ marginBottom: '20px' }}>
             Direction
-            <button onClick={() => updateProps('flexDirection', 'row', selected)}>
-              Row
+            <button
+              onClick={() => updateProps(
+                'flexDirection',
+                'row',
+                selected,
+              )}
+            > Row
             </button>
-            <button onClick={() => updateProps('flexDirection', 'column', selected)}>
-              Column
+            <button
+              onClick={() => updateProps(
+                'flexDirection',
+                'column',
+                selected,
+              )}
+            > Column
             </button>
           </div>
           <div style={{ marginBottom: '20px' }}>
@@ -99,7 +113,10 @@ export default class EditorControls extends React.Component {
             />
             <button
               onClick={() => addChild(
-                'Text', { content: this.text.value }, selected, nextId,
+                'Text',
+                { content: this.text.value },
+                selected,
+                nextId,
               )}
             > ADD TEXT
             </button>
