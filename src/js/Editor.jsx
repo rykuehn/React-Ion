@@ -49,6 +49,7 @@ function mapStateToProps(state) {
     controlsShowing: state.controlsShowing,
     canUndo: state.routes.past.length > 0,
     canRedo: state.routes.future.length > 0,
+    info: state.info,
   };
 }
 

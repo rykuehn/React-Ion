@@ -18,6 +18,7 @@ import TextAlign from './TextAlign';
 
 export default class EditorControls extends React.Component {
   render() {
+    console.log('in editor controls', this.props)
     const type = this.props.info.componentType;
     if (type === 'Text') {
       return (
