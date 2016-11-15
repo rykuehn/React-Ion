@@ -1,15 +1,13 @@
 import React from 'react';
-import { getValue } from '../lib/helpers';
 
 export default class FlexSlider extends React.Component {
-
   componentDidMount() {
     this.updateFlex();
   }
 
   updateFlex() {
     const context = this;
-    const flex = getValue('flex', context.props.selected, context.props.routes);
+    const flex = this.props.info.props.flex;
 
     if (flex) {
       setTimeout(() => {

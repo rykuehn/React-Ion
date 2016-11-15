@@ -1,5 +1,4 @@
 import React from 'react';
-import { getValue } from '../lib/helpers';
 
 export default class WidthSlider extends React.Component {
 
@@ -9,7 +8,7 @@ export default class WidthSlider extends React.Component {
 
   updateWidth() {
     const context = this;
-    const width = getValue('width', context.props.selected, context.props.routes);
+    const width = this.props.info.props.width;
 
     if (width) {
       setTimeout(() => {
@@ -19,11 +18,13 @@ export default class WidthSlider extends React.Component {
   }
 
   render() {
-    const { updateProps, selected } = this.props;
+    const { updateProps, selected, info } = this.props;
+    const direction = info.parent ? info.parent.props.flexDirection : null;
+
     this.updateWidth();
     return (
       <div
-        className={selected === 0
+        className={selected === 0 || direction === 'row'
           ? 'hidden'
           : 'slider'
         }

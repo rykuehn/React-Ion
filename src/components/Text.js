@@ -8,8 +8,16 @@ const Text = ({
   id,
   setSelected,
   selected,
+  color,
+  fontSize,
+  fontFamily,
+  textAlign,
 }) => {
   const textStyle = {
+    textAlign,
+    fontFamily,
+    fontSize,
+    color,
     width: 'calc(100% - 0px)',
     padding: '10px',
     flexWrap: 'wrap',
