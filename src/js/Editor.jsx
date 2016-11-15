@@ -18,6 +18,7 @@ class Editor extends Component {
             <i className="fa fa-sliders" aria-hidden="true"></i>
           </button>
         </div>
+        <div>{`REACT-ION`}</div>
         <EditorControls {...this.props} />
         <div style={{ minHeight: '100vh', flexDirection: 'column' }}>
           <div style={{marginTop: 200, position: 'relative', zIndex: 0}}>

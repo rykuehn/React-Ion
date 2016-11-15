@@ -35,7 +35,7 @@ const Block = ({
     cursor: 'pointer',
     boxSizing: 'border-box',
     borderRadius: 2,
-    boxShadow: selected === id ? 'inset 0 0 0 2px #93FE3F' : null,
+    boxShadow: selected === id ? 'inset 0 0 0 2px #93FE3F' : 'inset 0 0 0 2px coral',
   };
 
   return (

@@ -13,13 +13,11 @@ export default class EditorControls extends React.Component {
     const width = getValue('width', context.props.selected, context.props.routes);
     const flex = getValue('flex', context.props.selected, context.props.routes);
 
-    if (height && width && flex) {
-      setTimeout(() => {
-        context.height.value = height[0];
-        context.width.value = width ? width[0] : 0;
-        context.flex.value = flex;
-      });
-    }
+    setTimeout(() => {
+      context.height.value = height[0];
+      context.width.value = width ? width[0] : 0;
+      context.flex.value = flex;
+    });
   }
 
   render() {
@@ -63,7 +61,7 @@ export default class EditorControls extends React.Component {
           > <i className="fa fa-minus" aria-hidden="true"></i> BLOCK
           </button>
         </div>
-        <div>
+        <div className="slider">
           HEIGHT
           <input
             type="range"
@@ -83,7 +81,7 @@ export default class EditorControls extends React.Component {
         <div
           className={selected === 0
             ? 'hidden'
-            : null
+            : 'slider'
           }
         > WIDTH
           <input
@@ -102,7 +100,7 @@ export default class EditorControls extends React.Component {
         <div
           className={selected === 0
             ? 'hidden'
-            : null
+            : 'slider'
           }
         > FLEX
           <input
@@ -133,7 +131,51 @@ export default class EditorControls extends React.Component {
           > COLUMN
           </button>
         </div>
-        <div>
+        <div className="color-picker">
+          <input
+            type="color"
+            ref={i => this.backgroundColor = i}
+          />
+          <button
+            onClick={() => updateProps(
+              'backgroundColor',
+              this.backgroundColor.value,
+              selected,
+            )}
+          > <i className="fa fa-plus" aria-hidden="true" /> BG COLOR
+          </button>
+        </div>
+        <div className="text-input">
+          <input
+            type="text"
+            placeholder="Component Name"
+            ref={i => this.componentName = i}
+          />
+          <button
+            onClick={() => updateProps(
+              'name',
+              this.componentName.value,
+              selected,
+            )}
+          > <i className="fa fa-plus" aria-hidden="true" /> NAME
+          </button>
+        </div>
+        <div className="text-input">
+          <input
+            type="text"
+            placeholder="Background Image"
+            ref={i => this.backgroundImage = i}
+          />
+          <button
+            onClick={() => updateProps(
+              'backgroundImage',
+              this.backgroundImage.value,
+              selected,
+            )}
+          > <i className="fa fa-plus" aria-hidden="true" /> URL
+          </button>
+        </div>
+        <div className="text-input">
           <input
             type="text"
             placeholder="Enter Text Here"
@@ -146,22 +188,7 @@ export default class EditorControls extends React.Component {
               selected,
               nextId,
             )}
-          > <i className="fa fa-plus" aria-hidden="true"></i> TEXT
-          </button>
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="Background Image"
-            ref={i => this.backgroundImage = i}
-          />
-          <button
-            onClick={() => updateProps(
-              'backgroundImage',
-              this.backgroundImage.value,
-              selected,
-            )}
-          > <i className="fa fa-plus" aria-hidden="true"></i> URL
+          > <i className="fa fa-plus" aria-hidden="true" /> TEXT
           </button>
         </div>
       </div>
