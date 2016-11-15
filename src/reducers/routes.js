@@ -54,7 +54,6 @@ const routes = (routes = initialState, action) => {
       }(newTree[0]));
 
       return newTree;
-
     default:
       return routes;
   }
