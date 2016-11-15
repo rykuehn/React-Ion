@@ -25,7 +25,7 @@ const Block = ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: height[0] + height[1],
+    height: height ? height[0] + height[1] : null,
     width: width ? width[0] + width[1] : null,
     maxHeight: '100%',
     maxWidth: '100%',
@@ -37,7 +37,7 @@ const Block = ({
     borderRadius: 2,
     boxShadow: selected === id ? 'inset 0 0 0 2px #93FE3F' : 'inset 0 0 0 2px coral',
   };
-
+  console.log(selected,height);
   return (
     <div
       style={boxStyle}
