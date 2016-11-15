@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { mapComponents, getValue } from '../lib/helpers';
+import { setSelected } from '../actions/selected';
 import { updateProps, addChild, removeChild } from '../actions/routes';
 import { toggleControls } from '../actions/toggleControls';
 import EditorControls from '../components/EditorControls';
@@ -17,7 +18,7 @@ class Editor extends Component {
       <div>
         <div className="toolbar">
           <button onClick={toggleControls}>
-            <i className="fa fa-sliders" aria-hidden="true"></i>
+            <i className="fa fa-sliders" aria-hidden="true" />
           </button>
 
           <button onClick={this.props.onUndo} disabled={!canUndo}>
@@ -28,7 +29,6 @@ class Editor extends Component {
             <i className="fa fa-repeat" aria-hidden="true"></i>
           </button>
         </div>
-        <div>{`REACT-ION`}</div>
         <EditorControls {...this.props} />
         <div style={{ minHeight: '100vh', flexDirection: 'column' }}>
           <div style={{ marginTop: 200, position: 'relative', zIndex: 0 }}>

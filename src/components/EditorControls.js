@@ -30,10 +30,10 @@ export default class EditorControls extends React.Component {
         >
           <DeleteText {...this.props} />
           <UpdateText {...this.props} />
-          <TextColor {...this.props} />
-          <FontSize {...this.props} />
+          <TextColor  {...this.props} />
+          <FontSize   {...this.props} />
           <SelectFont {...this.props} />
-          <TextAlign {...this.props} />
+          <TextAlign  {...this.props} />
         </div>
       );
     }
