@@ -48,6 +48,7 @@ const Block = ({
   );
 };
 
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ setSelected }, dispatch);
 }
