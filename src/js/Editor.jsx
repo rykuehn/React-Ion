@@ -17,6 +17,14 @@ class Editor extends Component {
           <button onClick={toggleControls}>
             <i className="fa fa-sliders" aria-hidden="true"></i>
           </button>
+
+          <button >
+            <i className="fa fa-undo" aria-hidden="true"></i>
+          </button>
+
+          <button >
+            <i className="fa fa-repeat" aria-hidden="true"></i>
+          </button>
         </div>
         <div>{`REACT-ION`}</div>
         <EditorControls {...this.props} />
