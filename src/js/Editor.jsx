@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { mapComponents, getValue } from '../lib/helpers';
-import { updateProps, addChild } from '../actions/routes';
+import { updateProps, addChild, removeChild } from '../actions/routes';
 import { toggleControls } from '../actions/toggleControls';
 import EditorControls from '../components/EditorControls';
 import '../scss/toolbar.scss';
@@ -39,7 +39,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ updateProps, addChild, getValue, toggleControls }, dispatch);
+  return bindActionCreators({ updateProps, addChild, removeChild, getValue, toggleControls }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Editor);

@@ -13,11 +13,13 @@ export default class EditorControls extends React.Component {
     const width = getValue('width', context.props.selected, context.props.routes);
     const flex = getValue('flex', context.props.selected, context.props.routes);
 
-    setTimeout(() => {
-      context.height.value = height[0];
-      context.width.value = width ? width[0] : 0;
-      context.flex.value = flex;
-    });
+    if (height && width && flex) {
+      setTimeout(() => {
+        context.height.value = height[0];
+        context.width.value = width ? width[0] : 0;
+        context.flex.value = flex;
+      });
+    }
   }
 
   render() {
@@ -25,9 +27,9 @@ export default class EditorControls extends React.Component {
       updateProps,
       selected,
       addChild,
+      removeChild,
       nextId,
       controlsShowing,
-      toggleControls,
     } = this.props;
 
     this.resetSliders();
@@ -54,6 +56,12 @@ export default class EditorControls extends React.Component {
             }}
           > <i className="fa fa-plus" aria-hidden="true"></i> BLOCK
           </button>
+          <button
+            onClick={() => {
+              removeChild(selected);
+            }}
+          > <i className="fa fa-minus" aria-hidden="true"></i> BLOCK
+          </button>
         </div>
         <div>
           HEIGHT
@@ -72,13 +80,12 @@ export default class EditorControls extends React.Component {
             }}
           />
         </div>
-        <div 
+        <div
           className={selected === 0
             ? 'hidden'
             : null
           }
-        >
-          WIDTH
+        > WIDTH
           <input
             type="range"
             min={0}
@@ -92,13 +99,12 @@ export default class EditorControls extends React.Component {
             )}
           />
         </div>
-        <div 
+        <div
           className={selected === 0
             ? 'hidden'
             : null
           }
-        >
-          FLEX
+        > FLEX
           <input
             type="range"
             min={0}
