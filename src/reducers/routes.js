@@ -3,7 +3,7 @@ import { UPDATE_PROPS, ADD_CHILD } from '../actions/routes';
 const initialState = [{
   id: 0,
   props: {
-    backgroundColor: 'rgba(0,0,0,.1)',
+    backgroundColor: 'rgba(255,255,255,.1)',
     flex: 1,
     height: [1080, 'px'],
     width: null,
