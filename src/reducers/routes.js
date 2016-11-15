@@ -1,4 +1,5 @@
 import { UPDATE_PROPS, ADD_CHILD, REMOVE_CHILD } from '../actions/routes';
+import store from '../js/App';
 
 const initialState = [{
   id: 0,
@@ -10,6 +11,7 @@ const initialState = [{
   },
   children: [],
   componentType: 'Block',
+  parent: {},
   name: 'Index',
 }];
 
@@ -37,6 +39,7 @@ const routes = (routes = initialState, action) => {
             props: action.props,
             children: [],
             componentType: action.componentType,
+            parent: tree,
           });
         } else { tree.children.forEach(child => add(child, id)); }
       }(newTree[0], action.id));
@@ -46,7 +49,7 @@ const routes = (routes = initialState, action) => {
     case REMOVE_CHILD:
       (function search(tree) {
         if (tree.id === action.id) {
-          parent.children = parent.children.filter(t => t.id !== action.id)
+          parent.children = parent.children.filter(t => t.id !== action.id);
         } else if (tree.children.length) {
           parent = tree;
           tree.children.forEach(child => search(child));
@@ -54,7 +57,6 @@ const routes = (routes = initialState, action) => {
       }(newTree[0]));
 
       return newTree;
-
     default:
       return routes;
   }
