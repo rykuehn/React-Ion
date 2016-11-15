@@ -1,5 +1,4 @@
 import React from 'react';
-import { getValue } from '../lib/helpers';
 
 export default class HeightSlider extends React.Component {
 
@@ -9,19 +8,26 @@ export default class HeightSlider extends React.Component {
 
   updateHeight() {
     const context = this;
-    const height = getValue('height', context.props.selected, context.props.routes);
-
-    setTimeout(() => {
-      context.height.value = height[0];
-    });
+    const height = this.props.info.props.height;
+    if (height) {
+      setTimeout(() => {
+        context.height.value = height[0];
+      });
+    }
   }
 
   render() {
-    const { updateProps, selected } = this.props;
+    const { updateProps, selected, info } = this.props;
+    const direction = info.parent ? info.parent.props.flexDirection : null;
+
     this.updateHeight();
     return (
-      <div className="slider">
-        HEIGHT
+      <div
+        className={direction === 'column'
+          ? 'hidden'
+          : 'slider'
+        }
+      > HEIGHT
         <input
           type="range"
           min={0}
@@ -31,7 +37,7 @@ export default class HeightSlider extends React.Component {
           onChange={() => {
             updateProps(
               'height',
-              [this.height.value, selected == 0 ? 'px' : '%'],
+              [this.height.value, selected === 0 ? 'px' : '%'],
               selected,
             );
           }}
