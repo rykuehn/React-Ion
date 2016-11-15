@@ -63,5 +63,6 @@ const routes = (routes = initialState, action) => {
   }
 };
 
-const undoableRoutes = undoable(routes);
+const undoableRoutes = undoable(routes, { filter: distinctState() });
+
 export default undoableRoutes;
