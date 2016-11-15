@@ -39,7 +39,7 @@ const routes = (routes = initialState, action) => {
             props: action.props,
             children: [],
             componentType: action.componentType,
-            parent: tree
+            parent: tree,
           });
         } else { tree.children.forEach(child => add(child, id)); }
       }(newTree[0], action.id));
