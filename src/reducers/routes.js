@@ -8,10 +8,11 @@ const initialState = [{
     flex: 1,
     height: [1080, 'px'],
     width: null,
+    flexDirection: 'column',
   },
   children: [],
   componentType: 'Block',
-  parent: {},
+  parent: null,
   name: 'Index',
 }];
 
