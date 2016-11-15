@@ -3,12 +3,13 @@ import { UPDATE_PROPS, ADD_CHILD } from '../actions/routes';
 const initialState = [{
   id: 0,
   props: {
-    color: 'rgba(0,0,0,.1)',
+    backgroundColor: 'rgba(0,0,0,.1)',
     flex: 1,
-    height: 100,
+    height: [1080, 'px'],
+    width: null,
   },
   children: [],
-  type: 'block',
+  componentType: 'Block',
   name: 'Index',
 }];
 

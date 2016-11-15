@@ -3,6 +3,7 @@ export const ADD_CHILD = 'ADD_CHILD';
 export const GET_VALUE = 'GET_VALUE';
 
 export function updateProps(key, value, id) {
+  console.log(key, value)
   return {
     type: UPDATE_PROPS,
     key,
