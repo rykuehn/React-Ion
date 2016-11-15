@@ -1,8 +1,20 @@
-import undoable, { distinctState } from 'redux-undo';
+import undoable, { distinctState, ActionTypes } from 'redux-undo';
 import { UPDATE_PROPS, ADD_CHILD, REMOVE_CHILD } from '../actions/routes';
 import store from '../js/App';
 
-const initialState = {};
+const initialState = [{
+  id: 0,
+  props: {
+    backgroundColor: 'rgba(255,255,255,.1)',
+    flex: 1,
+    height: [1080, 'px'],
+    width: null,
+  },
+  children: [],
+  componentType: 'Block',
+  parent: {},
+  name: 'Index',
+}];
 
 const routes = (routes = initialState, action) => {
   const newTree = Object.assign({}, routes);

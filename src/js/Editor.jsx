@@ -5,12 +5,14 @@ import { mapComponents, getValue } from '../lib/helpers';
 import { updateProps, addChild, removeChild } from '../actions/routes';
 import { toggleControls } from '../actions/toggleControls';
 import EditorControls from '../components/EditorControls';
+
+import { ActionCreators as UndoActionCreators } from 'redux-undo';
 import '../scss/toolbar.scss';
 
 class Editor extends Component {
   render() {
+    console.log('*****', this.props)
     const { routes, selected, toggleControls } = this.props;
-
     return (
       <div>
         <div className="toolbar">
@@ -18,18 +20,18 @@ class Editor extends Component {
             <i className="fa fa-sliders" aria-hidden="true"></i>
           </button>
 
-          <button >
+          <button onClick={()=>UndoActionCreators.undo}>
             <i className="fa fa-undo" aria-hidden="true"></i>
           </button>
 
-          <button >
+          <button onClick={() => UndoActionCreators.redo}>
             <i className="fa fa-repeat" aria-hidden="true"></i>
           </button>
         </div>
         <div>{`REACT-ION`}</div>
         <EditorControls {...this.props} />
         <div style={{ minHeight: '100vh', flexDirection: 'column' }}>
-          <div style={{marginTop: 200, position: 'relative', zIndex: 0}}>
+          <div style={{ marginTop: 200, position: 'relative', zIndex: 0 }}>
             {mapComponents(routes, selected)}
           </div>
         </div>
@@ -40,15 +42,18 @@ class Editor extends Component {
 
 function mapStateToProps(state) {
   return {
-    routes: state.routes,
+    routes: state.routes.present,
     nextId: state.nextId,
     selected: state.selected,
     controlsShowing: state.controlsShowing,
+    canUndo: state.routes.past.length > 0,
+    canRedo: state.routes.future.length > 0,
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ updateProps, addChild, removeChild, getValue, toggleControls }, dispatch);
+  return bindActionCreators({ UndoActionCreators, updateProps, addChild, removeChild, getValue, toggleControls }, dispatch);
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Editor);

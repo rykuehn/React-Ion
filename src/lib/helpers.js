@@ -5,14 +5,13 @@ import Block from '../components/Block';
 import Text from '../components/Text';
 
 export function getValue(key, id, routes) {
-  console.log('in getValue', key, id, routes);
   let value;
 
   (function search(tree) {
     if (tree.id === id) {
       value = tree.props[key];
     } else { tree.children.forEach(child => search(child)); }
-  }(routes));
+  }(routes[0]));
 
   return value;
 }
@@ -27,9 +26,7 @@ export function randomColor() {
 }
 
 export function mapComponents(components, selected) {
-  console.log('in mapComponents', components, selected);
   const mapped = [];
-
   _.each(components, (c) => {
     if (c.componentType === 'Block') {
       mapped.push(
@@ -57,6 +54,5 @@ export function mapComponents(components, selected) {
       );
     }
   });
-
   return mapped;
 }
