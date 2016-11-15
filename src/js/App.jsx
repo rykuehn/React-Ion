@@ -30,3 +30,4 @@ const App = () => (
 
 ReactDOM.render(<App />, document.getElementById('App'));
 
+export default store;

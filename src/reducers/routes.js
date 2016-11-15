@@ -1,4 +1,5 @@
 import { UPDATE_PROPS, ADD_CHILD, REMOVE_CHILD } from '../actions/routes';
+import store from '../js/App';
 
 const initialState = [{
   id: 0,
@@ -46,7 +47,7 @@ const routes = (routes = initialState, action) => {
     case REMOVE_CHILD:
       (function search(tree) {
         if (tree.id === action.id) {
-          parent.children = parent.children.filter(t => t.id !== action.id)
+          parent.children = parent.children.filter(t => t.id !== action.id);
         } else if (tree.children.length) {
           parent = tree;
           tree.children.forEach(child => search(child));
