@@ -12,6 +12,7 @@ import '../scss/toolbar.scss';
 class Editor extends Component {
   render() {
     const { canUndo, canRedo, onUndo, onRedo, routes, selected, toggleControls } = this.props;
+    console.log(this.props.store)
     return (
       <div>
         <div className="toolbar">

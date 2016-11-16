@@ -24,14 +24,18 @@ const routes = (routes = initialState, action) => {
   const newTree = _.cloneDeep(routes);
   let parent;
 
-const moveToPast = (tree, routes) => {
-  tree.past.push(_.cloneDeep(routes.present[0]));
+const moveToPast = (tree, routes, complete) => {
+  if(complete) {
+    console.log('child completed')
+   tree.past.push(_.cloneDeep(routes.present[0]));
+  }
 };
 
   switch (action.type) {
-    
+
     case UPDATE_PROPS:
-      moveToPast(newTree, routes);
+    console.log('ROUTES', routes)
+      moveToPast(newTree, routes, action.complete);
       function update(tree) {
         if (tree.id === action.id) {
           tree.props[action.key] = action.value;
@@ -43,7 +47,7 @@ const moveToPast = (tree, routes) => {
       return newTree;
 
     case ADD_CHILD:
-      moveToPast(newTree, routes);
+      moveToPast(newTree, routes, true);
       (function add(tree, id) {
         if (tree.id === action.id) {
           tree.children.push({
@@ -59,7 +63,7 @@ const moveToPast = (tree, routes) => {
       return newTree;
 
     case REMOVE_CHILD:
-      moveToPast(newTree, routes);
+      moveToPast(newTree, routes, true);
       (function search(tree) {
         if (tree.id === action.id) {
           parent.children = parent.children.filter(t => t.id !== action.id);

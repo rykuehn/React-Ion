@@ -40,6 +40,13 @@ export default class WidthSlider extends React.Component {
             'width',
             [this.width.value, '%'],
             selected,
+            false
+          )}
+          onMouseUp={() => updateProps(
+            'width',
+            [this.width.value, '%'],
+            selected,
+            true,
           )}
         />
       </div>
