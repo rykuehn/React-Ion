@@ -1,37 +1,38 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Draggable from 'react-draggable';
 import { mapComponents, getValue } from '../lib/helpers';
 import { setSelected } from '../actions/selected';
 import { updateProps, addChild, removeChild, onRedo, onUndo } from '../actions/routes';
+import { setZoom } from '../actions/setZoom';
 import { toggleControls } from '../actions/toggleControls';
 import EditorControls from '../components/EditorControls';
-
+import Toolbar from '../components/Toolbar';
+import ZoomPercent from '../components/ZoomPercent';
 import '../scss/toolbar.scss';
+import '../scss/canvas.scss';
+import '../scss/editor.scss';
 
 class Editor extends Component {
   render() {
-    const { canUndo, canRedo, onUndo, onRedo, routes, selected, toggleControls } = this.props;
+    const {
+      routes,
+      selected,
+      zoom,
+    } = this.props;
+
     return (
-      <div>
-        <div className="toolbar">
-          <button onClick={toggleControls}>
-            <i className="fa fa-sliders" aria-hidden="true" />
-          </button>
-
-          <button onClick={onUndo} disabled={!canUndo} >
-            <i className="fa fa-undo" aria-hidden="true" />
-          </button>
-
-          <button onClick={onRedo} disabled={!canRedo}>
-            <i className="fa fa-repeat" aria-hidden="true" />
-          </button>
-        </div>
+      <div className="editor">
+        <Toolbar {...this.props} />
         <EditorControls {...this.props} />
-        <div style={{ minHeight: '100vh', flexDirection: 'column' }}>
-          <div style={{ marginTop: 200, position: 'relative', zIndex: 0 }}>
-            {mapComponents(routes, selected)}
-          </div>
+        <ZoomPercent zoom={zoom} />
+        <div style={{ transform: `scale(${zoom})` }}>
+          <Draggable>
+            <div className="canvas">
+              {mapComponents(routes, selected)}
+            </div>
+          </Draggable>
         </div>
       </div>
     );
@@ -48,6 +49,7 @@ function mapStateToProps(state) {
     info: state.info,
     canUndo: state.routes.past.length > 0,
     canRedo: state.routes.future.length > 0,
+    zoom: state.zoom,
   };
 }
 
@@ -59,7 +61,9 @@ function mapDispatchToProps(dispatch) {
     addChild,
     removeChild,
     getValue,
-    toggleControls }, dispatch);
+    toggleControls,
+    setZoom,
+  }, dispatch);
 }
 
 
