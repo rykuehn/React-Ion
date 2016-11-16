@@ -15,7 +15,7 @@ export default class BackgroundImageInput extends React.Component {
           onClick={() => updateProps(
             'backgroundImage',
             this.backgroundImage.value,
-            selected,
+            selected, false, 'colorInput',
           )}
         > <i className="fa fa-plus" aria-hidden="true" /> URL
         </button>

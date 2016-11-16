@@ -2,13 +2,17 @@ export const UPDATE_PROPS = 'UPDATE_PROPS';
 export const ADD_CHILD = 'ADD_CHILD';
 export const GET_VALUE = 'GET_VALUE';
 export const REMOVE_CHILD = 'REMOVE_CHILD';
+export const UNDO = 'UNDO';
+export const REDO = 'REDO';
 
-export function updateProps(key, value, id) {
+export function updateProps(key, value, id, complete, actionType) {
   return {
     type: UPDATE_PROPS,
     key,
     value,
     id,
+    complete,
+    actionType,
   };
 }
 
@@ -34,5 +38,17 @@ export function getValue(key, id) {
     type: GET_VALUE,
     key,
     id,
+  };
+}
+
+export function onUndo() {
+  return {
+    type: UNDO,
+  };
+}
+
+export function onRedo() {
+  return {
+    type: REDO,
   };
 }

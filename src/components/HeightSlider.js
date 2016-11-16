@@ -41,6 +41,20 @@ export default class HeightSlider extends React.Component {
               selected,
             );
           }}
+          onMouseDown={() => updateProps(
+            'width',
+            [this.height.value, '%'],
+            selected,
+            true,
+            'onMouseDown',
+          )}
+          onMouseUp={() => updateProps(
+            'width',
+            [this.height.value, '%'],
+            selected,
+            true,
+            'onMouseUp',
+          )}
         />
       </div>
     );

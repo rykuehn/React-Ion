@@ -11,6 +11,8 @@ export default class TextAlign extends React.Component {
             'textAlign',
             'left',
             selected,
+            true,
+            'onclick',
           )}
         > <i className="fa fa-align-left" aria-hidden="true" />
         </button>
@@ -19,6 +21,8 @@ export default class TextAlign extends React.Component {
             'textAlign',
             'center',
             selected,
+            true,
+            'onclick',
           )}
         > <i className="fa fa-align-center" aria-hidden="true" />
         </button>
@@ -27,6 +31,8 @@ export default class TextAlign extends React.Component {
             'textAlign',
             'right',
             selected,
+            true,
+            'onclick',
           )}
         > <i className="fa fa-align-right" aria-hidden="true" />
         </button>

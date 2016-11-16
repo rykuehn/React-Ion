@@ -32,8 +32,15 @@ export default class FlexSlider extends React.Component {
           max={10}
           ref={i => this.flex = i}
           onChange={() => updateProps(
-            'flex', this.flex.value, selected,
+            'flex', this.flex.value, selected, false, 'onChange',
           )}
+          onMouseDown={() => updateProps(
+            'flex', this.flex.value, selected, true, 'onMouseDown',
+          )}
+          onMouseUp={() => updateProps(
+            'flex', this.flex.value, selected, true, 'onMouseUp',
+          )}
+
         />
       </div>
     );
