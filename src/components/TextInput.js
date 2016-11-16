@@ -14,7 +14,7 @@ export default class TextInput extends React.Component {
         <button
           onClick={() => addChild(
             'Text',
-            { content: this.text.value },
+            { content: this.text.value, fontSize: 12, color: 'white' },
             selected,
             nextId,
           )}

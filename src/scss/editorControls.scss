@@ -1,3 +1,5 @@
+$light-gray: rgba(0,0,0,.05);
+
 .hidden {
   display: none;
 }
@@ -22,7 +24,7 @@
     position: absolute;
     right: 10px;
     top: 10px;
-    border: 1px solid rgba(0,0,0,.5);;
+    border: 1px solid $light-gray;
     background-color: transparent;
     border-radius: 50%;
     cursor: pointer;
@@ -44,14 +46,19 @@
   div {
    align-self: flex-start;
    flex: 1;
-   border-right: 1px solid rgba(0,0,0,.05);
-   border-bottom: 1px solid rgba(0,0,0,.05);
+   border-right: 1px solid $light-gray;
+   border-bottom: 1px solid $light-gray;
    height: 50%;
    display: flex;
    align-items: center;
    justify-content: center;
-   font-size: 12px;
    transition: all .3s;
+   font-size: 12px;
+
+   i {
+    font-size: 12px;
+   }
+
 
     input {
       flex: 2;
@@ -59,13 +66,13 @@
       margin-right: 10px;
       padding: 10px;
       border: 0px;
-      border-bottom: 1px solid rgba(0,0,0,.1);
+      border-bottom: 1px solid $light-gray;
       flex-basis: 100%;
       transition: border-bottom .3s;
 
       &:focus {
         outline: none;
-        border-bottom: 1px solid #93FE3F;
+        border-bottom: 1px solid coral;
       }
     }
 
@@ -79,7 +86,7 @@
       min-width: 100px;
 
       &:hover {
-        background-color: rgba(0,0,0,.05);
+        background-color: $light-gray;
       }
 
       &:focus {
@@ -92,7 +99,7 @@
     cursor: pointer;
 
     input {
-      background-color: rgba(0,0,0,.05);
+      background-color: $light-gray;
       max-width: 60px;
     }
   }

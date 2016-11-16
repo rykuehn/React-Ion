@@ -37,7 +37,7 @@ const Block = ({
     borderRadius: 2,
     boxShadow: selected === id ? 'inset 0 0 0 2px #93FE3F' : 'inset 0 0 0 2px coral',
   };
-  console.log(selected,height);
+
   return (
     <div
       style={boxStyle}
