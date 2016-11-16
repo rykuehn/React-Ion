@@ -3,16 +3,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { mapComponents, getValue } from '../lib/helpers';
 import { setSelected } from '../actions/selected';
-import { updateProps, addChild, removeChild } from '../actions/routes';
+import { updateProps, addChild, removeChild, onRedo, onUndo } from '../actions/routes';
 import { toggleControls } from '../actions/toggleControls';
 import EditorControls from '../components/EditorControls';
 
-import { ActionCreators as UndoActionCreators } from 'redux-undo';
 import '../scss/toolbar.scss';
 
 class Editor extends Component {
   render() {
-    console.log('*****', this.props.store)
     const { canUndo, canRedo, routes, selected, toggleControls } = this.props;
     return (
       <div>
@@ -43,29 +41,17 @@ class Editor extends Component {
 function mapStateToProps(state) {
   return {
     store: state.routes,
-    routes: state.routes.present,
+    routes: state.routes,
     nextId: state.nextId,
     selected: state.selected,
     controlsShowing: state.controlsShowing,
-    canUndo: state.routes.past.length > 0,
-    canRedo: state.routes.future.length > 0,
     info: state.info,
   };
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({ UndoActionCreators, updateProps, addChild, removeChild, getValue, toggleControls }, dispatch);
-// }
-
-const mapDispatchToProps = ({
-  onUndo: UndoActionCreators.undo,
-  onRedo: UndoActionCreators.redo,
-  updateProps,
-  addChild,
-  removeChild,
-  getValue,
-  toggleControls,
-});
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ onUndo, onRedo, updateProps, addChild, removeChild, getValue, toggleControls }, dispatch);
+}
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Editor);

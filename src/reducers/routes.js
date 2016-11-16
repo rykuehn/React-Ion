@@ -1,4 +1,3 @@
-import undoable, { distinctState, ActionTypes } from 'redux-undo';
 import { UPDATE_PROPS, ADD_CHILD, REMOVE_CHILD } from '../actions/routes';
 import store from '../js/App';
 
@@ -64,6 +63,5 @@ const routes = (routes = initialState, action) => {
   }
 };
 
-const undoableRoutes = undoable(routes, { filter: distinctState() });
 
-export default undoableRoutes;
+export default routes;

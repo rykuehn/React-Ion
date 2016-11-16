@@ -27,7 +27,7 @@ const info = (info = initialState, action) => {
         } else {
           tree.children.forEach(child => getInfo(child));
         }
-      }(store.getState().routes.present[0]));
+      }(store.getState().routes[0]));
 
       return information;
 

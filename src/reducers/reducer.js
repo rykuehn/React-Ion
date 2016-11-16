@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import undoable from 'redux-undo';
 import user from './header';
 import selected from './selected';
 import nextId from './nextId';
