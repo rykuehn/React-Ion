@@ -8,6 +8,7 @@ export default class WidthSlider extends React.Component {
 
   updateWidth() {
     const context = this;
+    console.log(this.props.info.props.width);
     const width = this.props.info.props.width;
 
     if (width) {

@@ -11,7 +11,7 @@ import '../scss/toolbar.scss';
 
 class Editor extends Component {
   render() {
-    const { canUndo, canRedo, routes, selected, toggleControls } = this.props;
+    const { canUndo, canRedo, onUndo, onRedo, routes, selected, toggleControls } = this.props;
     return (
       <div>
         <div className="toolbar">
@@ -19,11 +19,11 @@ class Editor extends Component {
             <i className="fa fa-sliders" aria-hidden="true" />
           </button>
 
-          <button onClick={this.props.onUndo} disabled={!canUndo}>
+          <button onClick={onUndo} disabled={!canUndo} >
             <i className="fa fa-undo" aria-hidden="true"></i>
           </button>
 
-          <button onClick={this.props.onRedo} disabled={!canRedo}>
+          <button onClick={onRedo} disabled={!canRedo}>
             <i className="fa fa-repeat" aria-hidden="true"></i>
           </button>
         </div>
@@ -41,11 +41,13 @@ class Editor extends Component {
 function mapStateToProps(state) {
   return {
     store: state.routes,
-    routes: state.routes,
+    routes: state.routes.present,
     nextId: state.nextId,
     selected: state.selected,
     controlsShowing: state.controlsShowing,
     info: state.info,
+    canUndo: state.routes.past.length > 0,
+    canRedo: state.routes.future.length > 0,
   };
 }
 
