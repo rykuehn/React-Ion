@@ -9,15 +9,13 @@ export default class ColorPicker extends React.Component {
         <input
           type="color"
           ref={i => this.backgroundColor = i}
-        />
-        <button
-          onClick={() => updateProps(
+          onInput={() => updateProps(
             'backgroundColor',
             this.backgroundColor.value,
-            selected,
+            selected, false, 'colorInput',
           )}
-        > <i className="fa fa-plus" aria-hidden="true" /> BG COLOR
-        </button>
+        />
+        
       </div>
     );
   }

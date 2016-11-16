@@ -8,7 +8,6 @@ export default class WidthSlider extends React.Component {
 
   updateWidth() {
     const context = this;
-    console.log(this.props.info.props.width);
     const width = this.props.info.props.width;
 
     if (width) {
@@ -40,14 +39,24 @@ export default class WidthSlider extends React.Component {
             'width',
             [this.width.value, '%'],
             selected,
-            false
+            false,
+            'onChange'
+          )}
+          onMouseDown={() => updateProps(
+            'width',
+            [this.width.value, '%'],
+            selected,
+            true,
+            'onMouseDown',
           )}
           onMouseUp={() => updateProps(
             'width',
             [this.width.value, '%'],
             selected,
             true,
+            'onMouseUp',
           )}
+
         />
       </div>
     );

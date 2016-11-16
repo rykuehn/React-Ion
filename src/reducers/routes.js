@@ -24,26 +24,33 @@ const routes = (routes = initialState, action) => {
   const newTree = _.cloneDeep(routes);
   let parent;
 
-const moveToPast = (tree, routes, complete) => {
-  if(complete) {
-    console.log('child completed')
-   tree.past.push(_.cloneDeep(routes.present[0]));
+const moveToPast = (tree, routes, complete, actionType) => {
+  if (complete || actionType === 'colorInput') {
+    tree.past.push(_.cloneDeep(routes.present[0]));
   }
 };
 
   switch (action.type) {
 
     case UPDATE_PROPS:
-    console.log('ROUTES', routes)
-      moveToPast(newTree, routes, action.complete);
-      function update(tree) {
-        if (tree.id === action.id) {
-          tree.props[action.key] = action.value;
-        } else {
-          tree.children.forEach(child => update(child));
+      if (action.actionType === 'onMouseUp') {
+        if (_.isEqual(newTree.past[newTree.past.length-1], newTree.present[0])){
+          newTree.past.pop();
+        }
+      } else {
+        console.log('color called', action.value, action.complete)
+        moveToPast(newTree, routes, action.complete, action.actionType);
+        if (!action.complete) {
+            function update(tree) {
+              if (tree.id === action.id) {
+                tree.props[action.key] = action.value;
+              } else {
+                tree.children.forEach(child => update(child));
+              }
+            }
+          update(newTree.present[0]);
         }
       }
-      update(newTree.present[0]);
       return newTree;
 
     case ADD_CHILD:

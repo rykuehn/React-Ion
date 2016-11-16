@@ -5,13 +5,14 @@ export const REMOVE_CHILD = 'REMOVE_CHILD';
 export const UNDO = 'UNDO';
 export const REDO = 'REDO';
 
-export function updateProps(key, value, id, complete) {
+export function updateProps(key, value, id, complete, actionType) {
   return {
     type: UPDATE_PROPS,
     key,
     value,
     id,
     complete,
+    actionType,
   };
 }
 
@@ -41,14 +42,12 @@ export function getValue(key, id) {
 }
 
 export function onUndo() {
-  console.log('undo clicked')
   return {
     type: UNDO,
   };
 }
 
 export function onRedo() {
-  console.log('redo clicked')
   return {
     type: REDO,
   };

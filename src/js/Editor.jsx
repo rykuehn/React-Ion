@@ -12,7 +12,6 @@ import '../scss/toolbar.scss';
 class Editor extends Component {
   render() {
     const { canUndo, canRedo, onUndo, onRedo, routes, selected, toggleControls } = this.props;
-    console.log(this.props.store)
     return (
       <div>
         <div className="toolbar">
@@ -21,11 +20,11 @@ class Editor extends Component {
           </button>
 
           <button onClick={onUndo} disabled={!canUndo} >
-            <i className="fa fa-undo" aria-hidden="true"></i>
+            <i className="fa fa-undo" aria-hidden="true" />
           </button>
 
           <button onClick={onRedo} disabled={!canRedo}>
-            <i className="fa fa-repeat" aria-hidden="true"></i>
+            <i className="fa fa-repeat" aria-hidden="true" />
           </button>
         </div>
         <EditorControls {...this.props} />
@@ -53,7 +52,14 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ onUndo, onRedo, updateProps, addChild, removeChild, getValue, toggleControls }, dispatch);
+  return bindActionCreators({
+    onUndo,
+    onRedo,
+    updateProps,
+    addChild,
+    removeChild,
+    getValue,
+    toggleControls }, dispatch);
 }
 
 
