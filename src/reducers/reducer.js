@@ -5,6 +5,7 @@ import nextId from './nextId';
 import routes from './routes';
 import controlsShowing from './controlsModal';
 import info from './getInfo';
+import zoom from './zoom';
 
 export default combineReducers({
   user,
@@ -13,4 +14,5 @@ export default combineReducers({
   routes,
   controlsShowing,
   info,
+  zoom,
 });
