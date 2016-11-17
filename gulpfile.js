@@ -1,6 +1,5 @@
 const gulp = require('gulp');
 const del = require('del');
-const sass = require('gulp-sass');
 
 gulp.task('copy', function() {
   const folders = ['src/**/*.html', 'src/lib/**/*', 'src/**/*.png'];
@@ -21,22 +20,6 @@ gulp.task('clean', function() {
   return del.sync([
     './dist/**',
   ]);
-});
-
-gulp.task('clear-user', function() {
-  return del.sync([
-    './user/**',
-  ]);
-});
-
-gulp.task('sass', function () {
-  return gulp.src('./src/scss/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./src/css'));
-});
-
-gulp.task('sass:watch', function () {
-  gulp.watch('./src/scss/**/*.scss', ['sass']);
 });
 
 gulp.task('build', ['clean', 'copy']);
