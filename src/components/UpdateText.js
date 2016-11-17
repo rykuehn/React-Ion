@@ -16,8 +16,6 @@ export default class UpdateText extends React.Component {
             'content',
             this.text.value,
             selected,
-            true,
-            'onClick',
           )}
         > <i className="fa fa-pencil" aria-hidden="true" />
         </button>

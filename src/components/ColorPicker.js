@@ -12,7 +12,7 @@ export default class ColorPicker extends React.Component {
           onInput={() => updateProps(
             'backgroundColor',
             this.backgroundColor.value,
-            selected, false, 'colorInput',
+            selected,
           )}
         />
         
