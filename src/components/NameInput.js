@@ -2,22 +2,24 @@ import React from 'react';
 
 export default class NameInput extends React.Component {
   render() {
-    const { updateProps, selected } = this.props;
+    const { toggleTextModal, updateProps, selected } = this.props;
+
+    const callback = (context) => {
+      updateProps(
+        'name',
+        context.text.value,
+        selected,
+      );
+    };
 
     return (
-      <div className="text-input">
-        <input
-          type="text"
-          placeholder="Component Name"
-          ref={i => this.componentName = i}
-        />
+      <div>
         <button
-          onClick={() => updateProps(
-            'name',
-            this.componentName.value,
-            selected,
+          onClick={() => toggleTextModal(
+            'enter component name',
+            callback,
           )}
-        > <i className="fa fa-plus" aria-hidden="true" /> NAME
+        > <i className="fa fa-pencil" aria-hidden="true" /> COMPONENT NAME
         </button>
       </div>
     );

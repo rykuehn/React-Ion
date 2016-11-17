@@ -2,22 +2,23 @@ import React from 'react';
 
 export default class UpdateText extends React.Component {
   render() {
-    const { updateProps, selected } = this.props;
+    const { toggleTextModal, updateProps, selected } = this.props;
+    const callback = (context) => {
+      updateProps(
+        'content',
+        context.text.value,
+        selected,
+      );
+    };
 
     return (
-      <div className="text-input">
-        <input
-          type="text"
-          placeholder="Edit Text"
-          ref={i => this.text = i}
-        />
+      <div>
         <button
-          onClick={() => updateProps(
-            'content',
-            this.text.value,
-            selected,
+          onClick={() => toggleTextModal(
+            'new text',
+            callback,
           )}
-        > <i className="fa fa-pencil" aria-hidden="true" />
+        > <i className="fa fa-pencil" aria-hidden="true" /> UPDATE TEXT
         </button>
       </div>
     );

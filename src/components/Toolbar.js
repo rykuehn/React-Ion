@@ -8,7 +8,6 @@ const Toolbar = ({
   canRedo,
   setZoom,
 }) => {
-
   return (
     <div className="toolbar">
       <button onClick={canUndo ? onUndo : null}>

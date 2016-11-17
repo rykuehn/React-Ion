@@ -7,9 +7,11 @@ import { setSelected } from '../actions/selected';
 import { updateProps, addChild, removeChild, onRedo, onUndo } from '../actions/routes';
 import { setZoom } from '../actions/setZoom';
 import { toggleControls } from '../actions/toggleControls';
+import { toggleTextModal, closeTextModal } from '../actions/toggleTextModal';
 import EditorControls from '../components/EditorControls';
 import Toolbar from '../components/Toolbar';
 import ZoomPercent from '../components/ZoomPercent';
+import TextInputModal from '../components/TextInputModal';
 import '../scss/toolbar.scss';
 import '../scss/canvas.scss';
 import '../scss/editor.scss';
@@ -24,6 +26,7 @@ class Editor extends Component {
     console.log(this.props.store);
     return (
       <div className="editor">
+        <TextInputModal {...this.props} />
         <Toolbar {...this.props} />
         <EditorControls {...this.props} />
         <ZoomPercent zoom={zoom} />
@@ -50,6 +53,7 @@ function mapStateToProps(state) {
     canUndo: state.routes.past.length > 0,
     canRedo: state.routes.future.length > 0,
     zoom: state.zoom,
+    textModal: state.textModal,
   };
 }
 
@@ -63,6 +67,8 @@ function mapDispatchToProps(dispatch) {
     getValue,
     toggleControls,
     setZoom,
+    toggleTextModal,
+    closeTextModal,
   }, dispatch);
 }
 
