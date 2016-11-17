@@ -5,13 +5,12 @@ export const REMOVE_CHILD = 'REMOVE_CHILD';
 export const UNDO = 'UNDO';
 export const REDO = 'REDO';
 
-export function updateProps(key, value, id, complete, actionType) {
+export function updateProps(key, value, id, actionType) {
   return {
     type: UPDATE_PROPS,
     key,
     value,
     id,
-    complete,
     actionType,
   };
 }

@@ -27,13 +27,13 @@ export default class FontSize extends React.Component {
           max={100}
           ref={i => this.size = i}
           onChange={() => updateProps(
-            'fontSize', this.size.value, selected, false, 'onChange',
+            'fontSize', this.size.value, selected, 'onChange',
           )}
           onMouseDown={() => updateProps(
-            'fontSize', this.size.value, selected, true, 'onMouseDown',
+            'fontSize', this.size.value, selected, 'onMouseDown',
           )}
           onMouseUp={() => updateProps(
-            'fontSize', this.size.value, selected, true, 'onMouseUp',
+            'fontSize', this.size.value, selected, 'onMouseUp',
           )}
         /> {info.props.fontSize ? info.props.fontSize + 'px' : ''}
       </div>

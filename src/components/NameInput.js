@@ -16,8 +16,6 @@ export default class NameInput extends React.Component {
             'name',
             this.componentName.value,
             selected,
-            true,
-            'onClick',
           )}
         > <i className="fa fa-plus" aria-hidden="true" /> NAME
         </button>
