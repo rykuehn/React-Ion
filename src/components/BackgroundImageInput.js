@@ -9,8 +9,6 @@ export default class BackgroundImageInput extends React.Component {
         'backgroundImage',
         context.text.value,
         selected,
-        false,
-        'colorInput',
       );
     };
 

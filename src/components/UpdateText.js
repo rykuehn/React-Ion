@@ -8,8 +8,6 @@ export default class UpdateText extends React.Component {
         'content',
         context.text.value,
         selected,
-        true,
-        'onClick',
       );
     };
 

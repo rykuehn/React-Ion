@@ -23,7 +23,7 @@ class Editor extends Component {
       selected,
       zoom,
     } = this.props;
-
+    console.log(this.props.store);
     return (
       <div className="editor">
         <TextInputModal {...this.props} />

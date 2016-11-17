@@ -9,8 +9,6 @@ export default class NameInput extends React.Component {
         'name',
         context.text.value,
         selected,
-        true,
-        'onClick',
       );
     };
 
