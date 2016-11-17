@@ -2,22 +2,24 @@ import React from 'react';
 
 export default class BackgroundImageInput extends React.Component {
   render() {
-    const { updateProps, selected } = this.props;
+    const { updateProps, selected, toggleTextModal } = this.props;
+
+    const callback = (context) => {
+      updateProps(
+        'backgroundImage',
+        context.text.value,
+        selected,
+      );
+    };
 
     return (
-      <div className="text-input">
-        <input
-          type="text"
-          placeholder="Background Image"
-          ref={i => this.backgroundImage = i}
-        />
+      <div>
         <button
-          onClick={() => updateProps(
-            'backgroundImage',
-            this.backgroundImage.value,
-            selected, false, 'colorInput',
+          onClick={() => toggleTextModal(
+            'enter url',
+            callback,
           )}
-        > <i className="fa fa-plus" aria-hidden="true" /> URL
+        > <i className="fa fa-plus" aria-hidden="true" /> BACKGROUND IMAGE
         </button>
       </div>
     );

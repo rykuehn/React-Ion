@@ -15,8 +15,6 @@ export default class TextColor extends React.Component {
             'color',
             this.textColor.value,
             selected,
-            true,
-            'onClick',
           )}
         > <i className="fa fa-plus" aria-hidden="true" /> TEXT COLOR
         </button>

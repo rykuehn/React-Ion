@@ -10,6 +10,8 @@ const RowColumnPicker = ({
         'flexDirection',
         'row',
         selected,
+        false,
+        'onClick',
       )}
     > ROW
     </button>
@@ -18,8 +20,6 @@ const RowColumnPicker = ({
         'flexDirection',
         'column',
         selected,
-        true,
-        'onClick',
       )}
     > COLUMN
     </button>

@@ -21,12 +21,7 @@ export default class EditorControls extends React.Component {
     const type = this.props.info.componentType;
     if (type === 'Text') {
       return (
-        <div
-          className={this.props.controlsShowing
-            ? 'controls-wrapper'
-            : 'hidden'
-          }
-        >
+        <div className="controls-wrapper">
           <DeleteText {...this.props} />
           <UpdateText {...this.props} />
           <TextColor  {...this.props} />
@@ -37,21 +32,16 @@ export default class EditorControls extends React.Component {
       );
     }
     return (
-      <div
-        className={this.props.controlsShowing
-          ? 'controls-wrapper'
-          : 'hidden'
-        }
-      >
+      <div className="controls-wrapper">
+        <NameInput            {...this.props} />
         <AddSubtractBlock     {...this.props} />
+        <TextInput            {...this.props} />
+        <BackgroundImageInput {...this.props} />
+        <RowColumnPicker      {...this.props} />
+        <ColorPicker          {...this.props} />
         <HeightSlider         {...this.props} />
         <WidthSlider          {...this.props} />
         <FlexSlider           {...this.props} />
-        <RowColumnPicker      {...this.props} />
-        <ColorPicker          {...this.props} />
-        <NameInput            {...this.props} />
-        <BackgroundImageInput {...this.props} />
-        <TextInput            {...this.props} />
       </div>
     );
   }
