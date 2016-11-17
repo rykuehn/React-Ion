@@ -1,0 +1,83 @@
+.hidden {
+  display: none; }
+
+.controls-wrapper {
+  background-color: white;
+  color: black !important;
+  display: flex;
+  height: 60px;
+  color: white;
+  position: fixed;
+  z-index: 200;
+  top: 0px;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100vw;
+  transition: all .3s; }
+  .controls-wrapper .close-controls {
+    font-size: 20px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: transparent;
+    border-radius: 50%;
+    cursor: pointer; }
+    .controls-wrapper .close-controls i {
+      color: rgba(0, 0, 0, 0.5); }
+    .controls-wrapper .close-controls:focus {
+      outline: none; }
+  .controls-wrapper .slider {
+    padding-left: 10px;
+    padding-right: 10px; }
+  .controls-wrapper div {
+    align-self: flex-start;
+    flex: 1;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s;
+    font-size: 12px; }
+    .controls-wrapper div i {
+      font-size: 12px; }
+    .controls-wrapper div input {
+      flex: 2;
+      margin-left: 10px;
+      margin-right: 10px;
+      padding: 10px;
+      border: 0px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      flex-basis: 100%;
+      transition: border-bottom .3s; }
+      .controls-wrapper div input:focus {
+        outline: none;
+        border-bottom: 1px solid coral; }
+    .controls-wrapper div button {
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+      border: 0px;
+      background-color: transparent;
+      min-width: 100px; }
+      .controls-wrapper div button:hover {
+        background-color: rgba(0, 0, 0, 0.05); }
+      .controls-wrapper div button:focus {
+        outline: none; }
+  .controls-wrapper .color-picker {
+    cursor: pointer; }
+    .controls-wrapper .color-picker input {
+      background-color: rgba(0, 0, 0, 0.05);
+      max-width: 60px; }
+  .controls-wrapper .text-input {
+    flex: 2;
+    flex-basis: 300px;
+    min-width: 200px; }
+    .controls-wrapper .text-input button {
+      max-width: 200px; }
+  .controls-wrapper .hidden {
+    display: none; }
