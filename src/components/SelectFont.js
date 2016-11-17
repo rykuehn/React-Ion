@@ -5,7 +5,7 @@ export default class SelectFont extends React.Component {
     const { updateProps, selected } = this.props;
 
     return (
-      <div className="text-input">
+      <div>
         <input
           type="text"
           placeholder="Enter Font Family"

@@ -6,6 +6,7 @@ import routes from './routes';
 import controlsShowing from './controlsModal';
 import info from './getInfo';
 import zoom from './zoom';
+import textModal from './textModal';
 
 export default combineReducers({
   user,
@@ -15,4 +16,5 @@ export default combineReducers({
   controlsShowing,
   info,
   zoom,
+  textModal,
 });

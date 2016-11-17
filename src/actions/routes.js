@@ -6,6 +6,7 @@ export const UNDO = 'UNDO';
 export const REDO = 'REDO';
 
 export function updateProps(key, value, id, complete, actionType) {
+  console.log(arguments)
   return {
     type: UPDATE_PROPS,
     key,
