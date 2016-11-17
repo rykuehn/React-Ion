@@ -27,6 +27,7 @@ export function randomColor() {
 
 export function mapComponents(components, selected) {
   const mapped = [];
+
   _.each(components, (c) => {
     if (c.componentType === 'Block') {
       mapped.push(
@@ -54,5 +55,6 @@ export function mapComponents(components, selected) {
       );
     }
   });
+
   return mapped;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 
 export default class WidthSlider extends React.Component {
 
@@ -18,13 +19,13 @@ export default class WidthSlider extends React.Component {
   }
 
   render() {
-    const { updateProps, selected, info } = this.props;
+    const { updateProps, selected, info, store } = this.props;
     const direction = info.parent ? info.parent.props.flexDirection : null;
 
     this.updateWidth();
     return (
       <div
-        className={selected === 0 || direction === 'row'
+        className={_.includes(store.pages, selected) || direction === 'row'
           ? 'hidden'
           : 'slider'
         }

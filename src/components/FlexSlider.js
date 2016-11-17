@@ -1,8 +1,10 @@
 import React from 'react';
+import _ from 'lodash';
 
 export default class FlexSlider extends React.Component {
   componentDidMount() {
     this.updateFlex();
+    console.log('FlexSlider', this.props)
   }
 
   updateFlex() {
@@ -17,11 +19,11 @@ export default class FlexSlider extends React.Component {
   }
 
   render() {
-    const { updateProps, selected } = this.props;
+    const { updateProps, selected, store } = this.props;
     this.updateFlex();
     return (
       <div
-        className={selected === 0
+        className={_.includes(store.pages, selected)
           ? 'hidden'
           : 'slider'
         }
@@ -33,9 +35,6 @@ export default class FlexSlider extends React.Component {
           ref={i => this.flex = i}
           onChange={() => updateProps(
             'flex', this.flex.value, selected, 'onChange',
-          )}
-          onMouseDown={() => updateProps(
-            'flex', this.flex.value, selected, 'onMouseDown',
           )}
           onMouseUp={() => updateProps(
             'flex', this.flex.value, selected, 'onMouseUp',
