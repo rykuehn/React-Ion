@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { SET_SELECTED } from '../actions/selected';
 import { UPDATE_PROPS } from '../actions/routes';
-import store from '../js/App';
+import store from '../store/store';
 
 const initialState = {
   id: 0,
