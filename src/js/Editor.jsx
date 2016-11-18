@@ -24,11 +24,10 @@ class Editor extends Component {
       pageSelected,
       zoom,
     } = this.props;
-    
-    const pageRoute = [routes[pageSelected]];
-    console.log('HISTORY', this.props.store);
-    return (
 
+    const pageRoute = [routes[pageSelected]];
+
+    return (
       <div className="editor">
         <TextInputModal {...this.props} />
         <Toolbar {...this.props} />
