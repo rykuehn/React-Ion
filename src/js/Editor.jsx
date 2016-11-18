@@ -26,6 +26,7 @@ class Editor extends Component {
     } = this.props;
     
     const pageRoute = [routes[pageSelected]];
+    console.log('HISTORY', this.props.store)
     return (
 
       <div className="editor">

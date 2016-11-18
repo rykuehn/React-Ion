@@ -25,8 +25,6 @@ const initialState = {
 const routes = (routes = initialState, action) => {
   const { actionType, value, key, id, type } = action;
   const newTree = _.cloneDeep(routes);
-  
-  
   let parent;
 
 const moveToPast = (tree, routes, actionType) => {
@@ -44,7 +42,6 @@ const moveToPast = (tree, routes, actionType) => {
     const currentPage = store.getState().pageSelected;
 
       if (actionType === 'onMouseUp') {
-        console.log('ONMOUSE UP', newTree.past[newTree.past.length - 1], store.getState().pageSelected)
         if (_.isEqual(newTree.past[newTree.past.length - 1].pageSelected, newTree.present[currentPage])) {
           newTree.past.pop();
         }
