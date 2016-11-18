@@ -1,62 +1,35 @@
-import React from 'react';
 import _ from 'lodash';
+import React from 'react';
+import Slider from './Slider';
 
-export default class WidthSlider extends React.Component {
+const WidthSlider = ({
+  updateProps,
+  selected,
+  info,
+  store,
+}) => {
+  const direction = info.parent ? info.parent.props.flexDirection : null;
+  return (
+    <div
+      className={_.includes(store.pages, selected) || direction === 'row'
+        ? 'hidden'
+        : 'slider'
+      }
+    >
+      <Slider
+        min={0}
+        max={100}
+        step={10}
+        unit={'%'}
+        propName={'width'}
+        selected={selected}
+        updateProps={updateProps}
+        title={'WIDTH'}
+        initialValue={info.props.width ? info.props.width[0] : null}
+      />
+    </div>
+  );
+};
 
-  componentDidMount() {
-    this.updateWidth();
-  }
+export default WidthSlider;
 
-  updateWidth() {
-    const context = this;
-    const width = this.props.info.props.width;
-
-    if (width) {
-      setTimeout(() => {
-        context.width.value = width[0];
-      });
-    }
-  }
-
-  render() {
-    const { updateProps, selected, info, store } = this.props;
-    const direction = info.parent ? info.parent.props.flexDirection : null;
-
-    this.updateWidth();
-    return (
-      <div
-        className={_.includes(store.pages, selected) || direction === 'row'
-          ? 'hidden'
-          : 'slider'
-        }
-      > WIDTH
-        <input
-          type="range"
-          min={0}
-          max={100}
-          step={10}
-          ref={i => this.width = i}
-          onChange={() => updateProps(
-            'width',
-            [this.width.value, '%'],
-            selected,
-            'onChange',
-          )}
-          onMouseDown={() => updateProps(
-            'width',
-            [this.width.value, '%'],
-            selected,
-            'onMouseDown',
-          )}
-          onMouseUp={() => updateProps(
-            'width',
-            [this.width.value, '%'],
-            selected,
-            'onMouseUp',
-          )}
-
-        />
-      </div>
-    );
-  }
-}

@@ -34,8 +34,8 @@ export default class EditorControls extends React.Component {
     }
     return (
       <div className="controls-wrapper">
-        <AddPage              {...this.props} />
         <NameInput            {...this.props} />
+        <AddPage              {...this.props} />
         <AddSubtractBlock     {...this.props} />
         <TextInput            {...this.props} />
         <BackgroundImageInput {...this.props} />
@@ -48,7 +48,3 @@ export default class EditorControls extends React.Component {
     );
   }
 }
-
-
-
-
