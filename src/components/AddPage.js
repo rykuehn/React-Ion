@@ -1,6 +1,10 @@
 import React from 'react';
 
-export default class AddPage extends React.Component {
+class AddPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.createPage = this.createPage.bind(this);
+  }
 
   setPage(e, index) {
     this.props.setSelected(e, this.props.routes[index].id);
@@ -15,12 +19,11 @@ export default class AddPage extends React.Component {
     return string.split(' ').map(word => this.capitalizeFirstLetter(word)).join('');
   }
 
-  callback(context) {
+  createPage(context) {
     this.props.addPage(
       this.makeComponentName(context.text.value),
       this.props.nextId,
     );
-
     setTimeout(() => {
       this.props.setPageSelected(this.props.store.pages.length - 1);
       this.props.setSelector(this.props.routes[this.props.routes.length - 1].id);
@@ -28,8 +31,7 @@ export default class AddPage extends React.Component {
   }
 
   render() {
-    const context = this;
-
+    // const context = this;
     const pages = this.props.store.present.map((page, index) => (
       <option
         key={index}
@@ -44,13 +46,13 @@ export default class AddPage extends React.Component {
         <button
           onClick={() => this.props.toggleTextModal(
             'enter page name',
-            this.callback.bind(this),
+            this.createPage,
           )}
         > <i className="fa fa-plus" aria-hidden="true" /> NEW PAGE
         </button>
         PAGES:
         <select
-          ref={s => this.selected = s}
+          ref={s => (this.selected = s)}
           name="pages"
           onChange={e => this.setPage(
             e, this.selected.value,
@@ -62,3 +64,7 @@ export default class AddPage extends React.Component {
   }
 }
 
+<<<<<<< 97554ddc42245566f5529e88862eaa58b2c305b5
+=======
+export default AddPage;
+>>>>>>> (refactor) Refactor AddPage, EditorControls, and SelectFont into containers
