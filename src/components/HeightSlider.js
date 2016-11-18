@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import Slider from './Slider';
 
@@ -5,6 +6,7 @@ const HeightSlider = ({
   updateProps,
   selected,
   info,
+  store,
 }) => {
   const direction = info.parent
     ? info.parent.props.flexDirection
@@ -19,9 +21,9 @@ const HeightSlider = ({
     >
       <Slider
         min={0}
-        max={selected === 0 ? 10000 : 100}
-        step={selected === 0 ? 100 : 10}
-        unit={selected === 0 ? 'px' : '%'}
+        max={_.includes(store.pages, selected) ? 10000 : 100}
+        step={_.includes(store.pages, selected) ? 100 : 10}
+        unit={_.includes(store.pages, selected) ? 'px' : '%'}
         propName={'height'}
         selected={selected}
         updateProps={updateProps}
