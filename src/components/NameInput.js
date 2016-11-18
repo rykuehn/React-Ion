@@ -1,15 +1,31 @@
 import React from 'react';
 
 export default class NameInput extends React.Component {
+
+  capitalizeFirstLetter(s) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+
+  makeComponentName(string) {
+    return string.split(' ').map(word => this.capitalizeFirstLetter(word)).join('');
+  }
+
   render() {
-    const { toggleTextModal, updateInfos, selected } = this.props;
+    const {
+      toggleTextModal,
+      updateInfos,
+      selected,
+      setSelected,
+    } = this.props;
 
     const callback = (context) => {
+      const componentName = this.makeComponentName(context.text.value);
       updateInfos(
         'name',
-        context.text.value,
+        componentName,
         selected,
       );
+      setTimeout(() => setSelected(null, selected), 0);
     };
 
     return (

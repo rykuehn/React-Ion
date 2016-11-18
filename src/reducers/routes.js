@@ -84,6 +84,7 @@ const routes = (routes = initialState, action) => {
             children: [],
             componentType: action.componentType,
             parent: tree,
+            name: action.name,
           });
         } else { tree.children.forEach(child => add(child, id)); }
       }(newTree.present[store.getState().pageSelected], id));

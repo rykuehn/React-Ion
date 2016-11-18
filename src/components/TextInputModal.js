@@ -6,6 +6,7 @@ class TextInputModal extends React.Component {
     const {
       textModal,
       closeTextModal,
+      setSelected,
     } = this.props;
 
     const { callback, showing, placeholder } = textModal;
