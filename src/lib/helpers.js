@@ -32,6 +32,7 @@ export function randomColor() {
 
 export function mapComponents(components, selected) {
   const mapped = [];
+
   _.each(components, (c) => {
     switch (c.componentType) {
       case BLOCK_COMPONENT:
@@ -75,5 +76,6 @@ export function mapComponents(components, selected) {
         break;
     }
   });
+
   return mapped;
 }

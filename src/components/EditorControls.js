@@ -15,6 +15,7 @@ import FontSize from './FontSize';
 import DeleteText from './DeleteText';
 import SelectFont from './SelectFont';
 import TextAlign from './TextAlign';
+import AddPage from './AddPage';
 
 export default class EditorControls extends React.Component {
   render() {
@@ -34,6 +35,7 @@ export default class EditorControls extends React.Component {
     return (
       <div className="controls-wrapper">
         <NameInput            {...this.props} />
+        <AddPage              {...this.props} />
         <AddSubtractBlock     {...this.props} />
         <TextInput            {...this.props} />
         <BackgroundImageInput {...this.props} />
@@ -46,4 +48,3 @@ export default class EditorControls extends React.Component {
     );
   }
 }
-

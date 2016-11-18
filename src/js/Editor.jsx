@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Draggable from 'react-draggable';
 import { mapComponents, getValue } from '../lib/helpers';
-import { setSelected } from '../actions/selected';
-import { updateProps, addChild, removeChild, onRedo, onUndo } from '../actions/routes';
+import { setSelected, setPageSelected } from '../actions/selected';
+import { updateProps, addChild, removeChild, onRedo, onUndo, addPage } from '../actions/routes';
 import { setZoom } from '../actions/setZoom';
 import { toggleControls } from '../actions/toggleControls';
 import { toggleTextModal, closeTextModal } from '../actions/toggleTextModal';
@@ -21,10 +21,13 @@ class Editor extends Component {
     const {
       routes,
       selected,
+      pageSelected,
       zoom,
     } = this.props;
-    console.log(this.props.store);
+    
+    const pageRoute = [routes[pageSelected]];
     return (
+
       <div className="editor">
         <TextInputModal {...this.props} />
         <Toolbar {...this.props} />
@@ -33,7 +36,7 @@ class Editor extends Component {
         <div style={{ transform: `scale(${zoom})` }}>
           <Draggable>
             <div className="canvas">
-              {mapComponents(routes, selected)}
+              {mapComponents(pageRoute, selected)}
             </div>
           </Draggable>
         </div>
@@ -48,6 +51,7 @@ function mapStateToProps(state) {
     routes: state.routes.present,
     nextId: state.nextId,
     selected: state.selected,
+    pageSelected: state.pageSelected,
     controlsShowing: state.controlsShowing,
     info: state.info,
     canUndo: state.routes.past.length > 0,
@@ -69,6 +73,9 @@ function mapDispatchToProps(dispatch) {
     setZoom,
     toggleTextModal,
     closeTextModal,
+    addPage,
+    setPageSelected,
+    setSelected,
   }, dispatch);
 }
 

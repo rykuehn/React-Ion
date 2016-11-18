@@ -7,6 +7,7 @@ import controlsShowing from './controlsModal';
 import info from './getInfo';
 import zoom from './zoom';
 import textModal from './textModal';
+import pageSelected from './setPageSelected';
 
 export default combineReducers({
   user,
@@ -17,4 +18,5 @@ export default combineReducers({
   info,
   zoom,
   textModal,
+  pageSelected,
 });
