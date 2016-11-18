@@ -4,8 +4,11 @@ import store from '../store/store';
 export default class AddPage extends React.Component {
 
   setPage(e, index) {
+    this.props.setSelected(e, this.props.store.pages[this.props.pageSelected]);
     this.props.setPageSelected(index);
-    this.props.setSelected(e, this.props.store.present[index].id);
+    // setTimeout(() => {
+    //   this.props.setSelected(e, this.props.store.pages[this.props.pageSelected]);
+    // }, 10);
   }
 
   capitalizeFirstLetter(s) {
@@ -21,7 +24,10 @@ export default class AddPage extends React.Component {
       this.makeComponentName(context.text.value),
       this.props.nextId,
     );
-    this.props.setPageSelected(1);
+
+    setTimeout(() => {
+      this.props.setPageSelected(this.props.store.pages.length - 1);
+    }, 100);
   }
 
   render() {
@@ -31,6 +37,7 @@ export default class AddPage extends React.Component {
       <option
         key={index}
         value={index}
+        selected={context.props.pageSelected === index ? 'selected' : ''}
       > {page.name}
       </option>
     ));
