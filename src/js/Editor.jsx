@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Draggable from 'react-draggable';
@@ -17,7 +17,7 @@ import '../scss/toolbar.scss';
 import '../scss/canvas.scss';
 import '../scss/editor.scss';
 
-class Editor extends Component {
+class Editor extends React.Component {
   render() {
     const {
       routes,
@@ -31,7 +31,7 @@ class Editor extends Component {
 
     return (
       <div className="editor">
-        <TextInputModal {...this.props} />
+        <TextInputModal />
         <Toolbar {...this.props} />
         <EditorControls {...this.props} />
         <ZoomPercent zoom={zoom} />

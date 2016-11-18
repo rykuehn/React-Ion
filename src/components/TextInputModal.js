@@ -1,16 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { closeTextModal } from '../actions/toggleTextModal';
 import '../scss/textInputModal.scss';
 
 class TextInputModal extends React.Component {
   render() {
-    const {
-      textModal,
-      closeTextModal,
-      setSelected,
-    } = this.props;
-
-    const { callback, showing, placeholder } = textModal;
-
+    const { callback, showing, placeholder } = this.props.textModal;
     return (
       <div
         className={showing
@@ -21,23 +17,23 @@ class TextInputModal extends React.Component {
         <div className="modal">
           <button
             className="close-button"
-            onClick={(e) => {
+            onClick={() => {
               this.text.value = '';
-              closeTextModal();
+              this.props.closeTextModal();
             }}
           > <i className="fa fa-window-close" aria-hidden="true" />
           </button>
           <input
             placeholder={placeholder.toUpperCase()}
             type="text"
-            ref={i => this.text = i}
+            ref={i => (this.text = i)}
           />
           <button
             className="submit-button"
             onClick={(e) => {
               e.preventDefault();
               callback(this);
-              closeTextModal();
+              this.props.closeTextModal();
               this.text.value = '';
             }}
           > SUBMIT
@@ -48,4 +44,11 @@ class TextInputModal extends React.Component {
   }
 }
 
-export default TextInputModal;
+const mapStateToProps = state => (
+  { textModal: state.textModal }
+);
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({ closeTextModal }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(TextInputModal);
