@@ -8,12 +8,19 @@ export default class AddPage extends React.Component {
     this.props.setSelected(e, this.props.store.present[index].id);
   }
 
+  capitalizeFirstLetter(s) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+
+  makeComponentName(string) {
+    return string.split(' ').map(word => this.capitalizeFirstLetter(word)).join('');
+  }
+
   callback(context) {
     this.props.addPage(
-      context.text.value,
+      this.makeComponentName(context.text.value),
       this.props.nextId,
     );
-   
     this.props.setPageSelected(1);
   }
 
@@ -24,7 +31,7 @@ export default class AddPage extends React.Component {
       <option
         key={index}
         value={index}
-      > {page.name.toUpperCase()}
+      > {page.name}
       </option>
     ));
 

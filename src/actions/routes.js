@@ -28,7 +28,7 @@ export function updateInfos(key, value, id, actionType) {
   };
 }
 
-export function addChild(componentType, props, id, nextId, pageSelected) {
+export function addChild(componentType, props, name, id, nextId, pageSelected) {
   return {
     type: ADD_CHILD,
     componentType,
@@ -36,6 +36,7 @@ export function addChild(componentType, props, id, nextId, pageSelected) {
     id,
     nextId,
     pageSelected,
+    name,
   };
 }
 
