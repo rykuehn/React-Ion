@@ -1,5 +1,28 @@
 import React from 'react';
+import _ from 'lodash';
+
 import '../scss/toolbar.scss';
+import { download } from '../lib/api-methods';
+
+const f = (routes, totalComponents) => {
+  const newRoutes = _.cloneDeep(routes);
+  const removeParents = (route) => {
+    route.parent = null;
+    for (let i = 0; i < route.children.length; i++) {
+      removeParents(route.children[i]);
+    }
+  };
+  for (let i = 0; i < newRoutes.length; i++) {
+    removeParents(newRoutes[i]);
+  }
+  const treeData = {
+    total: totalComponents,
+    router: 1,
+    routes: newRoutes,
+  };
+  console.log('routes', newRoutes);
+  download(treeData);
+};
 
 const Toolbar = ({
   onUndo,
@@ -7,6 +30,8 @@ const Toolbar = ({
   onRedo,
   canRedo,
   setZoom,
+  routes,
+  nextId,
 }) => (
   <div className="toolbar">
     <button onClick={canUndo ? onUndo : null}>
@@ -22,10 +47,10 @@ const Toolbar = ({
       <i className="fa fa-search-minus" aria-hidden="true" />
     </button>
     <button onClick={() => {}}>
-      <i className="fa fa-search-save" aria-hidden="true" />
+      <i className="fa fa-save" aria-hidden="true" />
     </button>
-    <button onClick={() => {}}>
-      <i className="fa fa-search-download" aria-hidden="true" />
+    <button onClick={() => { f(routes, nextId); }}>
+      <i className="fa fa-download" aria-hidden="true" />
     </button>
   </div>
 );
