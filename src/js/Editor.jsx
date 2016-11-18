@@ -11,8 +11,8 @@ import { toggleTextModal, closeTextModal } from '../actions/toggleTextModal';
 import EditorControls from '../components/EditorControls';
 import Toolbar from '../components/Toolbar';
 import ZoomPercent from '../components/ZoomPercent';
-import TextInputModal from '../components/TextInputModal';
 import CurrentComponent from '../components/CurrentComponent';
+import TextInputModal from '../containers/TextInputModal';
 import '../scss/toolbar.scss';
 import '../scss/canvas.scss';
 import '../scss/editor.scss';
@@ -32,7 +32,7 @@ class Editor extends React.Component {
     return (
       <div className="editor">
         <TextInputModal />
-        <Toolbar {...this.props} />
+        <Toolbar />
         <EditorControls {...this.props} />
         <ZoomPercent zoom={zoom} />
         <CurrentComponent name={info.name} />
