@@ -10,7 +10,6 @@ module.exports.download = (projectTree) => {
 
   // fetch(, options)
   //   .then(() => {
-      
   //   });
 };
 
@@ -18,12 +17,40 @@ module.exports.getUserProjects = () => {
 
 };
 
-module.exports.login = () => {
+module.exports.login = (username, password) => {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: {
+      username,
+      password,
+    },
+  };
 
+  fetch('/login', options)
+    .then(() => {
+      console.log('Successfully logged in');
+    });
 };
 
-module.exports.signup = () => {
+module.exports.signup = (username, password) => {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: {
+      username,
+      password,
+    },
+  };
 
+  fetch('/signup', options)
+    .then(() => {
+      console.log('Successfully signed up and logged in');
+    });
 };
 
 module.exports.logout = () => {
