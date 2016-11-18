@@ -29,7 +29,6 @@ export function addChild(componentType, props, id, nextId, pageSelected) {
 }
 
 export function addPage(name, nextId) {
-  console.log('in ACtion');
   return {
     type: ADD_PAGE,
     name,

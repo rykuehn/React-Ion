@@ -1,4 +1,5 @@
 import React from 'react';
+import store from '../store/store';
 
 export default class AddPage extends React.Component {
 
@@ -12,7 +13,7 @@ export default class AddPage extends React.Component {
       context.text.value,
       this.props.nextId,
     );
-
+   
     this.props.setPageSelected(1);
   }
 

@@ -12,6 +12,7 @@ export function setSelected(e, id) {
 
 
 export function setPageSelected(id) {
+  console.log("Test");
   return {
     type: SET_PAGE_SELECTED,
     id,
