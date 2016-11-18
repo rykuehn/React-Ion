@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import Draggable from 'react-draggable';
 import { mapComponents, getValue } from '../lib/helpers';
 import { setSelected, setPageSelected } from '../actions/selected';
-import { updateProps, addChild, removeChild, onRedo, onUndo, addPage } from '../actions/routes';
+import { updateProps, updateInfos, addChild, removeChild, onRedo, onUndo, addPage } from '../actions/routes';
 import { setZoom } from '../actions/setZoom';
 import { toggleControls } from '../actions/toggleControls';
 import { toggleTextModal, closeTextModal } from '../actions/toggleTextModal';
@@ -26,6 +26,7 @@ class Editor extends Component {
     } = this.props;
 
     const pageRoute = [routes[pageSelected]];
+
     return (
       <div className="editor">
         <TextInputModal {...this.props} />
@@ -65,6 +66,7 @@ function mapDispatchToProps(dispatch) {
     onUndo,
     onRedo,
     updateProps,
+    updateInfos,
     addChild,
     removeChild,
     getValue,

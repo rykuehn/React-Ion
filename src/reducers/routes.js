@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { UPDATE_PROPS, ADD_CHILD, REMOVE_CHILD, UNDO, REDO, ADD_PAGE } from '../actions/routes';
+import { UPDATE_PROPS, UPDATE_INFOS, ADD_CHILD, REMOVE_CHILD, UNDO, REDO, ADD_PAGE } from '../actions/routes';
 import store from '../store/store';
 
 const initialState = {
@@ -27,19 +27,20 @@ const routes = (routes = initialState, action) => {
   const newTree = _.cloneDeep(routes);
   let parent;
 
-const moveToPast = (tree, routes, actionType) => {
-  if (actionType !== 'onChange') {
-    tree.past.push(_.cloneDeep(routes.present[store.getState().pageSelected]));
-    if (tree.past.length >= 5) {
-      tree.past.shift();
+  const moveToPast = (tree, routes, actionType) => {
+    if (actionType !== 'onChange') {
+      tree.past.push(_.cloneDeep(routes.present[store.getState().pageSelected]));
+      if (tree.past.length >= 5) {
+        tree.past.shift();
+      }
     }
-  }
-};
+  };
+  
+  const currentPage = store ? store.getState().pageSelected : 0;
 
   switch (type) {
 
     case UPDATE_PROPS:
-    const currentPage = store.getState().pageSelected;
 
       if (actionType === 'onMouseUp') {
         if (_.isEqual(newTree.past[newTree.past.length - 1].pageSelected, newTree.present[currentPage])) {
@@ -47,15 +48,29 @@ const moveToPast = (tree, routes, actionType) => {
         }
       } else {
         moveToPast(newTree, routes, actionType);
-        function update(tree) {
+        const update = (tree) => {
           if (tree.id === id) {
             tree.props[key] = value;
           } else {
             tree.children.forEach(child => update(child));
           }
-        }
+        };
         update(newTree.present[currentPage]);
       }
+      return newTree;
+
+    case UPDATE_INFOS:
+
+      moveToPast(newTree, routes);
+      const updateInfo = (tree) => {
+        if (tree.id === id) {
+          tree[key] = value;
+        } else {
+          tree.children.forEach(child => updateInfo(child));
+        }
+      };
+      updateInfo(newTree.present[currentPage]);
+
       return newTree;
 
     case ADD_CHILD:

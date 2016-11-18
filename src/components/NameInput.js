@@ -2,10 +2,10 @@ import React from 'react';
 
 export default class NameInput extends React.Component {
   render() {
-    const { toggleTextModal, updateProps, selected } = this.props;
+    const { toggleTextModal, updateInfos, selected } = this.props;
 
     const callback = (context) => {
-      updateProps(
+      updateInfos(
         'name',
         context.text.value,
         selected,
