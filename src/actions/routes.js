@@ -4,6 +4,7 @@ export const GET_VALUE = 'GET_VALUE';
 export const REMOVE_CHILD = 'REMOVE_CHILD';
 export const UNDO = 'UNDO';
 export const REDO = 'REDO';
+export const ADD_PAGE = 'ADD_PAGE';
 
 
 export function updateProps(key, value, id, actionType) {
@@ -16,12 +17,22 @@ export function updateProps(key, value, id, actionType) {
   };
 }
 
-export function addChild(componentType, props, id, nextId) {
+export function addChild(componentType, props, id, nextId, pageSelected) {
   return {
     type: ADD_CHILD,
     componentType,
     props,
     id,
+    nextId,
+    pageSelected,
+  };
+}
+
+export function addPage(name, nextId) {
+  console.log('in ACtion');
+  return {
+    type: ADD_PAGE,
+    name,
     nextId,
   };
 }
