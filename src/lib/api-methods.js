@@ -13,3 +13,54 @@ module.exports.download = (projectTree) => {
       
   //   });
 };
+
+module.exports.getUserProjects = () => {
+
+};
+
+module.exports.login = () => {
+
+};
+
+module.exports.signup = () => {
+
+};
+
+module.exports.logout = () => {
+
+};
+
+module.exports.getProject = () => {
+
+};
+
+module.exports.getAllProjects = () => {
+
+};
+
+
+module.exports.removeProject = () => {
+
+};
+
+module.exports.saveProject = (userId, name, projectTree, projectId) => {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: {
+      name,
+      project_tree: projectTree,
+    },
+  };
+
+  fetch(`/api/project/${projectId}`, options)
+    .then(() => {
+      console.log('Update Successful');
+    });
+};
+
+// module.exports.updateProject = () => {
+
+// };
