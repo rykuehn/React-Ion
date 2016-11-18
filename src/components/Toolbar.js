@@ -8,6 +8,9 @@ const f = (routes, totalComponents) => {
   const newRoutes = _.cloneDeep(routes);
   const removeParents = (route) => {
     route.parent = null;
+    if (route.props.name) {
+      route.name = route.props.name;
+    }
     for (let i = 0; i < route.children.length; i++) {
       removeParents(route.children[i]);
     }
