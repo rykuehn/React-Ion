@@ -1,4 +1,5 @@
 export const UPDATE_PROPS = 'UPDATE_PROPS';
+export const UPDATE_INFOS = 'UPDATE_INFOS';
 export const ADD_CHILD = 'ADD_CHILD';
 export const GET_VALUE = 'GET_VALUE';
 export const REMOVE_CHILD = 'REMOVE_CHILD';
@@ -10,6 +11,16 @@ export const ADD_PAGE = 'ADD_PAGE';
 export function updateProps(key, value, id, actionType) {
   return {
     type: UPDATE_PROPS,
+    key,
+    value,
+    id,
+    actionType,
+  };
+}
+
+export function updateInfos(key, value, id, actionType) {
+  return {
+    type: UPDATE_INFOS,
     key,
     value,
     id,
