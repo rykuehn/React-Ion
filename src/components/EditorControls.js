@@ -23,11 +23,11 @@ export default class EditorControls extends React.Component {
     if (type === 'Text') {
       return (
         <div className="controls-wrapper">
-          <DeleteText {...this.props} />
-          <UpdateText {...this.props} />
-          <TextColor  {...this.props} />
+          <DeleteText />
+          <UpdateText />
+          <TextColor />
           <FontSize />
-          <SelectFont {...this.props} />
+          <SelectFont />
           <TextAlign />
         </div>
       );

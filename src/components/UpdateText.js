@@ -1,26 +1,25 @@
 import React from 'react';
 
-export default class UpdateText extends React.Component {
-  render() {
-    const { toggleTextModal, updateProps, selected } = this.props;
-    const callback = (context) => {
-      updateProps(
-        'content',
-        context.text.value,
-        selected,
-      );
-    };
-
-    return (
-      <div>
-        <button
-          onClick={() => toggleTextModal(
-            'new text',
-            callback,
-          )}
-        > <i className="fa fa-pencil" aria-hidden="true" /> UPDATE TEXT
-        </button>
-      </div>
+const UpdateText = ({ toggleTextModal, updateProps, selected }) => {
+  const callback = (context) => {
+    updateProps(
+      'content',
+      context.text.value,
+      selected,
     );
-  }
-}
+  };
+
+  return (
+    <div>
+      <button
+        onClick={() => toggleTextModal(
+          'new text',
+          callback,
+        )}
+      > <i className="fa fa-pencil" aria-hidden="true" /> UPDATE TEXT
+      </button>
+    </div>
+  );
+};
+
+export default UpdateText;
