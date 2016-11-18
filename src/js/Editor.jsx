@@ -9,9 +9,9 @@ import { setZoom } from '../actions/setZoom';
 import { toggleControls } from '../actions/toggleControls';
 import { toggleTextModal, closeTextModal } from '../actions/toggleTextModal';
 import EditorControls from '../components/EditorControls';
-import Toolbar from '../components/Toolbar';
-import ZoomPercent from '../components/ZoomPercent';
 import CurrentComponent from '../components/CurrentComponent';
+import Toolbar from '../containers/Toolbar';
+import ZoomPercent from '../containers/ZoomPercent';
 import TextInputModal from '../containers/TextInputModal';
 import '../scss/toolbar.scss';
 import '../scss/canvas.scss';
@@ -26,15 +26,13 @@ class Editor extends React.Component {
       zoom,
       info,
     } = this.props;
-
     const pageRoute = [routes[pageSelected]];
-
     return (
       <div className="editor">
         <TextInputModal />
         <Toolbar />
         <EditorControls {...this.props} />
-        <ZoomPercent zoom={zoom} />
+        <ZoomPercent />
         <CurrentComponent name={info.name} />
         <div style={{ transform: `scale(${zoom})` }}>
           <Draggable>
