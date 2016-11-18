@@ -29,7 +29,7 @@ const info = (info = initialState, action) => {
         } else {
           tree.children.forEach(child => getInfo(child));
         }
-      }(store.getState().routes.present[0]));
+      }(store.getState().routes.present[store.getState().pageSelected]));
 
       return information;
     case UPDATE_PROPS:
@@ -39,7 +39,7 @@ const info = (info = initialState, action) => {
           } else {
             tree.children.forEach(child => getInfo(child));
           }
-        }(store.getState().routes.present[0]));
+        }(store.getState().routes.present[store.getState().pageSelected]));
 
         return information;
     default:

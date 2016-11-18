@@ -5,7 +5,7 @@ const AddSubtractBlock = ({
   selected,
   removeChild,
   nextId,
-  pageSelected
+
 }) => (
   <div>
     <button
@@ -18,7 +18,6 @@ const AddSubtractBlock = ({
           flexDirection: 'row' },
           selected,
           nextId,
-          pageSelected,
         );
       }}
     > <i className="fa fa-plus" aria-hidden="true" /> BLOCK
