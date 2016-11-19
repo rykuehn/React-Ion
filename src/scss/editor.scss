@@ -1,0 +1,20 @@
+.zoom-percent {
+  position: absolute;
+  color: rgba(255,255,255,.5);
+  top: 90px;
+  right: 40px;
+  z-index: -10;
+  font-size: 12px;
+
+  i {
+    margin-right: 5px;
+  }
+}
+
+.current-component {
+  position: absolute;
+  right: 40px;
+  top: 120px;
+  color: rgba(255,255,255,.5);
+  font-size: 12px;
+}

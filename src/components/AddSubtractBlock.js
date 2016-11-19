@@ -14,7 +14,9 @@ const AddSubtractBlock = ({
           flex: 1,
           height: [50, '%'],
           width: [20, '%'],
+          margin: '20px',
           flexDirection: 'row' },
+          `Block${nextId}`,
           selected,
           nextId,
         );
@@ -23,7 +25,7 @@ const AddSubtractBlock = ({
     </button>
     <button
       onClick={() => removeChild(selected)}
-    > <i className="fa fa-minus" aria-hidden="true" /> BLOCK
+    > <i className="fa fa-trash" aria-hidden="true" /> BLOCK
     </button>
   </div>
 );

@@ -1,10 +1,7 @@
 import React from 'react';
 
-const RowColumnPicker = ({
-  updateProps,
-  selected,
-}) => (
-  <div>
+const RowColumnPicker = ({ updateProps, selected }) => (
+  <div className="row-column-picker">
     <button
       onClick={() => updateProps(
         'flexDirection',

@@ -1,26 +1,27 @@
 import React from 'react';
 
-export default class TextInput extends React.Component {
-  render() {
-    const { selected, nextId, addChild } = this.props;
-
-    return (
-      <div className="text-input">
-        <input
-          type="text"
-          placeholder="Enter Text Here"
-          ref={i => this.text = i}
-        />
-        <button
-          onClick={() => addChild(
-            'Text',
-            { content: this.text.value },
-            selected,
-            nextId,
-          )}
-        > <i className="fa fa-plus" aria-hidden="true" /> TEXT
-        </button>
-      </div>
+const TextInput = ({ selected, nextId, addChild, toggleTextModal }) => {
+  const callback = (context) => {
+    addChild(
+      'Text',
+      { content: context.text.value, fontSize: 12, color: 'white' },
+      `text${nextId}`,
+      selected,
+      nextId,
     );
-  }
-}
+  };
+
+  return (
+    <div className="add-text">
+      <button
+        onClick={() => toggleTextModal(
+          'enter text',
+          callback,
+        )}
+      > <i className="fa fa-plus" aria-hidden="true" /> TEXT
+      </button>
+    </div>
+  );
+};
+
+export default TextInput;

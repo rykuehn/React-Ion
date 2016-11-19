@@ -1,42 +1,31 @@
+import _ from 'lodash';
 import React from 'react';
-import { getValue } from '../lib/helpers';
+import Slider from './Slider';
 
-export default class HeightSlider extends React.Component {
+const HeightSlider = ({ updateProps, selected, info, store }) => {
+  const direction = info.parent
+    ? info.parent.props.flexDirection
+    : null;
+  return (
+    <div
+      className={direction === 'column'
+        ? 'hidden'
+        : 'slider'
+      }
+    >
+      <Slider
+        min={0}
+        max={_.includes(store.pages, selected) ? 10000 : 100}
+        step={_.includes(store.pages, selected) ? 100 : 10}
+        unit={_.includes(store.pages, selected) ? 'px' : '%'}
+        propName={'height'}
+        selected={selected}
+        updateProps={updateProps}
+        title={'HEIGHT'}
+        initialValue={info.props.height[0]}
+      />
+    </div>
+  );
+};
 
-  componentDidMount() {
-    this.updateHeight();
-  }
-
-  updateHeight() {
-    const context = this;
-    const height = getValue('height', context.props.selected, context.props.routes);
-
-    setTimeout(() => {
-      context.height.value = height[0];
-    });
-  }
-
-  render() {
-    const { updateProps, selected } = this.props;
-    this.updateHeight();
-    return (
-      <div className="slider">
-        HEIGHT
-        <input
-          type="range"
-          min={0}
-          max={selected === 0 ? 10000 : 100}
-          step={selected === 0 ? 100 : 10}
-          ref={i => this.height = i}
-          onChange={() => {
-            updateProps(
-              'height',
-              [this.height.value, selected == 0 ? 'px' : '%'],
-              selected,
-            );
-          }}
-        />
-      </div>
-    );
-  }
-}
+export default HeightSlider;

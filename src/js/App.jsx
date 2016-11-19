@@ -2,11 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
-import configureStore from '../store/configureStore';
-import Editor from './Editor';
+import store from '../store/store';
+import Editor from '../containers/Editor';
 import NotFound from './NotFound';
-
-const store = configureStore();
 
 // const App = () => (
 //   <Provider store={store}>
@@ -20,13 +18,11 @@ const store = configureStore();
 
 // const Home = () => <h1>Hello from Home!</h1>;
 
-
 const App = () => (
   <Provider store={store}>
     <Editor />
   </Provider>
 );
-
 
 ReactDOM.render(<App />, document.getElementById('App'));
 

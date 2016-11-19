@@ -1,46 +1,33 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { mapComponents, getValue } from '../lib/helpers';
-import { updateProps, addChild, removeChild } from '../actions/routes';
-import { toggleControls } from '../actions/toggleControls';
-import EditorControls from '../components/EditorControls';
+import React from 'react';
+import Draggable from 'react-draggable';
+import { mapComponents } from '../lib/helpers';
+import TextInputModal from '../containers/TextInputModal';
+import Toolbar from '../containers/Toolbar';
+import EditorControls from '../containers/EditorControls';
+import ZoomPercent from '../containers/ZoomPercent';
+import CurrentComponent from '../containers/CurrentComponent';
 import '../scss/toolbar.scss';
+import '../scss/canvas.scss';
+import '../scss/editor.scss';
 
-class Editor extends Component {
-  render() {
-    const { routes, selected, toggleControls } = this.props;
-
-    return (
-      <div>
-        <div className="toolbar">
-          <button onClick={toggleControls}>
-            <i className="fa fa-sliders" aria-hidden="true"></i>
-          </button>
-        </div>
-        <div>{`REACT-ION`}</div>
-        <EditorControls {...this.props} />
-        <div style={{ minHeight: '100vh', flexDirection: 'column' }}>
-          <div style={{marginTop: 200, position: 'relative', zIndex: 0}}>
-            {mapComponents(routes, selected)}
+const Editor = ({ routes, selected, pageSelected, zoom }) => {
+  const pageRoute = [routes[pageSelected]];
+  return (
+    <div className="editor">
+      <TextInputModal />
+      <Toolbar />
+      <EditorControls />
+      <ZoomPercent />
+      <CurrentComponent />
+      <div style={{ transform: `scale(${zoom})` }}>
+        <Draggable>
+          <div className="canvas">
+            {mapComponents(pageRoute, selected)}
           </div>
-        </div>
+        </Draggable>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-function mapStateToProps(state) {
-  return {
-    routes: state.routes,
-    nextId: state.nextId,
-    selected: state.selected,
-    controlsShowing: state.controlsShowing,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ updateProps, addChild, removeChild, getValue, toggleControls }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Editor);
+export default Editor;

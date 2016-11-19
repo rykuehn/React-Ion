@@ -1,3 +1,5 @@
+$light-gray: rgba(0,0,0,.05);
+
 .hidden {
   display: none;
 }
@@ -6,23 +8,26 @@
   background-color: white;
   color: black !important;
   display: flex;
-  height: 120px;
+  height: 60px;
   color: white;
   position: fixed;
   z-index: 200;
-  top: 101px;
+  top: 0px;
   align-items: center;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   width: 100vw;
   transition: all .3s;
+  overflow-x: auto;
+  overflow-y: hidden;
+  box-shadow: 0px 10px 5px -8px rgba(0,0,0,0.75);
 
   .close-controls {
     font-size: 20px;
     position: absolute;
     right: 10px;
     top: 10px;
-    border: 1px solid rgba(0,0,0,.5);;
+    border: 1px solid $light-gray;
     background-color: transparent;
     border-radius: 50%;
     cursor: pointer;
@@ -38,20 +43,49 @@
 
   .slider {
     padding-left: 10px;
+  }
+
+  .add-text {
+    max-width: 100px;
+  }
+
+  .add-page {
+    width: 200px;
+  }
+
+  .bg-image {
+    max-width: 100px;
+  }
+
+  .row-column-picker {
+    max-width: 200px;
+  }
+
+  .font-size {
+    padding-left: 10px;
     padding-right: 10px;
   }
 
   div {
    align-self: flex-start;
    flex: 1;
-   border-right: 1px solid rgba(0,0,0,.05);
-   border-bottom: 1px solid rgba(0,0,0,.05);
-   height: 50%;
+   border-right: 1px solid $light-gray;
+   border-bottom: 1px solid $light-gray;
+   height: 100%;
    display: flex;
    align-items: center;
    justify-content: center;
-   font-size: 12px;
    transition: all .3s;
+   font-size: 12px;
+
+   i {
+    font-size: 12px;
+   }
+
+   select {
+    margin-right: 10px;
+    margin-left: 10px;
+   }
 
     input {
       flex: 2;
@@ -59,13 +93,13 @@
       margin-right: 10px;
       padding: 10px;
       border: 0px;
-      border-bottom: 1px solid rgba(0,0,0,.1);
+      border-bottom: 1px solid $light-gray;
       flex-basis: 100%;
       transition: border-bottom .3s;
 
       &:focus {
         outline: none;
-        border-bottom: 1px solid #93FE3F;
+        border-bottom: 1px solid coral;
       }
     }
 
@@ -76,10 +110,9 @@
       margin: 0px;
       border: 0px;
       background-color: transparent;
-      min-width: 100px;
 
       &:hover {
-        background-color: rgba(0,0,0,.05);
+        background-color: $light-gray;
       }
 
       &:focus {
@@ -90,10 +123,11 @@
 
   .color-picker {
     cursor: pointer;
+    max-width: 60px;
 
     input {
-      background-color: rgba(0,0,0,.05);
-      max-width: 60px;
+      background-color: $light-gray;
+      max-width: 40px;
     }
   }
 

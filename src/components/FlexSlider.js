@@ -1,43 +1,26 @@
+import _ from 'lodash';
 import React from 'react';
-import { getValue } from '../lib/helpers';
+import Slider from './Slider';
 
-export default class FlexSlider extends React.Component {
-
-  componentDidMount() {
-    this.updateFlex();
-  }
-
-  updateFlex() {
-    const context = this;
-    const flex = getValue('flex', context.props.selected, context.props.routes);
-
-    if (flex) {
-      setTimeout(() => {
-        context.flex.value = flex;
-      });
+const FlexSlider = ({ updateProps, selected, info, store }) => (
+  <div
+    className={_.includes(store.pages, selected)
+      ? 'hidden'
+      : 'slider'
     }
-  }
+  >
+    <Slider
+      min={0}
+      max={10}
+      step={1}
+      unit={null}
+      propName={'flex'}
+      selected={selected}
+      updateProps={updateProps}
+      title={'FLEX'}
+      initialValue={info.props.flex}
+    />
+  </div>
+);
 
-  render() {
-    const { updateProps, selected } = this.props;
-    this.updateFlex();
-    return (
-      <div
-        className={selected === 0
-          ? 'hidden'
-          : 'slider'
-        }
-      > FLEX
-        <input
-          type="range"
-          min={0}
-          max={10}
-          ref={i => this.flex = i}
-          onChange={() => updateProps(
-            'flex', this.flex.value, selected,
-          )}
-        />
-      </div>
-    );
-  }
-}
+export default FlexSlider;

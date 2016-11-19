@@ -4,7 +4,10 @@ import selected from './selected';
 import nextId from './nextId';
 import routes from './routes';
 import controlsShowing from './controlsModal';
-import getInfo from './getInfo';
+import info from './getInfo';
+import zoom from './zoom';
+import textModal from './textModal';
+import pageSelected from './setPageSelected';
 
 export default combineReducers({
   user,
@@ -12,5 +15,8 @@ export default combineReducers({
   nextId,
   routes,
   controlsShowing,
-  getInfo,
+  info,
+  zoom,
+  textModal,
+  pageSelected,
 });

@@ -1,46 +1,30 @@
+import _ from 'lodash';
 import React from 'react';
-import { getValue } from '../lib/helpers';
+import Slider from './Slider';
 
-export default class WidthSlider extends React.Component {
+const WidthSlider = ({ updateProps, selected, info, store }) => {
+  const direction = info.parent ? info.parent.props.flexDirection : null;
+  return (
+    <div
+      className={_.includes(store.pages, selected) || direction === 'row'
+        ? 'hidden'
+        : 'slider'
+      }
+    >
+      <Slider
+        min={0}
+        max={100}
+        step={10}
+        unit={'%'}
+        propName={'width'}
+        selected={selected}
+        updateProps={updateProps}
+        title={'WIDTH'}
+        initialValue={info.props.width ? info.props.width[0] : null}
+      />
+    </div>
+  );
+};
 
-  componentDidMount() {
-    this.updateWidth();
-  }
+export default WidthSlider;
 
-  updateWidth() {
-    const context = this;
-    const width = getValue('width', context.props.selected, context.props.routes);
-
-    if (width) {
-      setTimeout(() => {
-        context.width.value = width[0];
-      });
-    }
-  }
-
-  render() {
-    const { updateProps, selected } = this.props;
-    this.updateWidth();
-    return (
-      <div
-        className={selected === 0
-          ? 'hidden'
-          : 'slider'
-        }
-      > WIDTH
-        <input
-          type="range"
-          min={0}
-          max={100}
-          step={10}
-          ref={i => this.width = i}
-          onChange={() => updateProps(
-            'width',
-            [this.width.value, '%'],
-            selected,
-          )}
-        />
-      </div>
-    );
-  }
-}
