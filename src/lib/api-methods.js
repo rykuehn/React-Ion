@@ -1,5 +1,6 @@
-module.exports.download = projectTree =>
-  window.open(`/api/project/generate?tree=${encodeURIComponent(JSON.stringify(projectTree))}`);
+module.exports.download = (projectTree) => {
+  window.location.href = `/api/project/generate?tree=${encodeURIComponent(JSON.stringify(projectTree))}`;
+};
 
 
 // module.exports.getUserProjects = () => {
