@@ -43,9 +43,9 @@ class AddPage extends React.Component {
             'enter page name',
             this.createPage,
           )}
-        > <i className="fa fa-plus" aria-hidden="true" /> NEW PAGE
+        > <i className="fa fa-plus" aria-hidden="true" /> PAGE
         </button>
-        PAGES:
+        <span className="pages-tag">PAGES:</span>
         <select
           ref={s => (this.selected = s)}
           name="pages"
