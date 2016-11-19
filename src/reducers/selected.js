@@ -8,7 +8,7 @@ const selected = (selected = initialState, action) => {
     case SET_SELECTED:
       return action.id;
     case REMOVE_CHILD:
-      return 0;
+      return selected - 1;
     default:
       return selected;
   }
