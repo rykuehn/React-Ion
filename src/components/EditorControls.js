@@ -17,34 +17,34 @@ import HeightSlider from '../containers/HeightSlider';
 import WidthSlider from '../containers/WidthSlider';
 import FlexSlider from '../containers/FlexSlider';
 
-export default class EditorControls extends React.Component {
-  render() {
-    const type = this.props.info.componentType;
-    if (type === 'Text') {
-      return (
-        <div className="controls-wrapper">
-          <DeleteText />
-          <UpdateText />
-          <TextColor />
-          <FontSize />
-          <SelectFont />
-          <TextAlign />
-        </div>
-      );
-    }
+const EditorControls = ({ info }) => {
+  const type = info.componentType;
+  if (type === 'Text') {
     return (
       <div className="controls-wrapper">
-        <NameInput />
-        <AddPage />
-        <AddSubtractBlock />
-        <TextInput />
-        <BackgroundImageInput />
-        <RowColumnPicker />
-        <ColorPicker />
-        <HeightSlider />
-        <WidthSlider />
-        <FlexSlider />
+        <DeleteText />
+        <UpdateText />
+        <TextColor />
+        <FontSize />
+        <SelectFont />
+        <TextAlign />
       </div>
     );
   }
-}
+  return (
+    <div className="controls-wrapper">
+      <NameInput />
+      <AddPage />
+      <AddSubtractBlock />
+      <TextInput />
+      <BackgroundImageInput />
+      <RowColumnPicker />
+      <ColorPicker />
+      <HeightSlider />
+      <WidthSlider />
+      <FlexSlider />
+    </div>
+  );
+};
+
+export default EditorControls;
