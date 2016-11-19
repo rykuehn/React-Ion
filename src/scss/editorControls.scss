@@ -51,6 +51,23 @@ $light-gray: rgba(0,0,0,.05);
 
   .add-page {
     width: 200px;
+
+    .pages-tag {
+      margin-left: 10px;
+    }
+  }
+
+  .add-block {
+    max-width: 100px;
+  }
+
+  .delete {
+    margin-left: 70px;
+    max-width: 100px;
+
+    i {
+      font-size: 20px;
+    }
   }
 
   .bg-image {
@@ -64,6 +81,10 @@ $light-gray: rgba(0,0,0,.05);
   .font-size {
     padding-left: 10px;
     padding-right: 10px;
+  }
+
+  .link-button {
+    max-width: 60px;
   }
 
   div {
@@ -126,6 +147,7 @@ $light-gray: rgba(0,0,0,.05);
     max-width: 60px;
 
     input {
+      cursor: pointer;
       background-color: $light-gray;
       max-width: 40px;
     }

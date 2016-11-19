@@ -12,6 +12,7 @@ const Block = ({
   children,
   backgroundImage,
   margin,
+  aUrl,
 }) => {
   const boxStyle = {
     flex,
@@ -35,6 +36,18 @@ const Block = ({
     borderRadius: 2,
     boxShadow: selected === id ? 'inset 0 0 0 2px #93FE3F' : 'inset 0 0 0 2px coral',
   };
+
+  if (aUrl) {
+    return (
+      <a
+        style={boxStyle}
+        href={aUrl}
+        onClick={e => setSelected(e, id)}
+      >
+        {children}
+      </a>
+    );
+  }
 
   return (
     <div

@@ -1,10 +1,10 @@
 import React from 'react';
 
 const BackgroundImageInput = ({ updateProps, selected, toggleTextModal }) => {
-  const callback = (context) => {
+  const callback = (value) => {
     updateProps(
       'backgroundImage',
-      context.text.value,
+      value,
       selected,
     );
   };
@@ -16,7 +16,7 @@ const BackgroundImageInput = ({ updateProps, selected, toggleTextModal }) => {
           'enter url',
           callback,
         )}
-      > <i className="fa fa-plus" aria-hidden="true" /> BG IMAGE
+      > <i className="fa fa-image" aria-hidden="true" /> BG IMAGE
       </button>
     </div>
   );

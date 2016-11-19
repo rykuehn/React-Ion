@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TextAlign = ({ updateProps, selected }) => (
-  <div className="color-picker">
+  <div>
     <button
       onClick={() => updateProps(
         'textAlign',
