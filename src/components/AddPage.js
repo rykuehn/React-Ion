@@ -16,12 +16,13 @@ class AddPage extends React.Component {
 
   createPage(context) {
     this.props.addPage(
-      makeComponentName(context.text.value),
+      makeComponentName(context),
       this.props.nextId,
     );
     setTimeout(() => {
+      console.log(this.props.store.pages.length);
       this.props.setPageSelected(this.props.store.pages.length - 1);
-      this.props.setSelector(this.props.routes[this.props.routes.length - 1].id);
+      this.props.setSelected(null, this.props.routes[this.props.routes.length - 1].id);
     }, 100);
   }
 
