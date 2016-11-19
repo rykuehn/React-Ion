@@ -8,8 +8,8 @@ import SelectFont from '../containers/SelectFont';
 import TextAlign from '../containers/TextAlign';
 import NameInput from '../containers/NameInput';
 import AddPage from '../containers/AddPage';
-import AddSubtractBlock from './AddSubtractBlock';
-import TextInput from './TextInput';
+import AddSubtractBlock from '../containers/AddSubtractBlock';
+import TextInput from '../containers/TextInput';
 import BackgroundImageInput from './BackgroundImageInput';
 import RowColumnPicker from './RowColumnPicker';
 import ColorPicker from './ColorPicker';
@@ -36,8 +36,8 @@ export default class EditorControls extends React.Component {
       <div className="controls-wrapper">
         <NameInput />
         <AddPage />
-        <AddSubtractBlock     {...this.props} />
-        <TextInput            {...this.props} />
+        <AddSubtractBlock />
+        <TextInput />
         <BackgroundImageInput {...this.props} />
         <RowColumnPicker      {...this.props} />
         <ColorPicker          {...this.props} />

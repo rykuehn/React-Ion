@@ -1,21 +1,21 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateInfos } from '../actions/routes';
-import { setSelected } from '../actions/selected';
+import { addChild } from '../actions/routes';
 import { toggleTextModal } from '../actions/toggleTextModal';
-import NameInput from '../components/NameInput';
+import TextInput from '../components/TextInput';
 
 const mapStateToProps = state => (
   {
     selected: state.selected,
+    nextId: state.nextId,
   }
 );
+
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    setSelected,
-    updateInfos,
+    addChild,
     toggleTextModal,
   }, dispatch)
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(NameInput);
+export default connect(mapStateToProps, mapDispatchToProps)(TextInput);
