@@ -2,12 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import Slider from './Slider';
 
-const FlexSlider = ({
-  updateProps,
-  selected,
-  info,
-  store,
-}) => (
+const FlexSlider = ({ updateProps, selected, info, store }) => (
   <div
     className={_.includes(store.pages, selected)
       ? 'hidden'

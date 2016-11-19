@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import store from '../store/store';
-import Editor from './Editor';
+import Editor from '../containers/Editor';
 import NotFound from './NotFound';
-
 
 // const App = () => (
 //   <Provider store={store}>
@@ -19,13 +18,11 @@ import NotFound from './NotFound';
 
 // const Home = () => <h1>Hello from Home!</h1>;
 
-
 const App = () => (
   <Provider store={store}>
     <Editor />
   </Provider>
 );
-
 
 ReactDOM.render(<App />, document.getElementById('App'));
 

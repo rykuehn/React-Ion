@@ -1,29 +1,40 @@
 import React from 'react';
 import _ from 'lodash';
-
-import '../scss/toolbar.scss';
 import { download } from '../lib/api-methods';
+import '../scss/toolbar.scss';
 
-const f = (routes, totalComponents) => {
+const f = (routes) => {
   const newRoutes = _.cloneDeep(routes);
+  let totalComponents = 0;
+
   const removeParents = (route) => {
     route.parent = null;
-    // if (route.props.name) {
-    //   route.name = route.props.name;
-    // }
     for (let i = 0; i < route.children.length; i++) {
       removeParents(route.children[i]);
     }
   };
+
+  
+  const getTotalComponents = (route) => {
+    if (route.componentType !== 'Text') {
+      totalComponents += 1;
+    }
+
+    route.children.forEach((child) => {
+      getTotalComponents(child);
+    });
+  };
+
   for (let i = 0; i < newRoutes.length; i++) {
     removeParents(newRoutes[i]);
+    getTotalComponents(newRoutes[i]);
   }
+  console.log(totalComponents);
   const treeData = {
     total: totalComponents,
     router: 1,
     routes: newRoutes,
   };
-  console.log('routes', newRoutes);
   download(treeData);
 };
 
@@ -52,7 +63,7 @@ const Toolbar = ({
     <button onClick={() => {}}>
       <i className="fa fa-save" aria-hidden="true" />
     </button>
-    <button onClick={() => { f(routes, store.totalComponents); }}>
+    <button onClick={() => { f(routes); }}>
       <i className="fa fa-download" aria-hidden="true" />
     </button>
   </div>

@@ -1,26 +1,24 @@
 import React from 'react';
 
-export default class AddPage extends React.Component {
+const capitalizeFirstLetter = s => s.charAt(0).toUpperCase() + s.slice(1);
+const makeComponentName = string => string.split(' ').map(word => capitalizeFirstLetter(word)).join('');
+
+class AddPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.createPage = this.createPage.bind(this);
+  }
 
   setPage(e, index) {
     this.props.setSelected(e, this.props.routes[index].id);
     this.props.setPageSelected(index);
   }
 
-  capitalizeFirstLetter(s) {
-    return s.charAt(0).toUpperCase() + s.slice(1);
-  }
-
-  makeComponentName(string) {
-    return string.split(' ').map(word => this.capitalizeFirstLetter(word)).join('');
-  }
-
-  callback(context) {
+  createPage(context) {
     this.props.addPage(
-      this.makeComponentName(context.text.value),
+      makeComponentName(context.text.value),
       this.props.nextId,
     );
-
     setTimeout(() => {
       this.props.setPageSelected(this.props.store.pages.length - 1);
       this.props.setSelector(this.props.routes[this.props.routes.length - 1].id);
@@ -29,7 +27,6 @@ export default class AddPage extends React.Component {
 
   render() {
     const context = this;
-
     const pages = this.props.store.present.map((page, index) => (
       <option
         key={index}
@@ -44,13 +41,13 @@ export default class AddPage extends React.Component {
         <button
           onClick={() => this.props.toggleTextModal(
             'enter page name',
-            this.callback.bind(this),
+            this.createPage,
           )}
         > <i className="fa fa-plus" aria-hidden="true" /> NEW PAGE
         </button>
         PAGES:
         <select
-          ref={s => this.selected = s}
+          ref={s => (this.selected = s)}
           name="pages"
           onChange={e => this.setPage(
             e, this.selected.value,
@@ -62,3 +59,4 @@ export default class AddPage extends React.Component {
   }
 }
 
+export default AddPage;

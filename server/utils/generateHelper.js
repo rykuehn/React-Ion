@@ -60,7 +60,11 @@ const createCss = (tree) => {
       position: tree.props.position || 'relative',
       'flex-wrap': tree.props.flexWrap || 'wrap',
       'box-sizing': tree.props.boxSizing || 'border-box',
+      'background-size': 'cover',
     };
+    if (tree.props.backgroundImage) {
+      convertedCss['background-image'] = `url(${tree.props.backgroundImage})`;
+    }
   }
 
   return convertedCss;

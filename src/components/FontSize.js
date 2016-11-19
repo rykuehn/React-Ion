@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class FontSize extends React.Component {
+class FontSize extends React.Component {
   componentDidMount() {
     this.updateSize();
   }
@@ -25,7 +25,7 @@ export default class FontSize extends React.Component {
           type="range"
           min={0}
           max={100}
-          ref={i => this.size = i}
+          ref={i => (this.size = i)}
           onChange={() => updateProps(
             'fontSize', this.size.value, selected, 'onChange',
           )}
@@ -35,8 +35,10 @@ export default class FontSize extends React.Component {
           onMouseUp={() => updateProps(
             'fontSize', this.size.value, selected, 'onMouseUp',
           )}
-        /> {info.props.fontSize ? info.props.fontSize + 'px' : ''}
+        /> {info.props.fontSize ? `${info.props.fontSize}px` : ''}
       </div>
     );
   }
 }
+
+export default FontSize;

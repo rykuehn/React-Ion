@@ -3,14 +3,8 @@ import '../scss/textInputModal.scss';
 
 class TextInputModal extends React.Component {
   render() {
-    const {
-      textModal,
-      closeTextModal,
-      setSelected,
-    } = this.props;
-
+    const { textModal, closeTextModal } = this.props;
     const { callback, showing, placeholder } = textModal;
-
     return (
       <div
         className={showing
@@ -21,7 +15,7 @@ class TextInputModal extends React.Component {
         <div className="modal">
           <button
             className="close-button"
-            onClick={(e) => {
+            onClick={() => {
               this.text.value = '';
               closeTextModal();
             }}
@@ -30,7 +24,7 @@ class TextInputModal extends React.Component {
           <input
             placeholder={placeholder.toUpperCase()}
             type="text"
-            ref={i => this.text = i}
+            ref={i => (this.text = i)}
           />
           <button
             className="submit-button"

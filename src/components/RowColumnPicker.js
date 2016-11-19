@@ -1,9 +1,6 @@
 import React from 'react';
 
-const RowColumnPicker = ({
-  updateProps,
-  selected,
-}) => (
+const RowColumnPicker = ({ updateProps, selected }) => (
   <div className="row-column-picker">
     <button
       onClick={() => updateProps(
