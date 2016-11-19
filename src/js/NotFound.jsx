@@ -21,10 +21,9 @@ export default class Index extends Component {
   render() {
     return (
       <div className="test">
-      	<Header />
+        <Header />
         <h1>404.. This page is not found!</h1>
       </div>
     );
   }
 }
-

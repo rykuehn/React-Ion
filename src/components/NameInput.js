@@ -1,43 +1,30 @@
 import React from 'react';
 
-export default class NameInput extends React.Component {
+const NameInput = ({ toggleTextModal, updateInfos, selected, setSelected }) => {
+  const capitalizeFirstLetter = s => s.charAt(0).toUpperCase() + s.slice(1);
+  const makeComponentName = string => string.split(' ').map(word => capitalizeFirstLetter(word)).join('');
 
-  capitalizeFirstLetter(s) {
-    return s.charAt(0).toUpperCase() + s.slice(1);
-  }
-
-  makeComponentName(string) {
-    return string.split(' ').map(word => this.capitalizeFirstLetter(word)).join('');
-  }
-
-  render() {
-    const {
-      toggleTextModal,
-      updateInfos,
+  const callback = (context) => {
+    const componentName = makeComponentName(context.text.value);
+    updateInfos(
+      'name',
+      componentName,
       selected,
-      setSelected,
-    } = this.props;
-
-    const callback = (context) => {
-      const componentName = this.makeComponentName(context.text.value);
-      updateInfos(
-        'name',
-        componentName,
-        selected,
-      );
-      setTimeout(() => setSelected(null, selected), 0);
-    };
-
-    return (
-      <div>
-        <button
-          onClick={() => toggleTextModal(
-            'enter component name',
-            callback,
-          )}
-        > COMPONENT NAME <i className="fa fa-pencil" aria-hidden="true" /> 
-        </button>
-      </div>
     );
-  }
-}
+    setTimeout(() => setSelected(null, selected), 0);
+  };
+
+  return (
+    <div>
+      <button
+        onClick={() => toggleTextModal(
+          'enter component name',
+          callback,
+        )}
+      > COMPONENT NAME <i className="fa fa-pencil" aria-hidden="true" />
+      </button>
+    </div>
+  );
+};
+
+export default NameInput;

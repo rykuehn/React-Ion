@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class SelectFont extends React.Component {
+class SelectFont extends React.Component {
   render() {
     const { updateProps, selected } = this.props;
 
@@ -9,7 +9,7 @@ export default class SelectFont extends React.Component {
         <input
           type="text"
           placeholder="Enter Font Family"
-          ref={i => this.font = i}
+          ref={i => (this.font = i)}
         />
         <button
           onClick={() => updateProps(
@@ -23,3 +23,5 @@ export default class SelectFont extends React.Component {
     );
   }
 }
+
+export default SelectFont;

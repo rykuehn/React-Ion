@@ -1,50 +1,50 @@
 import React from 'react';
 import '../scss/editorControls.scss';
-import HeightSlider from './HeightSlider';
-import WidthSlider from './WidthSlider';
-import FlexSlider from './FlexSlider';
-import AddSubtractBlock from './AddSubtractBlock';
-import RowColumnPicker from './RowColumnPicker';
-import ColorPicker from './ColorPicker';
-import NameInput from './NameInput';
-import BackgroundImageInput from './BackgroundImageInput';
-import TextInput from './TextInput';
-import UpdateText from './UpdateText';
-import TextColor from './TextColor';
-import FontSize from './FontSize';
-import DeleteText from './DeleteText';
-import SelectFont from './SelectFont';
-import TextAlign from './TextAlign';
-import AddPage from './AddPage';
+import DeleteText from '../containers/DeleteText';
+import UpdateText from '../containers/UpdateText';
+import TextColor from '../containers/TextColor';
+import FontSize from '../containers/FontSize';
+import SelectFont from '../containers/SelectFont';
+import TextAlign from '../containers/TextAlign';
+import NameInput from '../containers/NameInput';
+import AddPage from '../containers/AddPage';
+import AddSubtractBlock from '../containers/AddSubtractBlock';
+import TextInput from '../containers/TextInput';
+import BackgroundImageInput from '../containers/BackgroundImageInput';
+import RowColumnPicker from '../containers/RowColumnPicker';
+import ColorPicker from '../containers/ColorPicker';
+import HeightSlider from '../containers/HeightSlider';
+import WidthSlider from '../containers/WidthSlider';
+import FlexSlider from '../containers/FlexSlider';
 
-export default class EditorControls extends React.Component {
-  render() {
-    const type = this.props.info.componentType;
-    if (type === 'Text') {
-      return (
-        <div className="controls-wrapper">
-          <DeleteText {...this.props} />
-          <UpdateText {...this.props} />
-          <TextColor  {...this.props} />
-          <FontSize   {...this.props} />
-          <SelectFont {...this.props} />
-          <TextAlign  {...this.props} />
-        </div>
-      );
-    }
+const EditorControls = ({ info }) => {
+  const type = info.componentType;
+  if (type === 'Text') {
     return (
       <div className="controls-wrapper">
-        <NameInput            {...this.props} />
-        <AddPage              {...this.props} />
-        <AddSubtractBlock     {...this.props} />
-        <TextInput            {...this.props} />
-        <BackgroundImageInput {...this.props} />
-        <RowColumnPicker      {...this.props} />
-        <ColorPicker          {...this.props} />
-        <HeightSlider         {...this.props} />
-        <WidthSlider          {...this.props} />
-        <FlexSlider           {...this.props} />
+        <DeleteText />
+        <UpdateText />
+        <TextColor />
+        <FontSize />
+        <SelectFont />
+        <TextAlign />
       </div>
     );
   }
-}
+  return (
+    <div className="controls-wrapper">
+      <NameInput />
+      <AddPage />
+      <AddSubtractBlock />
+      <TextInput />
+      <BackgroundImageInput />
+      <RowColumnPicker />
+      <ColorPicker />
+      <HeightSlider />
+      <WidthSlider />
+      <FlexSlider />
+    </div>
+  );
+};
+
+export default EditorControls;

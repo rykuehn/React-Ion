@@ -5,7 +5,6 @@ const AddSubtractBlock = ({
   selected,
   removeChild,
   nextId,
-
 }) => (
   <div>
     <button

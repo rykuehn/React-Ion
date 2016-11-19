@@ -1,8 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
-
-import '../scss/toolbar.scss';
 import { download } from '../lib/api-methods';
+import '../scss/toolbar.scss';
 
 const f = (routes) => {
   const newRoutes = _.cloneDeep(routes);
@@ -10,9 +9,6 @@ const f = (routes) => {
 
   const removeParents = (route) => {
     route.parent = null;
-    // if (route.props.name) {
-    //   route.name = route.props.name;
-    // }
     for (let i = 0; i < route.children.length; i++) {
       removeParents(route.children[i]);
     }
@@ -39,7 +35,6 @@ const f = (routes) => {
     router: 1,
     routes: newRoutes,
   };
-  console.log('routes', newRoutes);
   download(treeData);
 };
 

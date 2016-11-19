@@ -2,12 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import Slider from './Slider';
 
-const WidthSlider = ({
-  updateProps,
-  selected,
-  info,
-  store,
-}) => {
+const WidthSlider = ({ updateProps, selected, info, store }) => {
   const direction = info.parent ? info.parent.props.flexDirection : null;
   return (
     <div
