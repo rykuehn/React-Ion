@@ -4,7 +4,7 @@ import _ from 'lodash';
 import '../scss/toolbar.scss';
 import { download } from '../lib/api-methods';
 
-const f = (routes, totalComponents) => {
+const f = (routes) => {
   const newRoutes = _.cloneDeep(routes);
   const removeParents = (route) => {
     route.parent = null;
@@ -15,9 +15,24 @@ const f = (routes, totalComponents) => {
       removeParents(route.children[i]);
     }
   };
+
+  let totalComponents = 0;
+  const getTotalComponents = (route) => {
+    console.log(route);
+    if (route !== 'Text') {
+      totalComponents += 1;
+    }
+
+    route.children.forEach((child) => {
+      getTotalComponents(child);
+    });
+  };
+
   for (let i = 0; i < newRoutes.length; i++) {
     removeParents(newRoutes[i]);
+    getTotalComponents(newRoutes[i]);
   }
+
   const treeData = {
     total: totalComponents,
     router: 1,
@@ -52,7 +67,7 @@ const Toolbar = ({
     <button onClick={() => {}}>
       <i className="fa fa-save" aria-hidden="true" />
     </button>
-    <button onClick={() => { f(routes, store.totalComponents); }}>
+    <button onClick={() => { f(routes); }}>
       <i className="fa fa-download" aria-hidden="true" />
     </button>
   </div>
