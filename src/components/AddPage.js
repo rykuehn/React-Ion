@@ -1,14 +1,10 @@
 import React from 'react';
-import store from '../store/store';
 
 export default class AddPage extends React.Component {
 
   setPage(e, index) {
     this.props.setSelected(e, this.props.store.pages[this.props.pageSelected]);
     this.props.setPageSelected(index);
-    // setTimeout(() => {
-    //   this.props.setSelected(e, this.props.store.pages[this.props.pageSelected]);
-    // }, 10);
   }
 
   capitalizeFirstLetter(s) {

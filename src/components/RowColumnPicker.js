@@ -4,7 +4,7 @@ const RowColumnPicker = ({
   updateProps,
   selected,
 }) => (
-  <div>
+  <div className="row-column-picker">
     <button
       onClick={() => updateProps(
         'flexDirection',

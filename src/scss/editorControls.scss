@@ -20,6 +20,7 @@ $light-gray: rgba(0,0,0,.05);
   transition: all .3s;
   overflow-x: auto;
   overflow-y: hidden;
+  box-shadow: 0px 10px 5px -8px rgba(0,0,0,0.75);
 
   .close-controls {
     font-size: 20px;
@@ -54,6 +55,10 @@ $light-gray: rgba(0,0,0,.05);
 
   .bg-image {
     max-width: 100px;
+  }
+
+  .row-column-picker {
+    max-width: 200px;
   }
 
   .font-size {
