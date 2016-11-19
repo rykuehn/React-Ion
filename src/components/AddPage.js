@@ -1,5 +1,8 @@
 import React from 'react';
 
+const capitalizeFirstLetter = s => s.charAt(0).toUpperCase() + s.slice(1);
+const makeComponentName = string => string.split(' ').map(word => capitalizeFirstLetter(word)).join('');
+
 class AddPage extends React.Component {
   constructor(props) {
     super(props);
@@ -11,17 +14,9 @@ class AddPage extends React.Component {
     this.props.setPageSelected(index);
   }
 
-  capitalizeFirstLetter(s) {
-    return s.charAt(0).toUpperCase() + s.slice(1);
-  }
-
-  makeComponentName(string) {
-    return string.split(' ').map(word => this.capitalizeFirstLetter(word)).join('');
-  }
-
   createPage(context) {
     this.props.addPage(
-      this.makeComponentName(context.text.value),
+      makeComponentName(context.text.value),
       this.props.nextId,
     );
     setTimeout(() => {
@@ -31,6 +26,7 @@ class AddPage extends React.Component {
   }
 
   render() {
+    const context = this;
     const pages = this.props.store.present.map((page, index) => (
       <option
         key={index}
@@ -63,7 +59,4 @@ class AddPage extends React.Component {
   }
 }
 
-<<<<<<< 97554ddc42245566f5529e88862eaa58b2c305b5
-=======
 export default AddPage;
->>>>>>> (refactor) Refactor AddPage, EditorControls, and SelectFont into containers
