@@ -16,6 +16,7 @@ import ColorPicker from '../containers/ColorPicker';
 import HeightSlider from '../containers/HeightSlider';
 import WidthSlider from '../containers/WidthSlider';
 import FlexSlider from '../containers/FlexSlider';
+import AddLink from '../containers/AddLink';
 
 const EditorControls = ({ info }) => {
   const type = info.componentType;
@@ -38,6 +39,7 @@ const EditorControls = ({ info }) => {
       <AddSubtractBlock />
       <TextInput />
       <BackgroundImageInput />
+      <AddLink />
       <RowColumnPicker />
       <ColorPicker />
       <HeightSlider />

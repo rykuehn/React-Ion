@@ -1,10 +1,10 @@
 import React from 'react';
 
 const BackgroundImageInput = ({ updateProps, selected, toggleTextModal }) => {
-  const callback = (context) => {
+  const callback = (value) => {
     updateProps(
       'backgroundImage',
-      context.text.value,
+      value,
       selected,
     );
   };

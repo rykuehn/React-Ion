@@ -126,6 +126,7 @@ $light-gray: rgba(0,0,0,.05);
     max-width: 60px;
 
     input {
+      cursor: pointer;
       background-color: $light-gray;
       max-width: 40px;
     }
