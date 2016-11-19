@@ -37,8 +37,8 @@ const EditorControls = ({ info }) => {
       <AddPage />
       <AddBlock />
       <TextInput />
-      <BackgroundImageInput />
       <RowColumnPicker />
+      <BackgroundImageInput />
       <AddLink />
       <ColorPicker />
       <HeightSlider />

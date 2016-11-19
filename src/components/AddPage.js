@@ -21,7 +21,7 @@ class AddPage extends React.Component {
     );
     setTimeout(() => {
       this.props.setPageSelected(this.props.store.pages.length - 1);
-      this.props.setSelector(this.props.routes[this.props.routes.length - 1].id);
+      this.props.setSelected(null,this.props.routes[this.props.routes.length - 1].id);
     }, 100);
   }
 
@@ -45,9 +45,7 @@ class AddPage extends React.Component {
           )}
         > <i className="fa fa-plus" aria-hidden="true" /> NEW PAGE
         </button>
-        <span className="pages-tag">
-          PAGES:
-        </span>
+        PAGES:
         <select
           ref={s => (this.selected = s)}
           name="pages"

@@ -72,6 +72,10 @@ $light-gray: rgba(0,0,0,.05);
 
   .bg-image {
     max-width: 100px;
+
+    i {
+      font-size: 20px;
+    }
   }
 
   .row-column-picker {
@@ -84,7 +88,11 @@ $light-gray: rgba(0,0,0,.05);
   }
 
   .link-button {
-    max-width: 60px;
+    max-width: 100px;
+
+    i {
+      font-size: 20px;
+    }
   }
 
   div {
@@ -144,7 +152,7 @@ $light-gray: rgba(0,0,0,.05);
 
   .color-picker {
     cursor: pointer;
-    max-width: 60px;
+    max-width: 100px;
 
     input {
       cursor: pointer;
