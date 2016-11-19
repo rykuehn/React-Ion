@@ -31,7 +31,6 @@ class AddPage extends React.Component {
   }
 
   render() {
-    // const context = this;
     const pages = this.props.store.present.map((page, index) => (
       <option
         key={index}

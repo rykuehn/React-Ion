@@ -1,21 +1,21 @@
 import React from 'react';
 import '../scss/editorControls.scss';
+import DeleteText from '../containers/DeleteText';
+import UpdateText from '../containers/UpdateText';
+import TextColor from '../containers/TextColor';
+import FontSize from '../containers/FontSize';
+import SelectFont from '../containers/SelectFont';
+import TextAlign from '../containers/TextAlign';
+import NameInput from '../containers/NameInput';
+import AddPage from '../containers/AddPage';
+import AddSubtractBlock from './AddSubtractBlock';
+import TextInput from './TextInput';
+import BackgroundImageInput from './BackgroundImageInput';
+import RowColumnPicker from './RowColumnPicker';
+import ColorPicker from './ColorPicker';
 import HeightSlider from './HeightSlider';
 import WidthSlider from './WidthSlider';
 import FlexSlider from './FlexSlider';
-import AddSubtractBlock from './AddSubtractBlock';
-import RowColumnPicker from './RowColumnPicker';
-import ColorPicker from './ColorPicker';
-import NameInput from './NameInput';
-import BackgroundImageInput from './BackgroundImageInput';
-import TextInput from './TextInput';
-import UpdateText from './UpdateText';
-import TextColor from './TextColor';
-import FontSize from './FontSize';
-import DeleteText from './DeleteText';
-import SelectFont from './SelectFont';
-import TextAlign from './TextAlign';
-import AddPage from './AddPage';
 
 export default class EditorControls extends React.Component {
   render() {
@@ -34,8 +34,8 @@ export default class EditorControls extends React.Component {
     }
     return (
       <div className="controls-wrapper">
-        <NameInput            {...this.props} />
-        <AddPage              {...this.props} />
+        <NameInput />
+        <AddPage />
         <AddSubtractBlock     {...this.props} />
         <TextInput            {...this.props} />
         <BackgroundImageInput {...this.props} />

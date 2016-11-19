@@ -8,10 +8,9 @@ import { updateProps, updateInfos, addChild, removeChild, onRedo, onUndo, addPag
 import { setZoom } from '../actions/setZoom';
 import { toggleControls } from '../actions/toggleControls';
 import { toggleTextModal, closeTextModal } from '../actions/toggleTextModal';
-import EditorControls from '../components/EditorControls';
-import CurrentComponent from '../components/CurrentComponent';
 import Toolbar from '../containers/Toolbar';
 import ZoomPercent from '../containers/ZoomPercent';
+import EditorControls from '../components/EditorControls';
 import TextInputModal from '../containers/TextInputModal';
 import '../scss/toolbar.scss';
 import '../scss/canvas.scss';
