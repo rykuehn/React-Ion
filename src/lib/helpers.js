@@ -43,6 +43,8 @@ export function mapComponents(components, selected) {
             key={c.id}
             id={c.id}
             selected={selected}
+            aUrl={c.aUrl}
+            tag={c.aUrl ? 'a' : 'div'}
             {...c.props}
           >
             {c.children ? mapComponents(c.children, selected) : null}
@@ -71,7 +73,7 @@ export function mapComponents(components, selected) {
             selected={selected}
             {...c.props}
           />,
-          );
+        );
         break;
       default:
         break;

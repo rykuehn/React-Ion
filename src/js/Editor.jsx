@@ -6,6 +6,7 @@ import Toolbar from '../containers/Toolbar';
 import EditorControls from '../containers/EditorControls';
 import ZoomPercent from '../containers/ZoomPercent';
 import CurrentComponent from '../containers/CurrentComponent';
+import LinkDisplay from '../containers/LinkDisplay';
 import '../scss/toolbar.scss';
 import '../scss/canvas.scss';
 import '../scss/editor.scss';
@@ -19,6 +20,7 @@ const Editor = ({ routes, selected, pageSelected, zoom }) => {
       <EditorControls />
       <ZoomPercent />
       <CurrentComponent />
+      <LinkDisplay />
       <div style={{ transform: `scale(${zoom})` }}>
         <Draggable>
           <div className="canvas">

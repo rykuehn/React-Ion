@@ -1,10 +1,10 @@
 import React from 'react';
 
 const UpdateText = ({ toggleTextModal, updateProps, selected }) => {
-  const callback = (context) => {
+  const callback = (value) => {
     updateProps(
       'content',
-      context.text.value,
+      value,
       selected,
     );
   };

@@ -1,12 +1,11 @@
 import React from 'react';
 
-const AddSubtractBlock = ({
+const AddBlock = ({
   addChild,
   selected,
-  removeChild,
   nextId,
 }) => (
-  <div>
+  <div className="add-block">
     <button
       onClick={() => {
         addChild('Block', {
@@ -23,11 +22,7 @@ const AddSubtractBlock = ({
       }}
     > <i className="fa fa-plus" aria-hidden="true" /> BLOCK
     </button>
-    <button
-      onClick={() => removeChild(selected)}
-    > <i className="fa fa-trash" aria-hidden="true" /> BLOCK
-    </button>
   </div>
 );
 
-export default AddSubtractBlock;
+export default AddBlock;

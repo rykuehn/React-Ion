@@ -4,8 +4,8 @@ const NameInput = ({ toggleTextModal, updateInfos, selected, setSelected }) => {
   const capitalizeFirstLetter = s => s.charAt(0).toUpperCase() + s.slice(1);
   const makeComponentName = string => string.split(' ').map(word => capitalizeFirstLetter(word)).join('');
 
-  const callback = (context) => {
-    const componentName = makeComponentName(context.text.value);
+  const callback = (value) => {
+    const componentName = makeComponentName(value);
     updateInfos(
       'name',
       componentName,

@@ -1,20 +1,18 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addChild, removeChild } from '../actions/routes';
-import AddSubtractBlock from '../components/AddSubtractBlock';
+import { removeChild } from '../actions/routes';
+import Delete from '../components/Delete';
 
 const mapStateToProps = state => (
   {
     selected: state.selected,
-    nextId: state.nextId,
   }
 );
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    addChild,
     removeChild,
   }, dispatch)
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddSubtractBlock);
+export default connect(mapStateToProps, mapDispatchToProps)(Delete);
