@@ -27,8 +27,9 @@ class Editor extends Component {
       info,
     } = this.props;
 
-    const pageRoute = [routes[pageSelected]];
-
+    //const pageRoute = [routes[pageSelected]];
+    console.log('PAGE ROUTE', info)
+    // console.log('PAGE ROUTE STORE', this.props.store)
     return (
       <div className="editor">
         <TextInputModal {...this.props} />
@@ -39,7 +40,7 @@ class Editor extends Component {
         <div style={{ transform: `scale(${zoom})` }}>
           <Draggable>
             <div className="canvas">
-              {mapComponents(pageRoute, selected)}
+              {mapComponents(this.props.routes, selected)}
             </div>
           </Draggable>
         </div>
@@ -50,15 +51,15 @@ class Editor extends Component {
 
 function mapStateToProps(state) {
   return {
-    store: state.routes,
-    routes: state.routes.present,
+    store: state.routes.projectPages[0],
+    routes: state.routes.projectPages[0],
     nextId: state.nextId,
     selected: state.selected,
     pageSelected: state.pageSelected,
     controlsShowing: state.controlsShowing,
-    info: state.info,
-    canUndo: state.routes.past.length > 0,
-    canRedo: state.routes.future.length > 0,
+    info: state.info.present,
+    canUndo: state.routes.projectPages[0].past.length > 0,
+    canRedo: state.routes.projectPages[0].future.length > 0,
     zoom: state.zoom,
     textModal: state.textModal,
   };

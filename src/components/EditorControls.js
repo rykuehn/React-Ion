@@ -35,7 +35,6 @@ export default class EditorControls extends React.Component {
     return (
       <div className="controls-wrapper">
         <NameInput            {...this.props} />
-        <AddPage              {...this.props} />
         <AddSubtractBlock     {...this.props} />
         <TextInput            {...this.props} />
         <BackgroundImageInput {...this.props} />
