@@ -6,6 +6,8 @@ import { download } from '../lib/api-methods';
 
 const f = (routes) => {
   const newRoutes = _.cloneDeep(routes);
+  let totalComponents = 0;
+  
   const removeParents = (route) => {
     route.parent = null;
     // if (route.props.name) {
@@ -16,7 +18,7 @@ const f = (routes) => {
     }
   };
 
-  let totalComponents = 0;
+  
   const getTotalComponents = (route) => {
     console.log(route);
     if (route !== 'Text') {
