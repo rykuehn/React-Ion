@@ -6,8 +6,8 @@ import Toolbar from '../components/Toolbar';
 
 const mapStateToProps = state => (
   {
-    canUndo: state.canUndo,
-    canRedo: state.canRedo,
+    canUndo: state.routes.past.length > 0,
+    canRedo: state.routes.future.length > 0,
     routes: state.routes.present,
     nextId: state.nextId,
   }
