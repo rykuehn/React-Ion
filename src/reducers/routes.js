@@ -21,6 +21,7 @@ const initialState = {
   }],
   future: [],
   pages: [0],
+  totalComponents: 1,
 };
 
 const routes = (routes = initialState, action) => {
@@ -75,7 +76,6 @@ const routes = (routes = initialState, action) => {
       return newTree;
 
     case ADD_CHILD:
-
       moveToPast(newTree, routes);
       (function add(tree, id) {
         if (tree.id === id) {
@@ -89,6 +89,10 @@ const routes = (routes = initialState, action) => {
           });
         } else { tree.children.forEach(child => add(child, id)); }
       }(newTree.present[store.getState().pageSelected], id));
+
+      if (action.componentType !== 'Text') {
+        newTree.totalComponents += 1;
+      }
 
       return newTree;
 
@@ -111,12 +115,15 @@ const routes = (routes = initialState, action) => {
         name: action.name,
       });
 
+      if (action.componentType !== 'Text') {
+        newTree.totalComponents += 1;
+      }
+
       newTree.pages.push(action.nextId);
 
       return newTree;
 
     case REMOVE_CHILD:
-
       moveToPast(newTree, routes, true);
       (function search(tree) {
         if (tree.id === id) {
@@ -126,6 +133,10 @@ const routes = (routes = initialState, action) => {
           tree.children.forEach(child => search(child));
         }
       }(newTree.present[store.getState().pageSelected]));
+
+      if (action.componentType !== 'Text') {
+        newTree.totalComponents -= 1;
+      }
 
       return newTree;
 

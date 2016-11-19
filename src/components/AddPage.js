@@ -3,7 +3,7 @@ import React from 'react';
 export default class AddPage extends React.Component {
 
   setPage(e, index) {
-    this.props.setSelected(e, this.props.store.pages[this.props.pageSelected]);
+    this.props.setSelected(e, this.props.routes[index].id);
     this.props.setPageSelected(index);
   }
 
@@ -23,6 +23,7 @@ export default class AddPage extends React.Component {
 
     setTimeout(() => {
       this.props.setPageSelected(this.props.store.pages.length - 1);
+      this.props.setSelector(this.props.routes[this.props.routes.length - 1].id);
     }, 100);
   }
 
@@ -60,3 +61,4 @@ export default class AddPage extends React.Component {
     );
   }
 }
+
