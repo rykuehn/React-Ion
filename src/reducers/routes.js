@@ -107,11 +107,7 @@ const routes = (routes = initialState, action) => {
           height: [1080, 'px'],
           width: null,
           flexDirection: 'column',
-<<<<<<< HEAD
-          margin: 0,
-=======
           margin: '0px',
->>>>>>> 1f997027c06233a63281b2c7ab2d64e716d44420
         },
         children: [],
         componentType: 'Block',
