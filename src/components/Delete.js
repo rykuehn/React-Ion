@@ -1,15 +1,15 @@
 import React from 'react';
 
-const DeleteText = ({
+const Delete = ({
   selected,
   removeChild,
 }) => (
-  <div>
+  <div className="delete">
     <button
       onClick={() => removeChild(selected)}
-    > <i className="fa fa-trash" aria-hidden="true" /> TEXT
+    > <i className="fa fa-trash" aria-hidden="true" />
     </button>
   </div>
 );
 
-export default DeleteText;
+export default Delete;

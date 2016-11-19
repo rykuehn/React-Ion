@@ -16,7 +16,7 @@ const BackgroundImageInput = ({ updateProps, selected, toggleTextModal }) => {
           'enter url',
           callback,
         )}
-      > <i className="fa fa-plus" aria-hidden="true" /> BG IMAGE
+      > <i className="fa fa-image" aria-hidden="true" /> BG IMAGE
       </button>
     </div>
   );

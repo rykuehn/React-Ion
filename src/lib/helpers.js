@@ -72,7 +72,7 @@ export function mapComponents(components, selected) {
             selected={selected}
             {...c.props}
           />,
-          );
+        );
         break;
       default:
         break;

@@ -16,7 +16,7 @@ const AddLink = ({
   };
 
   return (
-    <div>
+    <div className="link-button">
       <button
         onClick={() => toggleTextModal(
           'enter link url',
