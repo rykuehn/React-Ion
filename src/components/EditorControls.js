@@ -12,10 +12,10 @@ import AddSubtractBlock from '../containers/AddSubtractBlock';
 import TextInput from '../containers/TextInput';
 import BackgroundImageInput from '../containers/BackgroundImageInput';
 import RowColumnPicker from '../containers/RowColumnPicker';
-import ColorPicker from './ColorPicker';
-import HeightSlider from './HeightSlider';
-import WidthSlider from './WidthSlider';
-import FlexSlider from './FlexSlider';
+import ColorPicker from '../containers/ColorPicker';
+import HeightSlider from '../containers/HeightSlider';
+import WidthSlider from '../containers/WidthSlider';
+import FlexSlider from '../containers/FlexSlider';
 
 export default class EditorControls extends React.Component {
   render() {
@@ -40,10 +40,10 @@ export default class EditorControls extends React.Component {
         <TextInput />
         <BackgroundImageInput />
         <RowColumnPicker />
-        <ColorPicker          {...this.props} />
-        <HeightSlider         {...this.props} />
-        <WidthSlider          {...this.props} />
-        <FlexSlider           {...this.props} />
+        <ColorPicker />
+        <HeightSlider />
+        <WidthSlider />
+        <FlexSlider />
       </div>
     );
   }

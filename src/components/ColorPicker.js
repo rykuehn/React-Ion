@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class ColorPicker extends React.Component {
+class ColorPicker extends React.Component {
   render() {
     const { updateProps, selected } = this.props;
 
@@ -8,7 +8,7 @@ export default class ColorPicker extends React.Component {
       <div className="color-picker">
         <input
           type="color"
-          ref={i => this.backgroundColor = i}
+          ref={i => (this.backgroundColor = i)}
           onInput={() => updateProps(
             'backgroundColor',
             this.backgroundColor.value,
@@ -19,3 +19,5 @@ export default class ColorPicker extends React.Component {
     );
   }
 }
+
+export default ColorPicker;

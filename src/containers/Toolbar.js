@@ -8,7 +8,7 @@ const mapStateToProps = state => (
   {
     canUndo: state.canUndo,
     canRedo: state.canRedo,
-    routes: state.routes,
+    routes: state.routes.present,
     nextId: state.nextId,
   }
 );
