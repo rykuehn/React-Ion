@@ -9,15 +9,12 @@ export default class TextColor extends React.Component {
         <input
           type="color"
           ref={i => this.textColor = i}
-        />
-        <button
-          onClick={() => updateProps(
+          onInput={() => updateProps(
             'color',
             this.textColor.value,
             selected,
           )}
-        > <i className="fa fa-plus" aria-hidden="true" /> TEXT COLOR
-        </button>
+        />
       </div>
     );
   }

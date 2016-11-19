@@ -35,7 +35,7 @@ export default class NameInput extends React.Component {
             'enter component name',
             callback,
           )}
-        > <i className="fa fa-pencil" aria-hidden="true" /> COMPONENT NAME
+        > COMPONENT NAME <i className="fa fa-pencil" aria-hidden="true" /> 
         </button>
       </div>
     );

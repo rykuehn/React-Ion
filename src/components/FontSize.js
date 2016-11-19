@@ -20,7 +20,7 @@ export default class FontSize extends React.Component {
     const { updateProps, selected, info } = this.props;
     this.updateSize();
     return (
-      <div className="slider"> FONT SIZE
+      <div className="font-size"> FONT SIZE
         <input
           type="range"
           min={0}

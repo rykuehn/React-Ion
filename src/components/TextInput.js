@@ -15,7 +15,7 @@ export default class TextInput extends React.Component {
     };
 
     return (
-      <div>
+      <div className="add-text">
         <button
           onClick={() => toggleTextModal(
             'enter text',
