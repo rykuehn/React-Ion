@@ -7,7 +7,7 @@ import { download } from '../lib/api-methods';
 const f = (routes) => {
   const newRoutes = _.cloneDeep(routes);
   let totalComponents = 0;
-  
+
   const removeParents = (route) => {
     route.parent = null;
     // if (route.props.name) {
@@ -20,8 +20,7 @@ const f = (routes) => {
 
   
   const getTotalComponents = (route) => {
-    console.log(route);
-    if (route !== 'Text') {
+    if (route.componentType !== 'Text') {
       totalComponents += 1;
     }
 
@@ -34,7 +33,7 @@ const f = (routes) => {
     removeParents(newRoutes[i]);
     getTotalComponents(newRoutes[i]);
   }
-
+  console.log(totalComponents);
   const treeData = {
     total: totalComponents,
     router: 1,
