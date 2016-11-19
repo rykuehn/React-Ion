@@ -12,6 +12,7 @@ import EditorControls from '../components/EditorControls';
 import Toolbar from '../components/Toolbar';
 import ZoomPercent from '../components/ZoomPercent';
 import TextInputModal from '../components/TextInputModal';
+import CurrentComponent from '../components/CurrentComponent';
 import '../scss/toolbar.scss';
 import '../scss/canvas.scss';
 import '../scss/editor.scss';
@@ -23,17 +24,18 @@ class Editor extends Component {
       selected,
       pageSelected,
       zoom,
+      info,
     } = this.props;
-    
-    const pageRoute = [routes[pageSelected]];
-    console.log('HISTORY', this.props.store);
-    return (
 
+    const pageRoute = [routes[pageSelected]];
+
+    return (
       <div className="editor">
         <TextInputModal {...this.props} />
         <Toolbar {...this.props} />
         <EditorControls {...this.props} />
         <ZoomPercent zoom={zoom} />
+        <CurrentComponent name={info.name} />
         <div style={{ transform: `scale(${zoom})` }}>
           <Draggable>
             <div className="canvas">

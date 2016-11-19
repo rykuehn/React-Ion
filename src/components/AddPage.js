@@ -6,22 +6,28 @@ export default class AddPage extends React.Component {
   setPage(e, index) {
     this.props.setSelected(e, this.props.store.pages[this.props.pageSelected]);
     this.props.setPageSelected(index);
-    console.log(this.props.store.pages[this.props.pageSelected]);
     // setTimeout(() => {
     //   this.props.setSelected(e, this.props.store.pages[this.props.pageSelected]);
     // }, 10);
   }
 
+  capitalizeFirstLetter(s) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+
+  makeComponentName(string) {
+    return string.split(' ').map(word => this.capitalizeFirstLetter(word)).join('');
+  }
+
   callback(context) {
     this.props.addPage(
-      context.text.value,
+      this.makeComponentName(context.text.value),
       this.props.nextId,
     );
 
     setTimeout(() => {
       this.props.setPageSelected(this.props.store.pages.length - 1);
     }, 100);
-
   }
 
   render() {
@@ -32,7 +38,7 @@ export default class AddPage extends React.Component {
         key={index}
         value={index}
         selected={context.props.pageSelected === index ? 'selected' : ''}
-      > {page.name.toUpperCase()}
+      > {page.name}
       </option>
     ));
 

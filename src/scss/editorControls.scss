@@ -15,9 +15,11 @@ $light-gray: rgba(0,0,0,.05);
   top: 0px;
   align-items: center;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   width: 100vw;
   transition: all .3s;
+  overflow-x: auto;
+  overflow-y: hidden;
 
   .close-controls {
     font-size: 20px;
