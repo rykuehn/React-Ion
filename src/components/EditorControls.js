@@ -10,8 +10,8 @@ import NameInput from '../containers/NameInput';
 import AddPage from '../containers/AddPage';
 import AddSubtractBlock from '../containers/AddSubtractBlock';
 import TextInput from '../containers/TextInput';
-import BackgroundImageInput from './BackgroundImageInput';
-import RowColumnPicker from './RowColumnPicker';
+import BackgroundImageInput from '../containers/BackgroundImageInput';
+import RowColumnPicker from '../containers/RowColumnPicker';
 import ColorPicker from './ColorPicker';
 import HeightSlider from './HeightSlider';
 import WidthSlider from './WidthSlider';
@@ -38,8 +38,8 @@ export default class EditorControls extends React.Component {
         <AddPage />
         <AddSubtractBlock />
         <TextInput />
-        <BackgroundImageInput {...this.props} />
-        <RowColumnPicker      {...this.props} />
+        <BackgroundImageInput />
+        <RowColumnPicker />
         <ColorPicker          {...this.props} />
         <HeightSlider         {...this.props} />
         <WidthSlider          {...this.props} />
