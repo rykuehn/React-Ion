@@ -5,7 +5,7 @@ export default class TextAlign extends React.Component {
     const { updateProps, selected } = this.props;
 
     return (
-      <div className="color-picker">
+      <div>
         <button
           onClick={() => updateProps(
             'textAlign',

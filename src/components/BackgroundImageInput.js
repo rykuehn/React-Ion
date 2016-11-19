@@ -13,13 +13,13 @@ export default class BackgroundImageInput extends React.Component {
     };
 
     return (
-      <div>
+      <div className="bg-image">
         <button
           onClick={() => toggleTextModal(
             'enter url',
             callback,
           )}
-        > <i className="fa fa-plus" aria-hidden="true" /> BACKGROUND IMAGE
+        > <i className="fa fa-photo" aria-hidden="true" /> BG IMAGE
         </button>
       </div>
     );

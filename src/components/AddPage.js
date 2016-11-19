@@ -7,9 +7,17 @@ export default class AddPage extends React.Component {
     this.props.setPageSelected(index);
   }
 
+  capitalizeFirstLetter(s) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+
+  makeComponentName(string) {
+    return string.split(' ').map(word => this.capitalizeFirstLetter(word)).join('');
+  }
+
   callback(context) {
     this.props.addPage(
-      context.text.value,
+      this.makeComponentName(context.text.value),
       this.props.nextId,
     );
 
@@ -27,19 +35,20 @@ export default class AddPage extends React.Component {
         key={index}
         value={index}
         selected={context.props.pageSelected === index ? 'selected' : ''}
-      > {page.name.toUpperCase()}
+      > {page.name}
       </option>
     ));
 
     return (
-      <div>
+      <div className="add-page">
         <button
           onClick={() => this.props.toggleTextModal(
             'enter page name',
             this.callback.bind(this),
           )}
-        > <i className="fa fa-plus" aria-hidden="true" /> ADD PAGE
+        > <i className="fa fa-plus" aria-hidden="true" /> NEW PAGE
         </button>
+        PAGES:
         <select
           ref={s => this.selected = s}
           name="pages"

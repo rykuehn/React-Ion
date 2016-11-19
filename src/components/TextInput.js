@@ -8,13 +8,14 @@ export default class TextInput extends React.Component {
       addChild(
         'Text',
         { content: context.text.value, fontSize: 12, color: 'white' },
+        `text${nextId}`,
         selected,
         nextId,
       );
     };
 
     return (
-      <div>
+      <div className="add-text">
         <button
           onClick={() => toggleTextModal(
             'enter text',

@@ -21,13 +21,13 @@ export function getValue(key, id, routes) {
   return value;
 }
 
-export function randomColor() {
-  let color = '';
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
-  while (color.length < 7) {
-    color = '#' + (Math.random()*0xFFFFFF<<0).toString(16);
-  }
-  return color;
+export function makeComponentName(string) {
+  console.log(string.split(' '));
+  return string.split(' ').map(word => capitalizeFirstLetter(word)).join('');
 }
 
 export function mapComponents(components, selected) {
@@ -68,7 +68,7 @@ export function mapComponents(components, selected) {
             key={c.id}
             id={c.id}
             selected={selected}
-            {...c.props} 
+            {...c.props}
           />,
           );
         break;

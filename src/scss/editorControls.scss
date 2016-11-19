@@ -42,6 +42,22 @@ $light-gray: rgba(0,0,0,.05);
 
   .slider {
     padding-left: 10px;
+  }
+
+  .add-text {
+    max-width: 100px;
+  }
+
+  .add-page {
+    width: 200px;
+  }
+
+  .bg-image {
+    max-width: 100px;
+  }
+
+  .font-size {
+    padding-left: 10px;
     padding-right: 10px;
   }
 
@@ -89,7 +105,6 @@ $light-gray: rgba(0,0,0,.05);
       margin: 0px;
       border: 0px;
       background-color: transparent;
-      min-width: 100px;
 
       &:hover {
         background-color: $light-gray;
@@ -103,10 +118,11 @@ $light-gray: rgba(0,0,0,.05);
 
   .color-picker {
     cursor: pointer;
+    max-width: 60px;
 
     input {
       background-color: $light-gray;
-      max-width: 60px;
+      max-width: 40px;
     }
   }
 
