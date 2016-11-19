@@ -43,14 +43,15 @@ export default class AddPage extends React.Component {
     ));
 
     return (
-      <div>
+      <div className="add-page">
         <button
           onClick={() => this.props.toggleTextModal(
             'enter page name',
             this.callback.bind(this),
           )}
-        > <i className="fa fa-plus" aria-hidden="true" /> ADD PAGE
+        > <i className="fa fa-plus" aria-hidden="true" /> NEW PAGE
         </button>
+        PAGES:
         <select
           ref={s => this.selected = s}
           name="pages"

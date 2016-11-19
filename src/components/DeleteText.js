@@ -7,7 +7,7 @@ const DeleteText = ({
   <div>
     <button
       onClick={() => removeChild(selected)}
-    > <i className="fa fa-trash" aria-hidden="true" />
+    > <i className="fa fa-trash" aria-hidden="true" /> TEXT
     </button>
   </div>
 );

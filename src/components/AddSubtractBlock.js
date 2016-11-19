@@ -25,7 +25,7 @@ const AddSubtractBlock = ({
     </button>
     <button
       onClick={() => removeChild(selected)}
-    > <i className="fa fa-minus" aria-hidden="true" /> BLOCK
+    > <i className="fa fa-trash" aria-hidden="true" /> BLOCK
     </button>
   </div>
 );
