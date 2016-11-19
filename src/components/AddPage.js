@@ -16,7 +16,7 @@ class AddPage extends React.Component {
 
   createPage(context) {
     this.props.addPage(
-      makeComponentName(context.text.value),
+      makeComponentName(context),
       this.props.nextId,
     );
     setTimeout(() => {
