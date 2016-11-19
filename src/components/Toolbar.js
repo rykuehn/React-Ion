@@ -34,7 +34,7 @@ const Toolbar = ({
   canRedo,
   setZoom,
   routes,
-  nextId,
+  store,
 }) => (
   <div className="toolbar">
     <button onClick={canUndo ? onUndo : null}>
@@ -52,7 +52,7 @@ const Toolbar = ({
     <button onClick={() => {}}>
       <i className="fa fa-save" aria-hidden="true" />
     </button>
-    <button onClick={() => { f(routes, nextId); }}>
+    <button onClick={() => { f(routes, store.totalComponents); }}>
       <i className="fa fa-download" aria-hidden="true" />
     </button>
   </div>
