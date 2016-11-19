@@ -14,6 +14,7 @@ const Block = ({
   flexDirection,
   children,
   backgroundImage,
+  margin,
 }) => {
   const boxStyle = {
     flex,
@@ -30,7 +31,7 @@ const Block = ({
     maxHeight: '100%',
     maxWidth: '100%',
     padding: '20px',
-    margin: '20px',
+    margin,
     flexWrap: 'wrap',
     cursor: 'pointer',
     boxSizing: 'border-box',

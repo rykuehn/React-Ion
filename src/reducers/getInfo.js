@@ -11,6 +11,7 @@ const initialState = {
     height: [1080, 'px'],
     width: null,
     flexDirection: 'column',
+    margin: '0px',
   },
   children: [],
   componentType: 'Block',

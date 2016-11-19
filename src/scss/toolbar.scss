@@ -12,7 +12,9 @@
   height: 100vh;
   border-bottom: 1px solid rgba(0,0,0,.1);
   transition: flex-grow .3;
-  padding-top: 80px;
+  margin-top: 60px;
+  z-index: 300;
+  box-shadow: 10px 0px 5px -8px rgba(0,0,0,0.8);
 
   button {
     cursor: pointer;

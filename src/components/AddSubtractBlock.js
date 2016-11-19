@@ -15,6 +15,7 @@ const AddSubtractBlock = ({
           flex: 1,
           height: [50, '%'],
           width: [20, '%'],
+          margin: '20px',
           flexDirection: 'row' },
           `Block${nextId}`,
           selected,
