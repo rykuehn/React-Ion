@@ -55,6 +55,34 @@ $light-gray: rgba(0,0,0,.05);
     .pages-tag {
       margin-left: 10px;
     }
+
+    select.page-select {
+      cursor: pointer;
+      -webkit-appearance: none;
+      border: 0px;
+      width: 100%;
+      border-bottom: 1px solid rgba(0,0,0,.1);
+      height: 20px;
+      border-radius: 0px !important;
+      background: white;
+      font-size: 12px;
+      transition: border-bottom .3s;
+      text-align-last:center;
+
+      option {
+        text-align: right !important;
+        text-transform: uppercase;
+      }
+
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        border-bottom: 1px solid coral;
+      }
+    }
   }
 
   .add-block {
@@ -139,9 +167,10 @@ $light-gray: rgba(0,0,0,.05);
       margin: 0px;
       border: 0px;
       background-color: transparent;
+      transition: color .5s;
 
       &:hover {
-        background-color: $light-gray;
+        color: coral;
       }
 
       &:focus {

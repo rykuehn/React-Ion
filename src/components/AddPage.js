@@ -45,8 +45,8 @@ class AddPage extends React.Component {
           )}
         > <i className="fa fa-plus" aria-hidden="true" /> PAGE
         </button>
-        <span className="pages-tag">PAGES:</span>
         <select
+          className="page-select"
           ref={s => (this.selected = s)}
           name="pages"
           onChange={e => this.setPage(
