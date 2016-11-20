@@ -5,6 +5,7 @@ const AddSubtractBlock = ({
   selected,
   removeChild,
   nextId,
+  pageSelected,
 }) => (
   <div>
     <button
@@ -17,8 +18,8 @@ const AddSubtractBlock = ({
           margin: '20px',
           flexDirection: 'row' },
           `Block${nextId}`,
-          selected,
           nextId,
+          pageSelected,
         );
       }}
     > <i className="fa fa-plus" aria-hidden="true" /> BLOCK

@@ -25,9 +25,9 @@ const initialState = {
 
 const info = (info = initialState, action) => {
   let information = _.cloneDeep(info);
+  const currentPage = store ? store.getState().pageSelected : 0;
 
   function getInfo(tree) {
-    console.log(tree, tree.id, action.id)
     if (tree.id === action.id) {
       information = tree;
     } else {
@@ -37,15 +37,15 @@ const info = (info = initialState, action) => {
 
   switch (action.type) {
     case SET_SELECTED:
-      getInfo(store.getState().routes.projectPages[store.getState().pageSelected].present);
+      getInfo(store.getState().routes.projectPages[currentPage].present);
       return information;
 
     case UPDATE_PROPS:
-      getInfo(store.getState().routes.projectPages[store.getState().pageSelected].present);
+      getInfo(store.getState().routes.projectPages[currentPage].present);
       return information;
 
     case UPDATE_INFOS:
-      getInfo(store.getState().routes.projectPages[store.getState().pageSelected].present);
+      getInfo(store.getState().routes.projectPages[currentPage].present);
       return information;
 
     default:

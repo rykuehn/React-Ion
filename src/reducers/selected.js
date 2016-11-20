@@ -4,6 +4,7 @@ import { REMOVE_CHILD } from '../actions/routes';
 const initialState = 0;
 
 const selected = (selected = initialState, action) => {
+
   switch (action.type) {
     case SET_SELECTED:
       return action.id;

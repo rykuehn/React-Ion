@@ -34,7 +34,6 @@ const EditorControls = ({ info }) => {
   return (
     <div className="controls-wrapper">
       <NameInput />
-      <AddPage />
       <AddSubtractBlock />
       <TextInput />
       <BackgroundImageInput />

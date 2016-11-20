@@ -7,6 +7,7 @@ const mapStateToProps = state => (
   {
     selected: state.selected,
     nextId: state.nextId,
+    pageSelected: state.pageSelected,
   }
 );
 

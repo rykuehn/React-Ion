@@ -20,7 +20,7 @@ const WidthSlider = ({ updateProps, selected, info, store }) => {
         selected={selected}
         updateProps={updateProps}
         title={'WIDTH'}
-        initialValue={info.props.width ? info.props.width[0] : null}
+        initialValue={info.present.props.width ? info.present.props.width[0] : null}
       />
     </div>
   );

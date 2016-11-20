@@ -7,9 +7,10 @@ import AddPage from '../components/AddPage';
 
 const mapStateToProps = state => (
   {
-    store: state.routes,
+    routes: state.routes,
     selected: state.selected,
     nextId: state.nextId,
+    pageSelected: state.pageSelected,
   }
 );
 const mapDispatchToProps = dispatch => (

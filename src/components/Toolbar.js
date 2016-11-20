@@ -4,6 +4,7 @@ import { download } from '../lib/api-methods';
 import '../scss/toolbar.scss';
 
 const f = (routes) => {
+   
   const newRoutes = _.cloneDeep(routes);
   let totalComponents = 0;
 
@@ -29,7 +30,7 @@ const f = (routes) => {
     removeParents(newRoutes[i]);
     getTotalComponents(newRoutes[i]);
   }
-  console.log(totalComponents);
+ 
   const treeData = {
     total: totalComponents,
     router: 1,

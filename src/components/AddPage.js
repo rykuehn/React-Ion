@@ -20,14 +20,14 @@ class AddPage extends React.Component {
       this.props.nextId,
     );
     setTimeout(() => {
-      this.props.setPageSelected(this.props.store.pages.length - 1);
+      this.props.setPageSelected(this.props.routes.pages.length - 1);
       this.props.setSelector(this.props.routes[this.props.routes.length - 1].id);
     }, 100);
   }
 
   render() {
     const context = this;
-    const pages = this.props.store.present.map((page, index) => (
+    const pages = this.props.routes.projectPages[this.props.pageSelected].present.map((page, index) => (
       <option
         key={index}
         value={index}
@@ -59,4 +59,4 @@ class AddPage extends React.Component {
   }
 }
 
-export default AddPage;
+//export default AddPage;

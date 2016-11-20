@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import createFragment from 'react-addons-create-fragment';
 import { setSelected } from '../actions/selected';
 import Block from '../components/Block';
 import Text from '../components/Text';
@@ -16,7 +17,7 @@ export function getValue(key, id, routes) {
     if (tree.id === id) {
       value = tree.props[key];
     } else { tree.children.forEach(child => search(child)); }
-  }(routes[0]));
+  }(routes));
 
   return value;
 }
@@ -26,56 +27,55 @@ function capitalizeFirstLetter(string) {
 }
 
 export function makeComponentName(string) {
-  console.log(string.split(' '));
   return string.split(' ').map(word => capitalizeFirstLetter(word)).join('');
 }
 
-export function mapComponents(components, selected) {
+export function mapComponents(c, selected) {
+  console.log('MAP COMPONENTS', c , selected)
   const mapped = [];
 
-  _.each(components, (c) => {
-    switch (c.componentType) {
-      case BLOCK_COMPONENT:
-        mapped.push(
-          <Block
-            setSelected={() => setSelected()}
-            key={c.id}
-            id={c.id}
-            selected={selected}
-            {...c.props}
-          >
-            {c.children ? mapComponents(c.children, selected) : null}
-          </Block>,
+  switch (c.componentType) {
+    case BLOCK_COMPONENT:
+    // console.log('in BLOCK', c.children)
+      mapped.push(
+        <Block
+          setSelected={() => setSelected()}
+          key={c.id}
+          id={c.id}
+          selected={selected}
+          {...c.props}
+        >
+          {c.children ? _.each(c.children, (child) => { mapComponents(child, selected); }) : null }
+        </Block>,
+    );
+      break;
+    case TEXT_COMPONENT:
+      mapped.push(
+        <Text
+          setSelected={() => setSelected()}
+          key={c.id}
+          id={c.id}
+          selected={selected}
+          {...c.props}
+        >
+          {c.children ? _.each(c.children, (child) => { mapComponents(child, selected); }) : null}
+        </Text>,
+      );
+      break;
+    case MENU_COMPONENT:
+      mapped.push(
+        <Menu
+          setSelected={() => setSelected()}
+          key={c.id}
+          id={c.id}
+          selected={selected}
+          {...c.props}
+        />,
         );
-        break;
-      case TEXT_COMPONENT:
-        mapped.push(
-          <Text
-            setSelected={() => setSelected()}
-            key={c.id}
-            id={c.id}
-            selected={selected}
-            {...c.props}
-          >
-            {c.children ? mapComponents(c.children, selected) : null}
-          </Text>,
-        );
-        break;
-      case MENU_COMPONENT:
-        mapped.push(
-          <Menu
-            setSelected={() => setSelected()}
-            key={c.id}
-            id={c.id}
-            selected={selected}
-            {...c.props}
-          />,
-          );
-        break;
-      default:
-        break;
-    }
-  });
+      break;
+    default:
+      break;
+  }
 
   return mapped;
 }

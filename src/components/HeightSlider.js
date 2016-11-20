@@ -22,7 +22,7 @@ const HeightSlider = ({ updateProps, selected, info, store }) => {
         selected={selected}
         updateProps={updateProps}
         title={'HEIGHT'}
-        initialValue={info.props.height[0]}
+        initialValue={info.present.props.height[0]}
       />
     </div>
   );

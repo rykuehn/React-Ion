@@ -28,15 +28,15 @@ export function updateInfos(key, value, id, actionType) {
   };
 }
 
-export function addChild(componentType, props, name, id, nextId, pageSelected) {
+export function addChild(componentType, props, name, id, pageSelected) {
+  console.log('addchild action', 'componentType:', componentType, "props:", props, "name:", name, "id:", id, "pageSelcted",pageSelected);
   return {
     type: ADD_CHILD,
     componentType,
     props,
-    id,
-    nextId,
-    pageSelected,
     name,
+    id,
+    pageSelected,
   };
 }
 
@@ -70,6 +70,7 @@ export function onUndo() {
 }
 
 export function onRedo() {
+  console.log('onRedo action creator')
   return {
     type: REDO,
   };

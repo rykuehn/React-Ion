@@ -1,5 +1,6 @@
 import React from 'react';
 import Draggable from 'react-draggable';
+import createFragment from 'react-addons-create-fragment';
 import { mapComponents } from '../lib/helpers';
 import TextInputModal from '../containers/TextInputModal';
 import Toolbar from '../containers/Toolbar';
@@ -11,7 +12,7 @@ import '../scss/canvas.scss';
 import '../scss/editor.scss';
 
 const Editor = ({ routes, selected, pageSelected, zoom }) => {
-  const pageRoute = [routes[pageSelected]];
+  const pageRoute = routes;
   return (
     <div className="editor">
       <TextInputModal />
@@ -22,7 +23,7 @@ const Editor = ({ routes, selected, pageSelected, zoom }) => {
       <div style={{ transform: `scale(${zoom})` }}>
         <Draggable>
           <div className="canvas">
-            {mapComponents(pageRoute, selected)}
+            {mapComponents(routes, selected)}
           </div>
         </Draggable>
       </div>

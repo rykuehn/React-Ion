@@ -18,7 +18,7 @@ const FlexSlider = ({ updateProps, selected, info, store }) => (
       selected={selected}
       updateProps={updateProps}
       title={'FLEX'}
-      initialValue={info.props.flex}
+      initialValue={info.present.props.flex}
     />
   </div>
 );
