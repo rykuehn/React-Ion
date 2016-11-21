@@ -1,6 +1,8 @@
 import React from 'react';
 import { formTreeData } from '../lib/helpers';
+import ToolbarButton from './ToolbarButton';
 import '../scss/toolbar.scss';
+
 
 const Toolbar = ({
   onUndo,
@@ -11,21 +13,21 @@ const Toolbar = ({
   routes,
 }) => (
   <div className="toolbar">
-    <button onClick={canUndo ? onUndo : null}>
+    <ToolbarButton click={canUndo ? onUndo : null}>
       <i className="fa fa-undo" aria-hidden="true" />
-    </button>
-    <button onClick={canRedo ? onRedo : null}>
+    </ToolbarButton>
+    <ToolbarButton click={canRedo ? onRedo : null}>
       <i className="fa fa-repeat" aria-hidden="true" />
-    </button>
-    <button onClick={() => setZoom('plus')}>
+    </ToolbarButton>
+    <ToolbarButton click={() => setZoom('plus')}>
       <i className="fa fa-search-plus" aria-hidden="true" />
-    </button>
-    <button onClick={() => setZoom('minus')}>
+    </ToolbarButton>
+    <ToolbarButton click={() => setZoom('minus')}>
       <i className="fa fa-search-minus" aria-hidden="true" />
-    </button>
-    <button onClick={() => { formTreeData(routes); }}>
+    </ToolbarButton>
+    <ToolbarButton click={() => { formTreeData(routes); }}>
       <i className="fa fa-download" aria-hidden="true" />
-    </button>
+    </ToolbarButton>
   </div>
 );
 

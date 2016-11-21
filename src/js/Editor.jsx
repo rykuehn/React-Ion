@@ -21,7 +21,13 @@ const Editor = ({ routes, selected, pageSelected, zoom }) => {
       <ZoomPercent />
       <CurrentComponent />
       <LinkDisplay />
-      <div style={{ transform: `scale(${zoom})` }}>
+      <div
+        className="canvas-wrapper"
+        style={{
+          transition: 'all .3s',
+          transform: `scale(${zoom})`,
+        }}
+      >
         <Draggable>
           <div className="canvas">
             {mapComponents(pageRoute, selected)}

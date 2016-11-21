@@ -20,9 +20,8 @@ class AddPage extends React.Component {
       this.props.nextId,
     );
     setTimeout(() => {
-      console.log(this.props.store.pages.length);
       this.props.setPageSelected(this.props.store.pages.length - 1);
-      this.props.setSelected(null, this.props.routes[this.props.routes.length - 1].id);
+      this.props.setSelected(null,this.props.routes[this.props.routes.length - 1].id);
     }, 100);
   }
 
@@ -44,12 +43,10 @@ class AddPage extends React.Component {
             'enter page name',
             this.createPage,
           )}
-        > <i className="fa fa-plus" aria-hidden="true" /> NEW PAGE
+        > <i className="fa fa-plus" aria-hidden="true" /> PAGE
         </button>
-        <span className="pages-tag">
-          PAGES:
-        </span>
         <select
+          className="page-select"
           ref={s => (this.selected = s)}
           name="pages"
           onChange={e => this.setPage(
