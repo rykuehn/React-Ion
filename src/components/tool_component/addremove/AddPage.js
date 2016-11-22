@@ -10,7 +10,7 @@ class AddPage extends React.Component {
   }
 
   setPage(e, index) {
-    this.props.setSelected(e, this.props.routes[index].id);
+    this.props.setSelected(e, this.props.routes.appPages[index].present.id);
     this.props.setPageSelected(index);
   }
 
@@ -21,18 +21,19 @@ class AddPage extends React.Component {
     );
     setTimeout(() => {
       this.props.setPageSelected(this.props.store.pages.length - 1);
-      this.props.setSelected(null,this.props.routes[this.props.routes.length - 1].id);
+      this.props.setSelected(null, this.props.routes.appPages[this.props.routes.appPages.length - 1].present.id);
     }, 100);
   }
 
   render() {
     const context = this;
-    const pages = this.props.store.present.map((page, index) => (
+    console.log('ADDPAGE', this.props.store.appPages)
+    const pages = this.props.store.appPages.map((page, index) => (
       <option
         key={index}
         value={index}
         selected={context.props.pageSelected === index ? 'selected' : ''}
-      > {page.name}
+      > {page.present.name}
       </option>
     ));
 
@@ -41,6 +42,7 @@ class AddPage extends React.Component {
         <button
           onClick={() => this.props.toggleTextModal(
             'enter page name',
+            'text',
             this.createPage,
           )}
         > <i className="fa fa-plus" aria-hidden="true" /> PAGE

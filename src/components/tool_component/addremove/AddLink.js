@@ -20,6 +20,7 @@ const AddLink = ({
       <button
         onClick={() => toggleTextModal(
           'enter link url',
+          'text',
           callback,
         )}
       > <i className="fa fa-link" aria-hidden="true" />

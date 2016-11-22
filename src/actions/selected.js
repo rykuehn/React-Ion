@@ -12,14 +12,6 @@ export function setSelected(e, id) {
   };
 }
 
-export function setSelector(id) {
-  return {
-    type: SET_SELECTED,
-    id,
-  };
-}
-
-
 export function setPageSelected(id) {
   return {
     type: SET_PAGE_SELECTED,

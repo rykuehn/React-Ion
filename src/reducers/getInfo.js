@@ -32,15 +32,15 @@ const info = (info = initialState, action) => {
 
   switch (action.type) {
     case SET_SELECTED:
-      getInfo(store.getState().routes.present[store.getState().pageSelected]);
+      getInfo(store.getState().routes.appPages[store.getState().pageSelected].present);
       return information;
 
     case UPDATE_PROPS:
-      getInfo(store.getState().routes.present[store.getState().pageSelected]);
+      getInfo(store.getState().routes.appPages[store.getState().pageSelected].present);
       return information;
 
     case UPDATE_INFOS:
-      getInfo(store.getState().routes.present[store.getState().pageSelected]);
+      getInfo(store.getState().routes.appPages[store.getState().pageSelected].present);
       return information;
 
     default:

@@ -6,10 +6,11 @@ import Toolbar from '../../../components/tool_component/toolbar/Toolbar';
 
 const mapStateToProps = state => (
   {
-    canUndo: state.routes.past.length > 0,
-    canRedo: state.routes.future.length > 0,
-    routes: state.routes.present,
+    canUndo: state.routes.appPages[state.pageSelected].past.length > 0,
+    canRedo: state.routes.appPages[state.pageSelected].future.length > 0,
+    routes: state.routes.appPages,
     nextId: state.nextId,
+    pageSelected: state.pageSelected,
   }
 );
 

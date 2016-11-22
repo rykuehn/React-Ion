@@ -1,83 +1,85 @@
+const port = process.env.PORT || 8080;
+const host = `http://localhost:${port}`;
+// require('whatwg-fetch');
+
 module.exports.download = (projectTree) => {
   window.location.href = `/api/project/generate?tree=${encodeURIComponent(JSON.stringify(projectTree))}`;
 };
 
+module.exports.getUserProjects = () => {
 
-// module.exports.getUserProjects = () => {
+};
 
-// };
+module.exports.login = (username, password) => {
+  const options = {
+    method: 'POST',
+    // headers: {
+    //   'Content-Type': 'application/json',
+    // },
+    body: {
+      username,
+      password,
+    },
+  };
 
-// module.exports.login = (username, password) => {
-//   const options = {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     data: {
-//       username,
-//       password,
-//     },
-//   };
+  fetch(host, options)
+    .then(() => {
+      console.log('Successfully logged in');
+    });
+};
 
-//   fetch('/login', options)
-//     .then(() => {
-//       console.log('Successfully logged in');
-//     });
-// };
+module.exports.signup = (username, password) => {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username,
+      password,
+    }),
+  };
 
-// module.exports.signup = (username, password) => {
-//   const options = {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     data: {
-//       username,
-//       password,
-//     },
-//   };
+  return fetch('/signup', options)
+    .then(userInfo => userInfo)
+    .catch(err => err);
+};
 
-//   fetch('/signup', options)
-//     .then(() => {
-//       console.log('Successfully signed up and logged in');
-//     });
-// };
+module.exports.logout = () => {
 
-// module.exports.logout = () => {
+};
 
-// };
+module.exports.getProject = () => {
 
-// module.exports.getProject = () => {
+};
 
-// };
+module.exports.getAllProjects = () => {
 
-// module.exports.getAllProjects = () => {
-
-// };
+};
 
 
-// module.exports.removeProject = () => {
+module.exports.removeProject = () => {
 
-// };
+};
 
-// module.exports.saveProject = (userId, name, projectTree, projectId) => {
-//   const options = {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     data: {
-//       name,
-//       project_tree: projectTree,
-//     },
-//   };
+module.exports.saveProject = (userId, name, projectTree, projectId) => {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: {
+      name,
+      project_tree: projectTree,
+    },
+  };
 
-//   fetch(`/api/project/${projectId}`, options)
-//     .then(() => {
-//       console.log('Update Successful');
-//     });
-// };
+  fetch(`/api/project/${projectId}`, options)
+    .then(() => {
+      console.log('Update Successful');
+    });
+};
 
-// module.exports.updateProject = () => {
+module.exports.updateProject = () => {
 
-// };
+};

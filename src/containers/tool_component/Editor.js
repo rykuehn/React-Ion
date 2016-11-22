@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Editor from '../../app/Editor';
 
 const mapStateToProps = state => ({
-  routes: state.routes.present,
+  routes: state.routes.appPages,
   selected: state.selected,
   pageSelected: state.pageSelected,
   zoom: state.zoom,

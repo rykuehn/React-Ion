@@ -1,11 +1,11 @@
 import React from 'react';
 
-const TextInput = ({ selected, nextId, addChild, toggleTextModal }) => {
+const ListInput = ({ selected, nextId, addChild, toggleTextModal }) => {
   const callback = (value) => {
     addChild(
-      'Text',
+      'List',
       { content: value, fontSize: 12, color: 'white' },
-      `text${nextId}`,
+      `list${nextId}`,
       selected,
       nextId,
     );
@@ -16,13 +16,13 @@ const TextInput = ({ selected, nextId, addChild, toggleTextModal }) => {
       <button
         onClick={() => toggleTextModal(
           'enter text',
-          'text',
+          'list',
           callback,
         )}
-      > <i className="fa fa-plus" aria-hidden="true" /> TEXT
+      > <i className="fa fa-list-alt" aria-hidden="true" /> List
       </button>
     </div>
   );
 };
 
-export default TextInput;
+export default ListInput;
