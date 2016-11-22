@@ -8,6 +8,7 @@ import TextAlign from '../../../containers/tool_component/text/TextAlign';
 import NameInput from '../../../containers/tool_component/text/NameInput';
 import AddPage from '../../../containers/tool_component/addremove/AddPage';
 import AddBlock from '../../../containers/tool_component/addremove/AddBlock';
+import AddImage from '../../../containers/tool_component/addremove/AddImage';
 import TextInput from '../../../containers/tool_component/text/TextInput';
 import BackgroundImageInput from '../../../containers/tool_component/adjustor/BackgroundImageInput';
 import RowColumnPicker from '../../../containers/tool_component/adjustor/RowColumnPicker';
@@ -36,6 +37,7 @@ const EditorControls = ({ info }) => {
       <NameInput />
       <AddPage />
       <AddBlock />
+      <AddImage />
       <TextInput />
       <RowColumnPicker />
       <BackgroundImageInput />
