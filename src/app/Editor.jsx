@@ -2,6 +2,7 @@ import React from 'react';
 import Draggable from 'react-draggable';
 import { mapComponents } from '../lib/helpers';
 import TextInputModal from '../containers/tool_component/text/TextInputModal';
+import TextListInputModal from '../containers/tool_component/text/TextListInputModal';
 import Toolbar from '../containers/tool_component/toolbar/Toolbar';
 import EditorControls from '../containers/tool_component/toolbar/EditorControls';
 import ZoomPercent from '../containers/tool_component/inspector/ZoomPercent';
@@ -13,9 +14,11 @@ import '../scss/editor.scss';
 
 const Editor = ({ routes, selected, pageSelected, zoom }) => {
   const pageRoute = [routes[pageSelected].present];
+  console.log(pageRoute);
   return (
     <div className="editor">
       <TextInputModal />
+      <TextListInputModal />
       <Toolbar />
       <EditorControls />
       <ZoomPercent />

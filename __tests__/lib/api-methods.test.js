@@ -13,19 +13,19 @@ import {
 } from '../../src/lib/api-methods';
 
 describe('API Methods', () => {
-  describe('Sign Up', () => {
-    it('signs user up and creates session for user', (done) => {
-      signup('cheney123', '123')
-        .then((userInfo) => {
-          console.log(userInfo);
-          done();
-        })
-        .catch((err) => {
-          console.log(err);
-          done();
-        });
-    });
-  });
+  // describe('Sign Up', () => {
+  //   it('signs user up and creates session for user', (done) => {
+  //     signup('cheney123', '123')
+  //       .then((userInfo) => {
+  //         console.log(userInfo);
+  //         done();
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //         done();
+  //       });
+  //   });
+  // });
 
   // describe('Login', () => {
   //   it('renders an ".toolbar"', () => {

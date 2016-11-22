@@ -17,10 +17,11 @@ import HeightSlider from '../../../containers/tool_component/adjustor/HeightSlid
 import WidthSlider from '../../../containers/tool_component/adjustor/WidthSlider';
 import FlexSlider from '../../../containers/tool_component/adjustor/FlexSlider';
 import AddLink from '../../../containers/tool_component/addremove/AddLink';
+import AddList from '../../../containers/tool_component/addremove/AddList';
 
 const EditorControls = ({ info }) => {
   const type = info.componentType;
-  if (type === 'Text') {
+  if (type === 'Text' || type === 'List') {
     return (
       <div className="controls-wrapper">
         <Delete />
@@ -35,8 +36,10 @@ const EditorControls = ({ info }) => {
     <div className="controls-wrapper">
       <Delete />
       <NameInput />
+      <AddPage />
       <AddBlock />
       <AddImage />
+      <AddList />
       <TextInput />
       <RowColumnPicker />
       <BackgroundImageInput />
