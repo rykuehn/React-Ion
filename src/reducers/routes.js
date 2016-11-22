@@ -99,23 +99,26 @@ const routes = (routes = initialState, action) => {
       return newTree;
 
     case ADD_PAGE:
-      moveToPast(newTree.appPages[store.getState().pageSelected], routes);
 
-      newTree.appPages[store.getState().pageSelected].present = {
-        id: action.nextId,
-        props: {
-          backgroundColor: 'rgba(255,255,255,.1)',
-          flex: 1,
-          height: [1080, 'px'],
-          width: null,
-          flexDirection: 'column',
-          margin: '0px',
+      newTree.appPages.push({
+        past: [],
+        present: {
+          id: action.nextId,
+          props: {
+            backgroundColor: 'rgba(255,255,255,.1)',
+            flex: 1,
+            height: [1080, 'px'],
+            width: null,
+            flexDirection: 'column',
+            margin: '0px',
+          },
+          children: [],
+          componentType: 'Block',
+          parent: null,
+          name: action.name,
         },
-        children: [],
-        componentType: 'Block',
-        parent: null,
-        name: action.name,
-      };
+        future: [],
+      });
 
       if (action.componentType !== 'Text') {
         newTree.totalComponents += 1;
