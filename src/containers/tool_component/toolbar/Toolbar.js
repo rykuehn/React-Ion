@@ -10,6 +10,7 @@ const mapStateToProps = state => (
     canRedo: state.routes.appPages[state.pageSelected].future.length > 0,
     routes: state.routes.appPages[state.pageSelected].present,
     nextId: state.nextId,
+    pageSelected: state.pageSelected,
   }
 );
 
