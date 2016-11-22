@@ -3,23 +3,25 @@ import { UPDATE_PROPS, UPDATE_INFOS, ADD_CHILD, REMOVE_CHILD, UNDO, REDO, ADD_PA
 import store from '../store/store';
 
 const initialState = {
-  past: [],
-  present: [{
-    id: 0,
-    props: {
-      backgroundColor: 'rgba(255,255,255,.1)',
-      flex: 1,
-      height: [1080, 'px'],
-      width: null,
-      flexDirection: 'column',
-      margin: '0px',
+  appPages: [{
+    past: [],
+    present: {
+      id: 0,
+      props: {
+        backgroundColor: 'rgba(255,255,255,.1)',
+        flex: 1,
+        height: [1080, 'px'],
+        width: null,
+        flexDirection: 'column',
+        margin: '0px',
+      },
+      children: [],
+      componentType: 'Block',
+      parent: null,
+      name: 'Index',
     },
-    children: [],
-    componentType: 'Block',
-    parent: null,
-    name: 'Index',
+    future: [],
   }],
-  future: [],
   pages: [0],
   totalComponents: 1,
 };
@@ -27,29 +29,28 @@ const initialState = {
 const routes = (routes = initialState, action) => {
   const { actionType, value, key, id, type } = action;
   const newTree = _.cloneDeep(routes);
+  const currentPage = store ? store.getState().pageSelected : 0;
   let parent;
 
   const moveToPast = (tree, routes, actionType) => {
     if (actionType !== 'onChange') {
-      tree.past.push(_.cloneDeep(routes.present[store.getState().pageSelected]));
+      tree.past.push(_.cloneDeep(routes.appPages[currentPage].present));
       if (tree.past.length >= 5) {
         tree.past.shift();
       }
     }
   };
-  
-  const currentPage = store ? store.getState().pageSelected : 0;
 
   switch (type) {
 
     case UPDATE_PROPS:
-
+      const pagePath = newTree.appPages[store.getState().pageSelected];
       if (actionType === 'onMouseUp') {
-        if (_.isEqual(newTree.past[newTree.past.length - 1].pageSelected, newTree.present[currentPage])) {
-          newTree.past.pop();
-        }
+         if (_.isEqual(pagePath.past[pagePath.past.length - 1], pagePath.present)) {
+           pagePath.past.pop();
+         }
       } else {
-        moveToPast(newTree, routes, actionType);
+        moveToPast(pagePath, routes, actionType);
         const update = (tree) => {
           if (tree.id === id) {
             tree.props[key] = value;
@@ -57,13 +58,13 @@ const routes = (routes = initialState, action) => {
             tree.children.forEach(child => update(child));
           }
         };
-        update(newTree.present[currentPage]);
+        update(pagePath.present);
       }
       return newTree;
 
     case UPDATE_INFOS:
 
-      moveToPast(newTree, routes);
+      moveToPast(newTree.appPages[store.getState().pageSelected], routes);
       const updateInfo = (tree) => {
         if (tree.id === id) {
           tree[key] = value;
@@ -71,12 +72,13 @@ const routes = (routes = initialState, action) => {
           tree.children.forEach(child => updateInfo(child));
         }
       };
-      updateInfo(newTree.present[currentPage]);
+      updateInfo(newTree.appPages[store.getState().pageSelected].present);
 
       return newTree;
 
     case ADD_CHILD:
-      moveToPast(newTree, routes);
+   
+      moveToPast(newTree.appPages[store.getState().pageSelected], routes);
       (function add(tree, id) {
         if (tree.id === id) {
           tree.children.push({
@@ -88,7 +90,7 @@ const routes = (routes = initialState, action) => {
             name: action.name,
           });
         } else { tree.children.forEach(child => add(child, id)); }
-      }(newTree.present[store.getState().pageSelected], id));
+      }(newTree.appPages[store.getState().pageSelected].present, id));
 
       if (action.componentType !== 'Text') {
         newTree.totalComponents += 1;
@@ -97,9 +99,9 @@ const routes = (routes = initialState, action) => {
       return newTree;
 
     case ADD_PAGE:
-      moveToPast(newTree, routes);
+      moveToPast(newTree.appPages[store.getState().pageSelected], routes);
 
-      newTree.present.push({
+      newTree.appPages[store.getState().pageSelected].present = {
         id: action.nextId,
         props: {
           backgroundColor: 'rgba(255,255,255,.1)',
@@ -113,7 +115,7 @@ const routes = (routes = initialState, action) => {
         componentType: 'Block',
         parent: null,
         name: action.name,
-      });
+      };
 
       if (action.componentType !== 'Text') {
         newTree.totalComponents += 1;
@@ -124,7 +126,7 @@ const routes = (routes = initialState, action) => {
       return newTree;
 
     case REMOVE_CHILD:
-      moveToPast(newTree, routes, true);
+      moveToPast(newTree.appPages[store.getState().pageSelected], routes);
       (function search(tree) {
         if (tree.id === id) {
           parent.children = parent.children.filter(t => t.id !== id);
@@ -132,7 +134,7 @@ const routes = (routes = initialState, action) => {
           parent = tree;
           tree.children.forEach(child => search(child));
         }
-      }(newTree.present[store.getState().pageSelected]));
+      }(newTree.appPages[store.getState().pageSelected].present));
 
       if (action.componentType !== 'Text') {
         newTree.totalComponents -= 1;
@@ -141,15 +143,15 @@ const routes = (routes = initialState, action) => {
       return newTree;
 
     case UNDO:
-
-      newTree.future.push(_.cloneDeep(newTree.present.pop()));
-      newTree.present.push(_.cloneDeep(newTree.past.pop()));
+      const popped = newTree.appPages[currentPage].past.pop();
+      newTree.appPages[currentPage].future.push(_.cloneDeep(newTree.appPages[currentPage].present));
+      newTree.appPages[currentPage].present = _.cloneDeep(popped);
       return newTree;
 
     case REDO:
-
-      newTree.past.push(_.cloneDeep(newTree.present.pop()));
-      newTree.present.push(_.cloneDeep(newTree.future.pop()));
+      //console.log('REDO', newTree.appPages[currentPage].future.pop());     
+      newTree.appPages[currentPage].past.push(_.cloneDeep(newTree.appPages[currentPage].present));
+      newTree.appPages[currentPage].present = (_.cloneDeep(newTree.appPages[currentPage].future.pop()));
       return newTree;
 
     default:

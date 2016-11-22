@@ -12,7 +12,7 @@ import '../scss/canvas.scss';
 import '../scss/editor.scss';
 
 const Editor = ({ routes, selected, pageSelected, zoom }) => {
-  const pageRoute = [routes[pageSelected]];
+  const pageRoute = [routes[pageSelected].present];
   return (
     <div className="editor">
       <TextInputModal />
