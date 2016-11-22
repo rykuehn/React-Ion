@@ -8,7 +8,7 @@ import AddPage from '../../../components/tool_component/addremove/AddPage';
 const mapStateToProps = state => (
   {
     store: state.routes,
-    routes: state.routes.present,
+    routes: state.routes,
     selected: state.selected,
     pageSelected: state.pageSelected,
     nextId: state.nextId,
