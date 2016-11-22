@@ -5,12 +5,15 @@ import Block from '../containers/user_component/Block';
 import Text from '../containers/user_component/Text';
 import Menu from '../containers/user_component/Menu';
 import Image from '../containers/user_component/Image';
+import List from '../containers/user_component/List';
+
 import { download } from './api-methods';
 
 const BLOCK_COMPONENT = 'Block';
 const TEXT_COMPONENT = 'Text';
 const MENU_COMPONENT = 'Menu';
 const IMAGE_COMPONENT = 'Image';
+const LIST_COMPONENT = 'List';
 
 export function getValue(key, id, routes) {
   let value;
@@ -86,6 +89,19 @@ export function mapComponents(components, selected) {
             selected={selected}
             {...c.props}
           />,
+        );
+        break;
+      case LIST_COMPONENT:
+        mapped.push(
+          <List
+            setSelected={() => setSelected()}
+            key={c.id}
+            id={c.id}
+            selected={selected}
+            {...c.props}
+          >
+            {c.children ? mapComponents(c.children, selected) : null}
+          </List>,
         );
         break;
       default:
