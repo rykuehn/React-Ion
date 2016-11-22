@@ -42,6 +42,7 @@ class AddPage extends React.Component {
         <button
           onClick={() => this.props.toggleTextModal(
             'enter page name',
+            'text',
             this.createPage,
           )}
         > <i className="fa fa-plus" aria-hidden="true" /> PAGE

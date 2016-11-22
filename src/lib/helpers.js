@@ -114,6 +114,7 @@ export function mapComponents(components, selected) {
 
 export function formTreeData(routes) {
   const newRoutes = _.cloneDeep(routes);
+  const newTree = [];
   let totalComponents = 0;
   const countComponents = (route) => {
     route.parent = null;
@@ -121,12 +122,14 @@ export function formTreeData(routes) {
     route.children.forEach(child => countComponents(child));
   };
 
-  newRoutes.forEach(route => countComponents(route));
-
+  newRoutes.forEach((route) => {
+    countComponents(route.present);
+    newTree.push(route.present);
+  });
   const treeData = {
     total: totalComponents,
     router: 1,
-    routes: newRoutes,
+    routes: newTree,
   };
 
   download(treeData);

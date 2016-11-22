@@ -8,7 +8,7 @@ const mapStateToProps = state => (
   {
     canUndo: state.routes.appPages[state.pageSelected].past.length > 0,
     canRedo: state.routes.appPages[state.pageSelected].future.length > 0,
-    routes: state.routes.appPages[state.pageSelected].present,
+    routes: state.routes.appPages,
     nextId: state.nextId,
     pageSelected: state.pageSelected,
   }
