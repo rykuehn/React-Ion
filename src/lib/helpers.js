@@ -1,9 +1,9 @@
 import React from 'react';
 import _ from 'lodash';
 import { setSelected } from '../actions/selected';
-import Block from '../containers/Block';
-import Text from '../containers/Text';
-import Menu from '../containers/Menu';
+import Block from '../containers/user_component/Block';
+import Text from '../containers/user_component/Text';
+import Menu from '../containers/user_component/Menu';
 import { download } from './api-methods';
 
 const BLOCK_COMPONENT = 'Block';
