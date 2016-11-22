@@ -11,7 +11,7 @@ const Toolbar = ({
   canRedo,
   setZoom,
   routes,
-  pageSelected
+  pageSelected,
 }) => {
   console.log('TOOLBAR', pageSelected);
   return (
@@ -32,7 +32,7 @@ const Toolbar = ({
       <i className="fa fa-download" aria-hidden="true" />
     </ToolbarButton>
   </div>
-);
-}
+  );
+};
 
 export default Toolbar;

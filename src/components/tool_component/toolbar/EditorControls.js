@@ -36,6 +36,7 @@ const EditorControls = ({ info }) => {
     <div className="controls-wrapper">
       <Delete />
       <NameInput />
+      <AddPage />
       <AddBlock />
       <AddImage />
       <AddList />
