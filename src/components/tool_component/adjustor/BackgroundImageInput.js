@@ -14,6 +14,7 @@ const BackgroundImageInput = ({ updateProps, selected, toggleTextModal }) => {
       <button
         onClick={() => toggleTextModal(
           'enter url',
+          'text',
           callback,
         )}
       > <i className="fa fa-image" aria-hidden="true" />
