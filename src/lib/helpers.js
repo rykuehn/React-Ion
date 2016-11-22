@@ -4,11 +4,13 @@ import { setSelected } from '../actions/selected';
 import Block from '../containers/user_component/Block';
 import Text from '../containers/user_component/Text';
 import Menu from '../containers/user_component/Menu';
+import Image from '../containers/user_component/Image';
 import { download } from './api-methods';
 
 const BLOCK_COMPONENT = 'Block';
 const TEXT_COMPONENT = 'Text';
 const MENU_COMPONENT = 'Menu';
+const IMAGE_COMPONENT = 'Image';
 
 export function getValue(key, id, routes) {
   let value;
@@ -67,6 +69,17 @@ export function mapComponents(components, selected) {
       case MENU_COMPONENT:
         mapped.push(
           <Menu
+            setSelected={() => setSelected()}
+            key={c.id}
+            id={c.id}
+            selected={selected}
+            {...c.props}
+          />,
+        );
+        break;
+      case IMAGE_COMPONENT:
+        mapped.push(
+          <Image
             setSelected={() => setSelected()}
             key={c.id}
             id={c.id}
