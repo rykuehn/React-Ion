@@ -99,7 +99,6 @@ const routes = (routes = initialState, action) => {
       return newTree;
 
     case ADD_PAGE:
-      //moveToPast(newTree.appPages[store.getState().pageSelected], routes);
 
       newTree.appPages.push({
         past: [],
