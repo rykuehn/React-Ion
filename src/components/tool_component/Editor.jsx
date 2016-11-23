@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Draggable from 'react-draggable';
 import { mapComponents } from '../../lib/helpers';
 import TextInputModal from '../../containers/tool_component/text/TextInputModal';
@@ -45,6 +45,13 @@ const Editor = ({ routes, selected, pageSelected, zoom }) => {
       </div>
     </div>
   );
+};
+
+Editor.propTypes = {
+  routes: PropTypes.array.isRequired,
+  selected: PropTypes.number.isRequired,
+  pageSelected: PropTypes.number.isRequired,
+  zoom: PropTypes.number.isRequired,
 };
 
 export default Editor;
