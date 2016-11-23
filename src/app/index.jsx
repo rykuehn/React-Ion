@@ -92,11 +92,6 @@ class Home extends React.Component {
               aria-hidden="true"
             />
           </a>
-          <button
-            className="login-signup"
-            onClick={this.toggleForm}
-          > LOGIN | SIGNUP
-          </button>
           {
             this.state.loggedIn &&
             <button
