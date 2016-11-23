@@ -5,9 +5,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAG0lEQVQYV2P8XxUkyYADMIIkGdvWPccmP+gkAZZsGexuFgK2AAAAAElFTkSuQmCC);
 
   .banner {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,6 +36,7 @@
     justify-content: flex-end;
 
     .login-signup {
+      color: rgba(0,0,0,.8);
       cursor: pointer;
       margin-right: 40px;
       background-color: transparent;
@@ -43,13 +46,18 @@
       &:hover {
         color: coral;
       }
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 
   .form-visible {
+    transform: translateY(0);
     position: absolute;
     bottom: 0px;
-    z-index: 10;
+    z-index: 100;
     height: calc(100vh - 60px);
     width: 100vw;
     background-color: white;
@@ -57,6 +65,7 @@
     display: flex;
     flex-align: center;
     justify-content: center;
+    transition: transform .3s, opacity .3s;
 
     .login-signup-form {
       display: flex;
@@ -102,6 +111,8 @@
   }
 
   .form-hidden {
-    display: none;
+    width: 0px;
+    transform: translateY(100vh);
+    opacity: 0;
   }
 }
