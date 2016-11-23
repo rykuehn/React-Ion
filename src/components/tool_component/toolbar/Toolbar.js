@@ -3,7 +3,6 @@ import { formTreeData } from '../../../lib/helpers';
 import ToolbarButton from './ToolbarButton';
 import '../../../scss/toolbar.scss';
 
-
 const Toolbar = ({
   onUndo,
   canUndo,
@@ -11,10 +10,7 @@ const Toolbar = ({
   canRedo,
   setZoom,
   routes,
-  pageSelected,
-}) => {
-  console.log('TOOLBAR', pageSelected);
-  return (
+}) => (
   <div className="toolbar">
     <ToolbarButton click={canUndo ? onUndo : null}>
       <i className="fa fa-undo" aria-hidden="true" />
@@ -32,7 +28,6 @@ const Toolbar = ({
       <i className="fa fa-download" aria-hidden="true" />
     </ToolbarButton>
   </div>
-  );
-};
+);
 
 export default Toolbar;
