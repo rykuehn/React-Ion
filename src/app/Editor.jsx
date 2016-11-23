@@ -14,6 +14,7 @@ import PreviewDisplay from '../containers/tool_component/inspector/PreviewDispla
 import '../scss/toolbar.scss';
 import '../scss/canvas.scss';
 import '../scss/editor.scss';
+import '../scss/index.scss';
 
 const Editor = ({ routes, selected, pageSelected, zoom }) => {
   const pageRoute = [routes[pageSelected].present];
@@ -47,3 +48,4 @@ const Editor = ({ routes, selected, pageSelected, zoom }) => {
 };
 
 export default Editor;
+// export default store;
