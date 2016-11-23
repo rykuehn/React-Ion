@@ -10,7 +10,6 @@ class ListTextInputModal extends React.Component {
   }
 
   addToList(item) {
-    console.log("test");
     const list = this.state.list;
     list.push(item);
     this.setState({ list: list });
@@ -24,9 +23,9 @@ class ListTextInputModal extends React.Component {
       className = showing ? 'modal-wrapper' : 'modal-hidden';
     }
 
-    const listNode = this.state.list.map((list) => {
+    const listNode = this.state.list.map((list, index) => {
       return (
-        <div>{list}</div>
+        <div key={index}>{list}</div>
       );
     });
 

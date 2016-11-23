@@ -77,7 +77,6 @@ const routes = (routes = initialState, action) => {
       return newTree;
 
     case ADD_CHILD:
-      console.log(action.nextId);
       moveToPast(newTree.appPages[store.getState().pageSelected], routes);
       (function add(tree, id) {
         if (tree.id === id) {

@@ -1,5 +1,4 @@
-const port = process.env.PORT || 3000;
-const host = process.env.NODE_ENV === 'production' ? '' : `http://localhost:${port}`;
+import { host } from './api-config';
 
 module.exports.download = (projectTree) => {
   window.location.href = `/api/project/generate?tree=${encodeURIComponent(JSON.stringify(projectTree))}`;

@@ -74,6 +74,24 @@ class Home extends React.Component {
     return (
       <div className="home-page">
         <div className="top-bar">
+          <a
+            className="link-icon"
+            href="/editor.html"
+          >
+            <i
+              className="fa fa-sliders"
+              aria-hidden="true"
+            />
+          </a>
+          <a
+            className="link-icon"
+            href="#"
+          >
+            <i
+              className="fa fa-home"
+              aria-hidden="true"
+            />
+          </a>
           {
             this.state.loggedIn &&
             <button
