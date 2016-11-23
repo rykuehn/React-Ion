@@ -1,5 +1,9 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import store from '../store/store';
 import '../scss/HomePage.scss';
+import '../scss/index.scss';
 
 class Home extends React.Component {
   constructor(props) {
@@ -63,4 +67,13 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+const App = () => (
+  <Provider store={store}>
+    <Home />
+  </Provider>
+);
+
+
+ReactDOM.render(<App />, document.getElementById('App'));
+
+export default store;
