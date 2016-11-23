@@ -59,6 +59,7 @@ class ListTextInputModal extends React.Component {
           </button>
           <button
             className="submit-button"
+            type="submit"
             onClick={(e) => {
               e.preventDefault();
               () => console.log(this.text.value)

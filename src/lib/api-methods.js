@@ -1,85 +1,120 @@
-const port = process.env.PORT || 8080;
-const host = `http://localhost:${port}`;
-// require('whatwg-fetch');
+const port = process.env.PORT || 3000;
+const host = process.env.NODE_ENV === 'production' ? '' : `http://localhost:${port}`;
 
 module.exports.download = (projectTree) => {
   window.location.href = `/api/project/generate?tree=${encodeURIComponent(JSON.stringify(projectTree))}`;
 };
 
 module.exports.getUserProjects = () => {
+  const options = {
+    method: 'GET',
+    credentials: 'include',
+  };
 
+  return fetch(`${host}/api/user/projects`, options)
+    .then(projects => projects.json())
+    .catch(err => err);
+};
+
+module.exports.getProject = (projectId) => {
+  const options = {
+    method: 'GET',
+    credentials: 'include',
+  };
+
+  return fetch(`${host}/api/project/${projectId}`, options)
+    .then(project => project.json())
+    .catch(err => err);
+};
+
+module.exports.getAllProjects = () => {
+  const options = {
+    method: 'GET',
+    credentials: 'include',
+  };
+
+  return fetch(`${host}/api/project/`, options)
+    .then(projects => projects.json())
+    .catch(err => err);
+};
+
+module.exports.removeProject = (projectId) => {
+  const options = {
+    method: 'DELETE',
+    credentials: 'include',
+  };
+
+  return fetch(`${host}/api/project/${projectId}`, options)
+    .then(project => project.json());
+};
+
+module.exports.createProject = (projectData) => {
+  const options = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(projectData),
+    credentials: 'include',
+  };
+
+  return fetch(`${host}/api/project/`, options)
+    .then(project => project.json());
+};
+
+module.exports.updateProject = (projectId, newProps) => {
+  const options = {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newProps),
+    credentials: 'include',
+  };
+
+  return fetch(`${host}/api/project/${projectId}`, options)
+    .then(project => project.json());
+};
+
+// User Authentication
+
+module.exports.signup = (username, password) => {
+  const options = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, password }),
+    credentials: 'include',
+  };
+
+  return fetch(`${host}/signup`, options)
+    .then(user => user.json())
+    .catch(err => err);
 };
 
 module.exports.login = (username, password) => {
   const options = {
     method: 'POST',
-    // headers: {
-    //   'Content-Type': 'application/json',
-    // },
-    body: {
-      username,
-      password,
-    },
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, password }),
+    credentials: 'include',
   };
 
-  fetch(host, options)
-    .then(() => {
-      console.log('Successfully logged in');
-    });
-};
-
-module.exports.signup = (username, password) => {
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      username,
-      password,
-    }),
-  };
-
-  return fetch('/signup', options)
-    .then(userInfo => userInfo)
+  return fetch(`${host}/login`, options)
+    .then(user => user.json())
     .catch(err => err);
 };
 
 module.exports.logout = () => {
+  const options = { method: 'GET' };
 
+  return fetch(`${host}/logout`, options)
+    .then(user => user.json())
+    .catch(err => err);
 };
 
-module.exports.getProject = () => {
-
-};
-
-module.exports.getAllProjects = () => {
-
-};
-
-
-module.exports.removeProject = () => {
-
-};
-
-module.exports.saveProject = (userId, name, projectTree, projectId) => {
+module.exports.authenticate = () => {
   const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    data: {
-      name,
-      project_tree: projectTree,
-    },
+    method: 'GET',
+    credentials: 'include',
   };
 
-  fetch(`/api/project/${projectId}`, options)
-    .then(() => {
-      console.log('Update Successful');
-    });
-};
-
-module.exports.updateProject = () => {
-
+  return fetch(`${host}/authenticate`, options)
+    .then(status => status.json())
+    .catch(err => err);
 };
