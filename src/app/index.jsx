@@ -74,6 +74,29 @@ class Home extends React.Component {
     return (
       <div className="home-page">
         <div className="top-bar">
+          <a
+            className="link-icon"
+            href="/editor.html"
+          >
+            <i
+              className="fa fa-sliders"
+              aria-hidden="true"
+            />
+          </a>
+          <a
+            className="link-icon"
+            href="#"
+          >
+            <i
+              className="fa fa-home"
+              aria-hidden="true"
+            />
+          </a>
+          <button
+            className="login-signup"
+            onClick={this.toggleForm}
+          > LOGIN | SIGNUP
+          </button>
           {
             this.state.loggedIn &&
             <button
