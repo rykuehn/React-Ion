@@ -18,7 +18,6 @@ import '../../scss/index.scss';
 
 const Editor = ({ routes, selected, pageSelected, zoom }) => {
   const pageRoute = [routes[pageSelected].present];
-  console.log(pageRoute);
   return (
     <div className="editor">
       <TextInputModal />
