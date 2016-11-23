@@ -28,7 +28,6 @@ const DropDown = ({
     display: 'inline-block'
   };
 
-  console.log('that is a nice looking drop down menu!!');
   return (
     <div
       style={textStyle}
