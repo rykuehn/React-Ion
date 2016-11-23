@@ -6,7 +6,6 @@ class TextInputModal extends React.Component {
   render() {
 
     const pageRoute = [this.props.routes[this.props.pageSelected].present];
-
     const { textModal, closeTextModal } = this.props;
     const { callback, showing, action, placeholder } = textModal;
 
