@@ -38,10 +38,6 @@ const EditorControls = ({ info }) => {
       <Delete />
       <NameInput />
       <AddPage />
-      <AddBlock />
-      <AddImage />
-      <AddList />
-      <TextInput />
       <RowColumnPicker />
       <BackgroundImageInput />
       <AddLink />

@@ -10,9 +10,7 @@ class PreviewDisplay extends React.Component {
           'preview',
           this.callback,
         )}
-
-      >
-        <i className="fa fa-link" aria-hidden="true" /> Preview
+      > Preview
       </button>
     );
   }
