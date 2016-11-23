@@ -18,7 +18,6 @@ import WidthSlider from '../../../containers/tool_component/adjustor/WidthSlider
 import FlexSlider from '../../../containers/tool_component/adjustor/FlexSlider';
 import AddLink from '../../../containers/tool_component/addremove/AddLink';
 import AddList from '../../../containers/tool_component/addremove/AddList';
-import AddRadio from '../../../containers/tool_component/addremove/AddRadio';
 import AddDropDown from '../../../containers/tool_component/addremove/AddDropDown';
 
 const EditorControls = ({ info }) => {
@@ -44,7 +43,6 @@ const EditorControls = ({ info }) => {
       <AddBlock />
       <AddImage />
       <AddList />
-      <AddRadio />
       <AddDropDown />
       <TextInput />
       <RowColumnPicker />
