@@ -44,7 +44,8 @@ module.exports.removeProject = (projectId) => {
   };
 
   return fetch(`${host}/api/project/${projectId}`, options)
-    .then(project => project.json());
+    .then(project => project.json())
+    .catch(err => err);
 };
 
 module.exports.createProject = (projectData) => {
@@ -56,7 +57,8 @@ module.exports.createProject = (projectData) => {
   };
 
   return fetch(`${host}/api/project/`, options)
-    .then(project => project.json());
+    .then(project => project.json())
+    .catch(err => err);
 };
 
 module.exports.updateProject = (projectId, newProps) => {
