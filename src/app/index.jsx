@@ -134,8 +134,8 @@ class Home extends React.Component {
                 ? 'error-box' : 'error-box-hidden'
               }
             >
-              {this.state.loginError ? 'Error Logging In' : null}
-              {this.state.signupError ? 'Error Signing Up' : null}
+              {this.state.loginError ? 'Incorrect username or password' : null}
+              {this.state.signupError ? 'Username is taken' : null}
             </div>
             <form id="login-form">
               <input
