@@ -48,11 +48,11 @@ module.exports.removeProject = (projectId) => {
     .catch(err => err);
 };
 
-module.exports.createProject = (projectData) => {
+module.exports.createProject = (permissionId, projectProps) => {
   const options = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(projectData),
+    body: JSON.stringify({ permissionId, projectProps }),
     credentials: 'include',
   };
 

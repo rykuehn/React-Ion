@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { formTreeData, handleSave } from '../../../lib/helpers';
+import { formTreeData, handleProjectSave } from '../../../lib/helpers';
 import ToolbarButton from './ToolbarButton';
 import '../../../scss/toolbar.scss';
 
@@ -23,6 +23,9 @@ const Toolbar = ({
     </ToolbarButton>
     <ToolbarButton click={() => setZoom('minus')}>
       <i className="fa fa-search-minus" aria-hidden="true" />
+    </ToolbarButton>
+    <ToolbarButton click={() => {}}>
+      <i className="fa fa-plus-circle" aria-hidden="true" />
     </ToolbarButton>
     <ToolbarButton click={() => {}}>
       <i className="fa fa-floppy-o" aria-hidden="true" />

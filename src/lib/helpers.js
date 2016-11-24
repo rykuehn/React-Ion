@@ -8,7 +8,7 @@ import Image from '../containers/user_component/Image';
 import List from '../containers/user_component/List';
 import Radio from '../containers/user_component/Radio';
 import DropDown from '../containers/user_component/DropDown';
-import { download, updateProject } from './api-methods';
+import { download, createProject, updateProject } from './api-methods';
 
 const BLOCK_COMPONENT = 'Block';
 const TEXT_COMPONENT = 'Text';
@@ -164,7 +164,18 @@ export function formTreeData(routes) {
   download(treeData);
 }
 
-export function handleSave(projectId, projectTree) {
+export function handleProjectCreate(permissionId, projectProps) {
+  createProject(permissionId, projectProps)
+    .then((project) => {
+      if (project.data) {
+        console.log('Project Create');
+      } else {
+        console.log('Error creating project');
+      }
+    }).catch(err => console.log(err));
+}
+
+export function handleProjectSave(projectId, projectTree) {
   updateProject(projectId, projectTree)
     .then((project) => {
       if (project.data) {
