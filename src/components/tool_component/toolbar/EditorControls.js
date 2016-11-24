@@ -38,14 +38,11 @@ const EditorControls = ({ info }) => {
       <Delete />
       <NameInput />
       <AddPage />
-<<<<<<< HEAD
       <AddBlock />
       <AddImage />
       <AddList />
       <AddRadio />
-=======
       <AddBtn />
->>>>>>> 1b3d43f0e176fae62eb480cd4895981b83c70501
       <AddDropDown />
       <RowColumnPicker />
       <ColorPicker />
