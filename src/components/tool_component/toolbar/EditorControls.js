@@ -12,7 +12,6 @@ import ColorPicker from '../../../containers/tool_component/adjustor/ColorPicker
 import HeightSlider from '../../../containers/tool_component/adjustor/HeightSlider';
 import WidthSlider from '../../../containers/tool_component/adjustor/WidthSlider';
 import FlexSlider from '../../../containers/tool_component/adjustor/FlexSlider';
-import AddDropDown from '../../../containers/tool_component/addremove/AddDropDown';
 import AddBtn from '../../../containers/tool_component/addremove/AddBtn';
 
 const EditorControls = ({ info }) => {
@@ -36,7 +35,6 @@ const EditorControls = ({ info }) => {
       <NameInput />
       <AddPage />
       <AddBtn />
-      <AddDropDown />
       <RowColumnPicker />
       <ColorPicker />
       <HeightSlider />

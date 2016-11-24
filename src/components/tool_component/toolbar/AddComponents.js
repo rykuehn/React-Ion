@@ -6,6 +6,9 @@ import AddList from '../../../containers/tool_component/addremove/AddList';
 import TextInput from '../../../containers/tool_component/text/TextInput';
 import BackgroundImageInput from '../../../containers/tool_component/adjustor/BackgroundImageInput';
 import AddLink from '../../../containers/tool_component/addremove/AddLink';
+import AddDropDown from '../../../containers/tool_component/addremove/AddDropDown';
+import AddRadio from '../../../containers/tool_component/addremove/AddRadio';
+
 
 import '../../../scss/AddComponents.scss';
 
@@ -33,6 +36,8 @@ const AddComponents = ({ draggable, closeDraggableModal }) => {
           <AddList />
           <BackgroundImageInput />
           <AddLink />
+          <AddDropDown />
+          <AddRadio />
         </div>
       </div>
     </Draggable>

@@ -24,7 +24,7 @@ const List = ({
 
   const listStyle = {
     display: 'inline-block'
-  }
+  };
 
   return (
     <div
