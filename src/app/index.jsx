@@ -13,6 +13,8 @@ class Home extends React.Component {
     this.state = {
       activeForm: false,
       loggedIn: false,
+      signupError: false,
+      loginError: false,
     };
 
     this.toggleForm = this.toggleForm.bind(this);
@@ -43,6 +45,9 @@ class Home extends React.Component {
         if (user.data) {
           this.setState({ loggedIn: true });
           this.toggleForm();
+        } else {
+          this.setState({ signupError: true });
+          setTimeout(() => this.setState({ signupError: false }), 5000);
         }
       });
   }
@@ -57,6 +62,9 @@ class Home extends React.Component {
         if (user.data) {
           this.setState({ loggedIn: true });
           this.toggleForm();
+        } else {
+          this.setState({ loginError: true });
+          setTimeout(() => this.setState({ loginError: false }), 5000);
         }
       });
   }
@@ -121,6 +129,14 @@ class Home extends React.Component {
           }
         >
           <div className="login-signup-form">
+            <div
+              className={this.state.loginError || this.state.signupError
+                ? 'error-box' : 'error-box-hidden'
+              }
+            >
+              {this.state.loginError ? 'Error Logging In' : null}
+              {this.state.signupError ? 'Error Signing Up' : null}
+            </div>
             <form id="login-form">
               <input
                 type="text"
