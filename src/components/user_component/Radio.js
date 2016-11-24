@@ -57,8 +57,8 @@ class Radio extends Component {
       >
         {content.map((item, index) => {
           return (
-            <div style={divStyle}>
-              <label key={index} style={inputStyle} >
+            <div style={divStyle} key={index}>
+              <label style={inputStyle} >
                 <input
                   style={inputStyle}
                   type="radio"
