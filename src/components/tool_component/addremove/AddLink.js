@@ -23,7 +23,7 @@ const AddLink = ({
           'text',
           callback,
         )}
-      > <i className="fa fa-link" aria-hidden="true" />
+      > <i className="fa fa-link" aria-hidden="true" /> Link
       </button>
     </div>
   );
