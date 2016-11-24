@@ -28,7 +28,7 @@ const EditorControls = ({ info }) => {
       </div>
     );
   }
- 
+
   return (
     <div className="controls-wrapper">
       <Delete />
