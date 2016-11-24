@@ -6,6 +6,7 @@ import Text from '../containers/user_component/Text';
 import Menu from '../containers/user_component/Menu';
 import Image from '../containers/user_component/Image';
 import List from '../containers/user_component/List';
+import DropDown from '../containers/user_component/DropDown';
 
 import { download } from './api-methods';
 
@@ -14,6 +15,7 @@ const TEXT_COMPONENT = 'Text';
 const MENU_COMPONENT = 'Menu';
 const IMAGE_COMPONENT = 'Image';
 const LIST_COMPONENT = 'List';
+const DROPDOWN_COMPONENT =  'DropDown';
 
 export function getValue(key, id, routes) {
   let value;
@@ -101,6 +103,19 @@ export function mapComponents(components, selected) {
           >
             {c.children ? mapComponents(c.children, selected) : null}
           </List>,
+        );
+        break;
+      case DROPDOWN_COMPONENT:
+        mapped.push(
+          <DropDown
+            setSelected={() => setSelected()}
+            key={c.id}
+            id={c.id}
+            selected={selected}
+            {...c.props}
+          >
+            {c.children ? mapComponents(c.children, selected) : null}
+          </DropDown>,
         );
         break;
       default:
