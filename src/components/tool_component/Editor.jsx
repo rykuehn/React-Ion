@@ -10,7 +10,7 @@ import ZoomPercent from '../../containers/tool_component/inspector/ZoomPercent';
 import CurrentComponent from '../../containers/tool_component/inspector/CurrentComponent';
 import LinkDisplay from '../../containers/tool_component/inspector/LinkDisplay';
 import PreviewDisplay from '../../containers/tool_component/inspector/PreviewDisplay';
-import AddComponents from '../../components/tool_component/toolbar/AddComponents';
+import AddComponents from '../../containers/tool_component/toolbar/AddComponents';
 import Shortcut from '../../containers/tool_component/toolbar/Shortcuts';
 
 

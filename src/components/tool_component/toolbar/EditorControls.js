@@ -7,10 +7,6 @@ import SelectFont from '../../../containers/tool_component/text/SelectFont';
 import TextAlign from '../../../containers/tool_component/text/TextAlign';
 import NameInput from '../../../containers/tool_component/text/NameInput';
 import AddPage from '../../../containers/tool_component/addremove/AddPage';
-import AddBlock from '../../../containers/tool_component/addremove/AddBlock';
-import AddImage from '../../../containers/tool_component/addremove/AddImage';
-import TextInput from '../../../containers/tool_component/text/TextInput';
-import BackgroundImageInput from '../../../containers/tool_component/adjustor/BackgroundImageInput';
 import RowColumnPicker from '../../../containers/tool_component/adjustor/RowColumnPicker';
 import ColorPicker from '../../../containers/tool_component/adjustor/ColorPicker';
 import HeightSlider from '../../../containers/tool_component/adjustor/HeightSlider';
@@ -20,6 +16,7 @@ import AddLink from '../../../containers/tool_component/addremove/AddLink';
 import AddList from '../../../containers/tool_component/addremove/AddList';
 import AddRadio from '../../../containers/tool_component/addremove/AddRadio';
 import AddDropDown from '../../../containers/tool_component/addremove/AddDropDown';
+import AddBtn from '../../../containers/tool_component/addremove/AddBtn';
 
 const EditorControls = ({ info }) => {
   const type = info.componentType;
@@ -35,21 +32,22 @@ const EditorControls = ({ info }) => {
       </div>
     );
   }
-  
+ 
   return (
     <div className="controls-wrapper">
       <Delete />
       <NameInput />
       <AddPage />
+<<<<<<< HEAD
       <AddBlock />
       <AddImage />
       <AddList />
       <AddRadio />
+=======
+      <AddBtn />
+>>>>>>> 1b3d43f0e176fae62eb480cd4895981b83c70501
       <AddDropDown />
-      <TextInput />
       <RowColumnPicker />
-      <BackgroundImageInput />
-      <AddLink />
       <ColorPicker />
       <HeightSlider />
       <WidthSlider />

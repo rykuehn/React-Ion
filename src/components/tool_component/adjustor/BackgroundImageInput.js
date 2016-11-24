@@ -17,7 +17,7 @@ const BackgroundImageInput = ({ updateProps, selected, toggleTextModal }) => {
           'text',
           callback,
         )}
-      > <i className="fa fa-image" aria-hidden="true" />
+      > <i className="fa fa-image" aria-hidden="true" /> Background
       </button>
     </div>
   );
