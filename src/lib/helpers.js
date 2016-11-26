@@ -140,7 +140,7 @@ export function mapComponents(components, selected) {
   return mapped;
 }
 
-export function formTreeData(routes) {
+const formTreeData = (routes) => {
   const newRoutes = _.cloneDeep(routes);
   const newTree = [];
   let totalComponents = 0;
@@ -161,22 +161,37 @@ export function formTreeData(routes) {
     routes: newTree,
   };
 
+  return treeData;
+};
+
+export function handleProjectDownload(routes) {
+  const treeData = formTreeData(routes);
   download(treeData);
 }
 
-export function handleProjectCreate(permissionId, projectProps) {
+export function handleProjectCreate(permissionId, name, routes) {
+  const projectProps = {
+    name,
+    project_tree: JSON.stringify(formTreeData(routes)),
+  };
   createProject(permissionId, projectProps)
     .then((project) => {
+      console.log(project);
       if (project.data) {
-        console.log('Project Create');
+        console.log('Project Created');
       } else {
         console.log('Error creating project');
       }
     }).catch(err => console.log(err));
 }
 
-export function handleProjectSave(projectId, projectTree) {
-  updateProject(projectId, projectTree)
+export function handleProjectSave(name, routes) {
+  const projectId = window.location.href.match(/\/[^/]+$/)[0].slice(1);
+  const projectProps = {
+    name,
+    project_tree: JSON.stringify(formTreeData(routes)),
+  };
+  updateProject(projectId, projectProps)
     .then((project) => {
       if (project.data) {
         console.log('Project saved');
