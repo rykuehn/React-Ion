@@ -4,11 +4,10 @@
   "description": "> Pithy project description",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js",
-    "test": "mocha --bail tests/specs.js",
-    "jest": "jest --bail",
     "build": "gulp build && webpack -p --config webpack.config.js --progress --profile --colors",
     "dev": "./node_modules/.bin/webpack-dev-server -d --host 0.0.0.0 --config webpack.config.js --content-base src/ --colors --hot --progress --inline --watch",
+    "start": "node server/server.js",
+    "test": "jest",
     "postinstall": "npm run build"
   },
   "jest": {
@@ -19,45 +18,33 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anxsaiyuki/React-Ion.git"
+    "url": "git+https://github.com/React-Ion/React-Ion.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/anxsaiyuki/React-Ion/issues"
+    "url": "https://github.com/React-Ion/React-Ion/issues"
   },
-  "homepage": "https://github.com/anxsaiyuki/React-Ion#readme",
+  "homepage": "https://github.com/React-Ion/React-Ion#readme",
   "dependencies": {
-    "airbnb-js-shims": "^1.0.1",
-    "archiver": "^1.2.0",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.7",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
-    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "chai": "^3.5.0",
-    "cookie-parser": "^1.4.3",
     "css-loader": "^0.25.0",
     "del": "^2.2.2",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
-    "express-session": "^1.14.2",
     "extract-text-webpack-plugin": "^1.0.1",
-    "fs": "0.0.1-security",
-    "fs.extra": "^1.3.2",
     "gulp": "^3.9.1",
     "karma": "^1.3.0",
     "lodash": "^4.16.6",
     "mocha": "^3.1.2",
     "morgan": "^1.7.0",
-    "mysql": "^2.12.0",
     "node-sass": "^3.11.2",
-    "passport": "^0.3.2",
-    "passport-facebook": "^2.1.1",
-    "passport-github": "^1.1.0",
-    "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
@@ -65,9 +52,7 @@
     "react-redux": "^4.4.5",
     "react-router": "^3.0.0",
     "redux": "^3.6.0",
-    "request": "^2.78.0",
     "sass-loader": "^4.0.2",
-    "string-stream": "0.0.7",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
