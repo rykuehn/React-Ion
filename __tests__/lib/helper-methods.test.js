@@ -2,7 +2,7 @@ import {
  capitalizeFirstLetter,
  makeComponentName,
  formTreeData,
-} from '../../../src/lib/helpers';
+} from '../../src/lib/helpers';
 
 test('Will capitalize the fist letter', () => {
   expect(capitalizeFirstLetter('block')).toBe('Block');
