@@ -9,5 +9,4 @@ module.exports = (app, express) => {
   app.set('view engine', 'ejs');
   app.set('views', path.join(__dirname, '/../../dist'));
   app.use(express.static(path.join(__dirname, '/../../dist')));
-  app.use('/editor', express.static(path.join(__dirname, '/../../dist')));
 };

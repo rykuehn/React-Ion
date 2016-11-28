@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const del = require('del');
 
 gulp.task('copy', function() {
-  const folders = ['src/**/*.html', 'src/**/*.png'];
+  const folders = ['src/pages/*.html', 'src/**/*.png'];
   // folders.map(function(folder) {
   //  return gulp.src(folder)
   //             .pipe(gulp.dest('./dist/'));
