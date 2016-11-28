@@ -8,7 +8,6 @@ import Image from '../containers/user_component/Image';
 import List from '../containers/user_component/List';
 import Radio from '../containers/user_component/Radio';
 import DropDown from '../containers/user_component/DropDown';
-import { download, createProject, updateProject } from './api-methods';
 
 const BLOCK_COMPONENT = 'Block';
 const TEXT_COMPONENT = 'Text';
@@ -16,7 +15,7 @@ const MENU_COMPONENT = 'Menu';
 const IMAGE_COMPONENT = 'Image';
 const LIST_COMPONENT = 'List';
 const RADIO_COMPONENT = 'Radio';
-const DROPDOWN_COMPONENT =  'DropDown';
+const DROPDOWN_COMPONENT = 'DropDown';
 
 export function getValue(key, id, routes) {
   let value;

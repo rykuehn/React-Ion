@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { signup, login, logout, authenticate } from '../lib/api-methods';
-import '../scss/HomePage.scss';
-import '../scss/index.scss';
+import '../scss/dashboard.scss';
 
-class Home extends React.Component {
+class Dashboard extends React.Component {
   constructor(props) {
     super(props);
 
@@ -167,4 +166,4 @@ class Home extends React.Component {
   }
 }
 
-ReactDOM.render(<Home />, document.getElementById('App'));
+ReactDOM.render(<Dashboard />, document.getElementById('App'));
