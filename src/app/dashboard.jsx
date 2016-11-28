@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { getUserProjects, getAllProjects, authenticate } from '../lib/api-methods';
+import { handleProjectRemove } from '../lib/api-handlers';
 import '../scss/dashboard.scss';
 
 class Dashboard extends React.Component {
@@ -16,11 +17,15 @@ class Dashboard extends React.Component {
   componentWillMount() {
     return authenticate().then((status) => {
       if (status.data) {
-        return getUserProjects().then(projects =>
-          this.setState({
-            loggedIn: true,
-            projects: projects.data,
-          })).catch(err => console.error(err));
+        return getUserProjects().then((projects) => {
+          if (projects.data) {
+            return this.setState({
+              loggedIn: true,
+              projects: projects.data,
+            });
+          }
+          return 'No Projects';
+        }).catch(err => console.error(err));
       }
       window.location.href = '/';
       return 'Unauthorized';
@@ -30,13 +35,17 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="dashboard">
-        <div>
-          {
-            this.state.projects.map(project => (
-              <a key={project.id} href={`/editor/${project.id}`}>{project.name}</a>
-            ))
-          }
-        </div>
+        { console.log('this.stateprojects', this.state.projects) }
+        {
+          this.state.projects.map(project => (
+            <div key={project.id}>
+              <a href={`/editor/${project.id}`}>{project.name}</a>
+              <button onClick={() => handleProjectRemove(project.id)}>
+                Remove Project
+              </button>
+            </div>
+          ))
+        }
       </div>
     );
   }
