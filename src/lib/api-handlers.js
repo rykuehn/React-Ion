@@ -1,5 +1,10 @@
 import _ from 'lodash';
-import { download, createProject, updateProject } from './api-methods';
+import {
+  download,
+  createProject,
+  updateProject,
+  removeProject,
+} from './api-methods';
 
 const formTreeData = (routes) => {
   const newRoutes = _.cloneDeep(routes);
@@ -59,4 +64,16 @@ export function handleProjectSave(name, routes) {
         console.log('Error saving project');
       }
     }).catch(err => console.log(err));
+}
+
+export function handleProjectRemove(projectId) {
+  removeProject(projectId)
+    .then((project) => {
+      if (project.data) {
+        console.log('Project deleted');
+      } else {
+        console.log('Error deleting project');
+      }
+    })
+    .catch(err => err);
 }

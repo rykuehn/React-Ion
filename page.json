@@ -1,4 +1,5 @@
 {
   "index": "./src/app/index.jsx",
+  "dashboard": "./src/app/dashboard.jsx",
   "editor": "./src/app/editor.jsx"
 }

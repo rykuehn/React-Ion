@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const del = require('del');
 const watch = require('gulp-watch');
 
-gulp.task('copy', function() {
+gulp.task('copy', () => {
   const folders = ['src/pages/*.html', 'src/**/*.png'];
   // folders.map(function(folder) {
   //  return gulp.src(folder)
@@ -14,16 +14,16 @@ gulp.task('copy', function() {
   //     .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('copy-watch', function() {
+gulp.task('copy-watch', () => {
   return watch('src/pages/*.html', { ignoreInitial: false })
     .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('clean', function() {
+gulp.task('clean', () => {
   return del.sync([
     './dist/**',
   ]);
 });
 
 gulp.task('build', ['clean', 'copy']);
-gulp.task('dev', ['clean', 'copy-watch'])
+gulp.task('dev', ['clean', 'copy-watch']);
