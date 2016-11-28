@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { formTreeData } from '../../../lib/helpers';
+import { handleProjectCreate, handleProjectSave, handleProjectDownload } from '../../../lib/api-handlers';
 import ToolbarButton from './ToolbarButton';
 import '../../../scss/toolbar.scss';
 
@@ -24,7 +24,13 @@ const Toolbar = ({
     <ToolbarButton click={() => setZoom('minus')}>
       <i className="fa fa-search-minus" aria-hidden="true" />
     </ToolbarButton>
-    <ToolbarButton click={() => { formTreeData(routes); }}>
+    <ToolbarButton click={() => { handleProjectCreate(1, 'notImportant', routes); }}>
+      <i className="fa fa-plus-circle" aria-hidden="true" />
+    </ToolbarButton>
+    <ToolbarButton click={() => { handleProjectSave('notImportant', routes); }}>
+      <i className="fa fa-floppy-o" aria-hidden="true" />
+    </ToolbarButton>
+    <ToolbarButton click={() => { handleProjectDownload(routes); }}>
       <i className="fa fa-download" aria-hidden="true" />
     </ToolbarButton>
   </div>

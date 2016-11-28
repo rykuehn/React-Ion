@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import store from '../store/store';
 import { signup, login, logout, authenticate } from '../lib/api-methods';
 import '../scss/HomePage.scss';
 import '../scss/index.scss';
@@ -84,7 +82,16 @@ class Home extends React.Component {
         <div className="top-bar">
           <a
             className="link-icon"
-            href="/editor.html"
+            href="/dashboard"
+          >
+            <i
+              className="fa fa-address-book"
+              aria-hidden="true"
+            />
+          </a>
+          <a
+            className="link-icon"
+            href="/editor"
           >
             <i
               className="fa fa-sliders"
@@ -93,7 +100,7 @@ class Home extends React.Component {
           </a>
           <a
             className="link-icon"
-            href="#"
+            href="/"
           >
             <i
               className="fa fa-home"
@@ -161,5 +168,3 @@ class Home extends React.Component {
 }
 
 ReactDOM.render(<Home />, document.getElementById('App'));
-
-export default store;

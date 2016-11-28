@@ -44,19 +44,21 @@ module.exports.removeProject = (projectId) => {
   };
 
   return fetch(`${host}/api/project/${projectId}`, options)
-    .then(project => project.json());
+    .then(project => project.json())
+    .catch(err => err);
 };
 
-module.exports.createProject = (projectData) => {
+module.exports.createProject = (permissionId, projectProps) => {
   const options = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(projectData),
+    body: JSON.stringify({ permissionId, projectProps }),
     credentials: 'include',
   };
 
   return fetch(`${host}/api/project/`, options)
-    .then(project => project.json());
+    .then(project => project.json())
+    .catch(err => err);
 };
 
 module.exports.updateProject = (projectId, newProps) => {
@@ -68,7 +70,8 @@ module.exports.updateProject = (projectId, newProps) => {
   };
 
   return fetch(`${host}/api/project/${projectId}`, options)
-    .then(project => project.json());
+    .then(project => project.json())
+    .catch(err => err);
 };
 
 // User Authentication
