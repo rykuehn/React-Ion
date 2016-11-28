@@ -70,7 +70,8 @@ module.exports.updateProject = (projectId, newProps) => {
   };
 
   return fetch(`${host}/api/project/${projectId}`, options)
-    .then(project => project.json());
+    .then(project => project.json())
+    .catch(err => err);
 };
 
 // User Authentication

@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { handleProjectCreate, handleProjectSave, handleProjectDownload } from '../../../lib/helpers';
+import { handleProjectCreate, handleProjectSave, handleProjectDownload } from '../../../lib/api-handlers';
 import ToolbarButton from './ToolbarButton';
 import '../../../scss/toolbar.scss';
 
