@@ -87,7 +87,7 @@ class Home extends React.Component {
               href="/dashboard"
             >
               <i
-                className="fa fa-address-book"
+                className="fa fa-folder-o"
                 aria-hidden="true"
               />
             </a>

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { SET_SELECTED } from '../actions/selected';
-import { UPDATE_PROPS, UPDATE_INFOS } from '../actions/routes';
+import { UPDATE_PROPS, GET_INFO, UPDATE_INFOS } from '../actions/routes';
 import store from '../store/store';
 
 const initialState = {
@@ -35,7 +35,7 @@ const info = (info = initialState, action) => {
       getInfo(store.getState().routes.appPages[store.getState().pageSelected].present);
       return information;
 
-    case UPDATE_PROPS:
+    case GET_INFO:
       getInfo(store.getState().routes.appPages[store.getState().pageSelected].present);
       return information;
 

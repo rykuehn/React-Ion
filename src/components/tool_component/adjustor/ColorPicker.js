@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 class ColorPicker extends React.Component {
   render() {
-    const { updateProps, selected } = this.props;
+    const { info, updateProps, selected } = this.props;
     const action = () => updateProps(
       'backgroundColor',
       this.backgroundColor.value,
@@ -16,6 +16,7 @@ class ColorPicker extends React.Component {
           ref={i => (this.backgroundColor = i)}
           onClick={action}
           onInput={action}
+          value={info.props.backgroundColor}
         />
       </div>
     );
