@@ -1,7 +1,7 @@
 import { host } from './api-config';
 
 module.exports.download = (projectTree) => {
-  window.location.href = `/api/project/generate?tree=${encodeURIComponent(JSON.stringify(projectTree))}`;
+  window.location.href = `${host}/api/project/generate?tree=${encodeURIComponent(JSON.stringify(projectTree))}`;
 };
 
 module.exports.getUserProjects = () => {

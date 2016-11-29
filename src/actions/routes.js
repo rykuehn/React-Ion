@@ -1,3 +1,5 @@
+import store from '../store/store';
+
 export const UPDATE_PROPS = 'UPDATE_PROPS';
 export const UPDATE_INFOS = 'UPDATE_INFOS';
 export const ADD_CHILD = 'ADD_CHILD';
@@ -6,10 +8,15 @@ export const REMOVE_CHILD = 'REMOVE_CHILD';
 export const UNDO = 'UNDO';
 export const REDO = 'REDO';
 export const ADD_PAGE = 'ADD_PAGE';
+export const GET_INFO = 'GET_INFO';
 export const UPDATE_ROUTES = 'UPDATE_ROUTES';
 export const SET_NEXTID = 'SET_NEXTID';
 
 export function updateProps(key, value, id, actionType) {
+  setTimeout(() => {
+    store.dispatch({ type: GET_INFO, id });
+  }, 1);
+  
   return {
     type: UPDATE_PROPS,
     key,
@@ -20,6 +27,10 @@ export function updateProps(key, value, id, actionType) {
 }
 
 export function updateInfos(key, value, id, actionType) {
+  setTimeout(() => {
+    store.dispatch({ type: GET_INFO, id });
+  }, 1);
+
   return {
     type: UPDATE_INFOS,
     key,
