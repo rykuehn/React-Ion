@@ -80,15 +80,18 @@ class Home extends React.Component {
     return (
       <div className="home-page">
         <div className="top-bar">
-          <a
-            className="link-icon"
-            href="/dashboard"
-          >
-            <i
-              className="fa fa-address-book"
-              aria-hidden="true"
-            />
-          </a>
+          {
+            this.state.loggedIn &&
+            <a
+              className="link-icon"
+              href="/dashboard"
+            >
+              <i
+                className="fa fa-address-book"
+                aria-hidden="true"
+              />
+            </a>
+          }
           <a
             className="link-icon"
             href="/editor"
