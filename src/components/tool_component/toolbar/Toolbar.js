@@ -11,6 +11,7 @@ const Toolbar = ({
   setZoom,
   routes,
   nextId,
+  store,
 }) => (
   <div className="toolbar">
     <ToolbarButton click={canUndo ? onUndo : null}>
@@ -25,10 +26,7 @@ const Toolbar = ({
     <ToolbarButton click={() => setZoom('minus')}>
       <i className="fa fa-search-minus" aria-hidden="true" />
     </ToolbarButton>
-    <ToolbarButton click={() => { handleProjectCreate(1, 'notImportant', routes, nextId); }}>
-      <i className="fa fa-plus-circle" aria-hidden="true" />
-    </ToolbarButton>
-    <ToolbarButton click={() => { handleProjectSave('notImportant', routes, nextId); }}>
+    <ToolbarButton click={() => { handleProjectSave(store.projectName, routes, nextId); }}>
       <i className="fa fa-floppy-o" aria-hidden="true" />
     </ToolbarButton>
     <ToolbarButton click={() => { handleProjectDownload(routes, nextId); }}>

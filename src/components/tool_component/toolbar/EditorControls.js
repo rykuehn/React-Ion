@@ -13,12 +13,14 @@ import HeightSlider from '../../../containers/tool_component/adjustor/HeightSlid
 import WidthSlider from '../../../containers/tool_component/adjustor/WidthSlider';
 import FlexSlider from '../../../containers/tool_component/adjustor/FlexSlider';
 import AddBtn from '../../../containers/tool_component/addremove/AddBtn';
+import ProjectInfo from '../../../containers/tool_component/toolbar/ProjectInfo';
 
 const EditorControls = ({ info }) => {
   const type = info.componentType;
   if (type === 'Text' || type === 'List' || type === 'Radio' || type === 'DropDown') {
     return (
       <div className="controls-wrapper">
+        <ProjectInfo />
         <Delete />
         <AddPage />
         <TextColor />
@@ -31,6 +33,7 @@ const EditorControls = ({ info }) => {
 
   return (
     <div className="controls-wrapper">
+      <ProjectInfo />
       <Delete />
       <NameInput />
       <AddPage />

@@ -27,6 +27,7 @@ class Inspector extends React.Component {
 
     if (prop.info.componentType === 'Image') {
       info = {
+        componentName: prop.info.name,
         flex: props.flex || 1,
         backgroundColor: props.backgroundColor || 'black',
         display: props.display || 'flex',
@@ -44,6 +45,7 @@ class Inspector extends React.Component {
       };
     } else if (prop.info.componentType === 'Text') {
       info = {
+        componentName: prop.info.name,
         fontSize: props.fontSize ? `${props.fontSize}px` : '100px',
         color: props.color || 'rgb(2, 255, 22)',
         width: 'calc(100% - 0px)',
@@ -55,6 +57,7 @@ class Inspector extends React.Component {
       };
     } else {
       info = {
+        componentName: prop.info.name,
         flex: props.flex || 1,
         backgroundColor: props.backgroundColor || 'black',
         display: props.display || 'flex',
