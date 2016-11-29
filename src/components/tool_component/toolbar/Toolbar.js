@@ -10,6 +10,7 @@ const Toolbar = ({
   canRedo,
   setZoom,
   routes,
+  nextId,
 }) => (
   <div className="toolbar">
     <ToolbarButton click={canUndo ? onUndo : null}>
@@ -24,13 +25,13 @@ const Toolbar = ({
     <ToolbarButton click={() => setZoom('minus')}>
       <i className="fa fa-search-minus" aria-hidden="true" />
     </ToolbarButton>
-    <ToolbarButton click={() => { handleProjectCreate(1, 'notImportant', routes); }}>
+    <ToolbarButton click={() => { handleProjectCreate(1, 'notImportant', routes, nextId); }}>
       <i className="fa fa-plus-circle" aria-hidden="true" />
     </ToolbarButton>
-    <ToolbarButton click={() => { handleProjectSave('notImportant', routes); }}>
+    <ToolbarButton click={() => { handleProjectSave('notImportant', routes, nextId); }}>
       <i className="fa fa-floppy-o" aria-hidden="true" />
     </ToolbarButton>
-    <ToolbarButton click={() => { handleProjectDownload(routes); }}>
+    <ToolbarButton click={() => { handleProjectDownload(routes, nextId); }}>
       <i className="fa fa-download" aria-hidden="true" />
     </ToolbarButton>
   </div>
@@ -43,6 +44,7 @@ Toolbar.propTypes = {
   canRedo: PropTypes.bool.isRequired,
   setZoom: PropTypes.func.isRequired,
   routes: PropTypes.array.isRequired,
+  nextId: PropTypes.number.isRequired,
 };
 
 export default Toolbar;

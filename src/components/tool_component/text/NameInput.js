@@ -19,6 +19,7 @@ const NameInput = ({ toggleTextModal, updateInfos, selected, setSelected }) => {
       <button
         onClick={() => toggleTextModal(
           'enter component name',
+          'text',
           callback,
         )}
       > COMPONENT NAME <i className="fa fa-pencil" aria-hidden="true" />

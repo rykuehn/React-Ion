@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { getUserProjects, getAllProjects, authenticate } from '../lib/api-methods';
+import { getUserProjects, authenticate } from '../lib/api-methods';
 import { handleProjectRemove, handleProjectCreate } from '../lib/api-handlers';
 import emptyCanvas from '../lib/emptyCanvas';
 import '../scss/dashboard.scss';
@@ -41,7 +41,7 @@ class Dashboard extends React.Component {
 
   newProjectClick() {
     const v = this.newProjectName.value;
-    handleProjectCreate(1, v, emptyCanvas.appPages, this.getProjects);
+    handleProjectCreate(1, v, emptyCanvas.appPages, 1, this.getProjects);
     this.newProjectName.value = '';
   }
 

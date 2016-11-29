@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { UPDATE_PROPS, UPDATE_INFOS, ADD_CHILD, REMOVE_CHILD, UNDO, REDO, ADD_PAGE } from '../actions/routes';
+import { UPDATE_ROUTES, UPDATE_PROPS, UPDATE_INFOS, ADD_CHILD, REMOVE_CHILD, UNDO, REDO, ADD_PAGE } from '../actions/routes';
 import store from '../store/store';
 import emptyCanvas from '../lib/emptyCanvas';
 
@@ -131,6 +131,9 @@ const routes = (routes = emptyCanvas, action) => {
       newTree.appPages[currentPage].past.push(_.cloneDeep(newTree.appPages[currentPage].present));
       newTree.appPages[currentPage].present = (_.cloneDeep(newTree.appPages[currentPage].future.pop()));
       return newTree;
+
+    case UPDATE_ROUTES:
+      return action.routes;
 
     default:
       return routes;
