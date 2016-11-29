@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { updateRoutes, setNextId } from '../../actions/routes';
 import Editor from '../../components/tool_component/Editor';
 
 const mapStateToProps = state => ({
@@ -8,4 +10,11 @@ const mapStateToProps = state => ({
   zoom: state.zoom,
 });
 
-export default connect(mapStateToProps)(Editor);
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    updateRoutes,
+    setNextId,
+  }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Editor);
