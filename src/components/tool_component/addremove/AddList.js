@@ -19,7 +19,7 @@ const ListInput = ({ selected, nextId, addChild, toggleTextModal }) => {
           'list',
           callback,
         )}
-      > <i className="fa fa-plus" aria-hidden="true" /> LIST
+      > <i className="fa fa-list-ul" aria-hidden="true" /> LIST
       </button>
     </div>
   );

@@ -20,7 +20,7 @@ const AddBlock = ({
           nextId,
         );
       }}
-    > <i className="fa fa-plus" aria-hidden="true" /> BLOCK
+    > <i className="fa fa-square-o" aria-hidden="true" /> BLOCK
     </button>
   </div>
 );

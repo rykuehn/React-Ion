@@ -49,7 +49,6 @@ class Radio extends Component {
       display: 'inline-block',
     }
 
-    console.log('SELECTED OPTION', this.state.selectedOption)
     return (
       <form
         style={textStyle}
