@@ -35,7 +35,7 @@ export function handleProjectDownload(routes) {
   download(treeData);
 }
 
-export function handleProjectCreate(permissionId, name, routes) {
+export function handleProjectCreate(permissionId, name, routes, cb) {
   const projectProps = {
     name,
     project_tree: JSON.stringify(formTreeData(routes)),
@@ -44,6 +44,8 @@ export function handleProjectCreate(permissionId, name, routes) {
     .then((project) => {
       if (project.data) {
         console.log('Project Created');
+        console.log(cb)
+        cb();
       } else {
         console.log('Error creating project');
       }
@@ -66,11 +68,12 @@ export function handleProjectSave(name, routes) {
     }).catch(err => console.log(err));
 }
 
-export function handleProjectRemove(projectId) {
+export function handleProjectRemove(projectId, cb) {
   removeProject(projectId)
     .then((project) => {
       if (project.data) {
         console.log('Project deleted');
+        cb();
       } else {
         console.log('Error deleting project');
       }

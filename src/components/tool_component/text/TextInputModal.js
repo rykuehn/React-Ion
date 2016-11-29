@@ -39,7 +39,6 @@ class TextInputModal extends React.Component {
             className="submit-button"
             onClick={(e) => {
               e.preventDefault();
-              () => console.log(this.text.value)
               callback(this.text.value);
               closeTextModal();
               this.text.value = '';
