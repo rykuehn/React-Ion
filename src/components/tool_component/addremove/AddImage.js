@@ -29,7 +29,7 @@ const AddImage = ({
           'text',
           callback,
         )}
-      > <i className="fa fa-plus" aria-hidden="true" /> IMAGE
+      > <i className="fa fa-file-image-o" aria-hidden="true" /> IMAGE
       </button>
     </div>
   );

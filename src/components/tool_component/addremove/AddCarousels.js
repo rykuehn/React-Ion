@@ -3,12 +3,24 @@ import React, { PropTypes } from 'react';
 const AddPhotoCarousel = ({ selected, nextId, addChild, toggleTextModal }) => {
   const callback = (value) => {
     addChild(
-      'PhotoCarousel',
-      { content: value,
+      'Carousels',
+      { urls: value,
+        settings: {
+          autoplay: true,
+          autoplayInterval: 1000,
+          slideWith: null,
+          cellSpacing: null,
+          easing: null,
+          framePadding: null,
+          slideIndex: 0,
+          vertical: false,
+          wrapAround: true,
+          slideWidth: 1,
+        },
         height: [50, '%'],
         width: [20, '%'],
       },
-      `photoCarousel${nextId}`,
+      `carousels${nextId}`,
       selected,
       nextId,
     );
@@ -22,7 +34,7 @@ const AddPhotoCarousel = ({ selected, nextId, addChild, toggleTextModal }) => {
           'list',
           callback,
         )}
-      > <i className="fa fa-sort-desc" aria-hidden="true" /> Add Photo Carousel
+      > <i className="fa fa-circle-thin" aria-hidden="true" /> CAROUSEL
       </button>
     </div>
   );
