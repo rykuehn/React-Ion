@@ -9,6 +9,8 @@ export const UNDO = 'UNDO';
 export const REDO = 'REDO';
 export const ADD_PAGE = 'ADD_PAGE';
 export const GET_INFO = 'GET_INFO';
+export const UPDATE_ROUTES = 'UPDATE_ROUTES';
+export const SET_NEXTID = 'SET_NEXTID';
 
 export function updateProps(key, value, id, actionType) {
   setTimeout(() => {
@@ -82,5 +84,19 @@ export function onUndo() {
 export function onRedo() {
   return {
     type: REDO,
+  };
+}
+
+export function updateRoutes(routes) {
+  return {
+    type: UPDATE_ROUTES,
+    routes,
+  };
+}
+
+export function setNextId(nextId) {
+  return {
+    type: SET_NEXTID,
+    nextId,
   };
 }

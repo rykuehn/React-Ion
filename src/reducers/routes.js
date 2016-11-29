@@ -1,6 +1,7 @@
 import _ from 'lodash';
-import { UPDATE_PROPS, UPDATE_INFOS, ADD_CHILD, REMOVE_CHILD, UNDO, REDO, ADD_PAGE } from '../actions/routes';
+import { UPDATE_ROUTES, UPDATE_PROPS, UPDATE_INFOS, ADD_CHILD, REMOVE_CHILD, UNDO, REDO, ADD_PAGE } from '../actions/routes';
 import store from '../store/store';
+import emptyCanvas from '../lib/emptyCanvas';
 
 const initialState = {
   appPages: [{
@@ -26,8 +27,9 @@ const initialState = {
   totalComponents: 1,
 };
 
-const routes = (routes = initialState, action) => {
-  const { actionType, value, key, id, type, cool } = action;
+const routes = (routes = emptyCanvas, action) => {
+  const { actionType, value, key, id, type } = action;
+  
   const newTree = _.cloneDeep(routes);
   const currentPage = store ? store.getState().pageSelected : 0;
   let parent;
@@ -155,6 +157,9 @@ const routes = (routes = initialState, action) => {
       newTree.appPages[currentPage].past.push(_.cloneDeep(newTree.appPages[currentPage].present));
       newTree.appPages[currentPage].present = (_.cloneDeep(newTree.appPages[currentPage].future.pop()));
       return newTree;
+
+    case UPDATE_ROUTES:
+      return action.routes;
 
     default:
       return routes;
