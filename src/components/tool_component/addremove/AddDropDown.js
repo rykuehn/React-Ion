@@ -19,7 +19,7 @@ const DropDown = ({ selected, nextId, addChild, toggleTextModal }) => {
           'list',
           callback,
         )}
-      > <i className="fa fa-sort-desc" aria-hidden="true" /> DropDown
+      > <i className="fa fa-sort-desc" aria-hidden="true" /> DROPDOWN
       </button>
     </div>
   );

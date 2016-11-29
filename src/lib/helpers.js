@@ -8,6 +8,7 @@ import Image from '../containers/user_component/Image';
 import List from '../containers/user_component/List';
 import Radio from '../containers/user_component/Radio';
 import DropDown from '../containers/user_component/DropDown';
+import Carousels from '../containers/user_component/Carousels';
 
 const BLOCK_COMPONENT = 'Block';
 const TEXT_COMPONENT = 'Text';
@@ -16,6 +17,7 @@ const IMAGE_COMPONENT = 'Image';
 const LIST_COMPONENT = 'List';
 const RADIO_COMPONENT = 'Radio';
 const DROPDOWN_COMPONENT = 'DropDown';
+const PHOTO_CAROUSEL_COMPONENT = 'Carousels';
 
 export function getValue(key, id, routes) {
   let value;
@@ -129,6 +131,19 @@ export function mapComponents(components, selected) {
           >
             {c.children ? mapComponents(c.children, selected) : null}
           </DropDown>,
+        );
+        break;
+      case PHOTO_CAROUSEL_COMPONENT:
+        mapped.push(
+          <Carousels
+            {...c.props}
+            setSelected={() => setSelected()}
+            key={c.id}
+            id={c.id}
+            selected={selected}
+          >
+            {c.children ? mapComponents(c.children, selected) : null}
+          </Carousels>,
         );
         break;
       default:

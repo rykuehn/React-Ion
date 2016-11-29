@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 import Draggable from 'react-draggable';
+import Promise from 'bluebird';
 import { mapComponents, rebuildTree } from '../../lib/helpers';
-import { getProject } from '../../lib/api-methods';
+import { getProject, getUserInfo, getProjectOwner } from '../../lib/api-methods';
 import TextInputModal from '../../containers/tool_component/text/TextInputModal';
 import TextListInputModal from '../../containers/tool_component/text/TextListInputModal';
 import PreviewModal from '../../containers/tool_component/modals/PreviewModal';
@@ -30,7 +31,13 @@ class Editor extends React.Component {
     let projectId = window.location.href.match(/\/[^/]*$/)[0].slice(1);
     if (projectId !== 'editor' && projectId !== '') {
       projectId = +projectId;
-      getProject(projectId).then((project) => {
+      Promise.join(getUserInfo(), getProjectOwner(projectId), (userInfo, ownerInfo) => {
+        if (userInfo.data && (ownerInfo.data.username === userInfo.data.username)) {
+          return getProject(projectId);
+        }
+        window.location.href = '/';
+        return window;
+      }).then((project) => {
         if (project.data) {
           console.log(project.data)
           this.deconstructTreeData(project.data);

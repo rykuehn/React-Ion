@@ -19,7 +19,7 @@ const RadioInput = ({ selected, nextId, addChild, toggleTextModal }) => {
           'list',
           callback,
         )}
-      > <i className="fa fa-bullseye" aria-hidden="true" /> Radio
+      > <i className="fa fa-bullseye" aria-hidden="true" /> RADIO
       </button>
     </div>
   );

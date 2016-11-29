@@ -15,6 +15,28 @@ module.exports.getUserProjects = () => {
     .catch(err => err);
 };
 
+module.exports.getUserInfo = () => {
+  const options = {
+    method: 'GET',
+    credentials: 'include',
+  };
+
+  return fetch(`${host}/api/user/info`, options)
+    .then(userInfo => userInfo.json())
+    .catch(err => err);
+};
+
+module.exports.getProjectOwner = (projectId) => {
+  const options = {
+    method: 'GET',
+    credentials: 'include',
+  };
+
+  return fetch(`${host}/api/project/${projectId}/owner`, options)
+    .then(username => username.json())
+    .catch(err => err);
+};
+
 module.exports.getProject = (projectId) => {
   const options = {
     method: 'GET',
