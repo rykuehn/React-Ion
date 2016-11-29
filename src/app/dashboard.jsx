@@ -73,7 +73,6 @@ class Dashboard extends React.Component {
             <i className="fa fa-plus" aria-hidden="true" />
           </button>
         </div>
-        { console.log('this.stateprojects', this.state.projects) }
         <div className="projects">
           {
             this.state.projects.map(project => (
@@ -82,7 +81,7 @@ class Dashboard extends React.Component {
                 key={project.id}
               >
                 <a href={`/editor/${project.id}`}>
-                  <i className="fa fa-file-o" aria-hidden="true" />
+                  <i className="fa fa-file-code-o" aria-hidden="true" />
                   {project.name}
                 </a>
                 <button
