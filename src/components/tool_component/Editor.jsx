@@ -12,6 +12,7 @@ import LinkDisplay from '../../containers/tool_component/inspector/LinkDisplay';
 import PreviewDisplay from '../../containers/tool_component/inspector/PreviewDisplay';
 import AddComponents from '../../containers/tool_component/toolbar/AddComponents';
 import Shortcut from '../../containers/tool_component/toolbar/Shortcuts';
+import Inspector from '../../containers/tool_component/toolbar/Inspector';
 
 
 import '../../scss/toolbar.scss';
@@ -28,6 +29,7 @@ const Editor = ({ routes, selected, pageSelected, zoom }) => {
       <TextListInputModal />
       <PreviewModal />
       <Toolbar />
+      <Inspector />
       <EditorControls />
       <PreviewDisplay />
       <ZoomPercent />

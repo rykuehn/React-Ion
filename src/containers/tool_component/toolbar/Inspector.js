@@ -1,18 +1,20 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updateProps } from '../../../actions/routes';
-import ColorPicker from '../../../components/tool_component/adjustor/ColorPicker';
+import Inspector from '../../../components/tool_component/toolbar/Inspector';
 
 const mapStateToProps = state => (
   {
-    selected: state.selected,
+    pageSelected: state.pageSelected,
     info: state.info,
+    selected: state.selected,
   }
 );
+
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
     updateProps,
   }, dispatch)
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(ColorPicker);
+export default connect(mapStateToProps, mapDispatchToProps)(Inspector);

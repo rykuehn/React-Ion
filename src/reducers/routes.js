@@ -27,7 +27,7 @@ const initialState = {
 };
 
 const routes = (routes = initialState, action) => {
-  const { actionType, value, key, id, type } = action;
+  const { actionType, value, key, id, type, cool } = action;
   const newTree = _.cloneDeep(routes);
   const currentPage = store ? store.getState().pageSelected : 0;
   let parent;
@@ -60,6 +60,7 @@ const routes = (routes = initialState, action) => {
         };
         update(pagePath.present);
       }
+      
       return newTree;
 
     case UPDATE_INFOS:
