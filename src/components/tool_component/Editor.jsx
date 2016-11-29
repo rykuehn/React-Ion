@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Draggable from 'react-draggable';
+import Promise from 'bluebird';
 import { mapComponents, rebuildTree } from '../../lib/helpers';
 import { getProject, getUserInfo, getProjectOwner } from '../../lib/api-methods';
 import TextInputModal from '../../containers/tool_component/text/TextInputModal';
@@ -28,25 +29,18 @@ class Editor extends React.Component {
   componentWillMount() {
     let projectId = window.location.href.match(/\/[^/]*$/)[0].slice(1);
     if (projectId !== 'editor' && projectId !== '') {
-      getUserInfo().then((userInfo) => {
-        if (!userInfo.data) {
-          window.location.href = '/';
-        } else {
-          projectId = +projectId;
-          const username = userInfo.data.username;
-          getProjectOwner(projectId).then((ownerInfo) => {
-            if (ownerInfo.data.username === username) {
-              getProject(projectId).then((project) => {
-                if (project.data) {
-                  this.deconstructTreeData(project.data.project_tree);
-                }
-              }).catch(err => console.error(err));
-            } else {
-              window.location.href = '/';
-            }
-          });
+      projectId = +projectId;
+      Promise.join(getUserInfo(), getProjectOwner(projectId), (userInfo, ownerInfo) => {
+        if (userInfo.data && (ownerInfo.data.username === userInfo.data.username)) {
+          return getProject(projectId);
         }
-      });
+        window.location.href = '/';
+        return window;
+      }).then((project) => {
+        if (project.data) {
+          this.deconstructTreeData(project.data.project_tree);
+        }
+      }).catch(err => console.error(err));
     }
   }
 
