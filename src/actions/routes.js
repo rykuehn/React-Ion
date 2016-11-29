@@ -11,12 +11,13 @@ export const ADD_PAGE = 'ADD_PAGE';
 export const GET_INFO = 'GET_INFO';
 export const UPDATE_ROUTES = 'UPDATE_ROUTES';
 export const SET_NEXTID = 'SET_NEXTID';
+export const UPDATE_TREE_INFO = 'UPDATE_TREE_INFO';
 
 export function updateProps(key, value, id, actionType) {
   setTimeout(() => {
     store.dispatch({ type: GET_INFO, id });
   }, 1);
-  
+
   return {
     type: UPDATE_PROPS,
     key,
@@ -84,6 +85,14 @@ export function onUndo() {
 export function onRedo() {
   return {
     type: REDO,
+  };
+}
+
+export function updateTreeInfo(key, value) {
+  return {
+    type: UPDATE_TREE_INFO,
+    key,
+    value,
   };
 }
 

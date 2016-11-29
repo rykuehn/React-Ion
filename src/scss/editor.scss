@@ -4,7 +4,7 @@ $gray: rgba(255,255,255, .5);
   position: absolute;
   color: $gray;
   top: 120px;
-  right: 220px;
+  right: 260px;
   font-size: 12px;
 
   i {
@@ -16,7 +16,7 @@ $gray: rgba(255,255,255, .5);
   cursor: pointer;
   position: absolute;
   top: 90px;
-  right: 220px;
+  right: 260px;
   font-size: 12px;
   border: 1px solid $gray;
   color: $gray;
@@ -37,7 +37,7 @@ $gray: rgba(255,255,255, .5);
 
 .current-component {
   position: absolute;
-  right: 220px;
+  right: 260px;
   top: 140px;
   color: $gray;
   font-size: 12px;
@@ -45,7 +45,7 @@ $gray: rgba(255,255,255, .5);
 
 .link-display {
   position: absolute;
-  right: 220px;
+  right: 260px;
   top: 160px;
   color: $gray;
   font-size: 12px;

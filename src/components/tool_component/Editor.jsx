@@ -39,17 +39,19 @@ class Editor extends React.Component {
         return window;
       }).then((project) => {
         if (project.data) {
-          this.deconstructTreeData(project.data.project_tree);
+          console.log(project.data)
+          this.deconstructTreeData(project.data);
         }
       }).catch(err => console.error(err));
     }
   }
 
   deconstructTreeData(treeData) {
-    const treeObj = JSON.parse(treeData);
+    const treeObj = JSON.parse(treeData.project_tree);
     const nextId = treeObj.nextId;
     const totalComponents = treeObj.total;
     const route = {
+      projectName: treeData.name,
       appPages: [],
       pages: [0],
       totalComponents,
