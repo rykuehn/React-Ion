@@ -3,8 +3,33 @@ import { UPDATE_ROUTES, UPDATE_PROPS, UPDATE_INFOS, ADD_CHILD, REMOVE_CHILD, UND
 import store from '../store/store';
 import emptyCanvas from '../lib/emptyCanvas';
 
+const initialState = {
+  appPages: [{
+    past: [],
+    present: {
+      id: 0,
+      props: {
+        backgroundColor: 'rgba(255,255,255,.1)',
+        flex: 1,
+        height: [1080, 'px'],
+        width: null,
+        flexDirection: 'column',
+        margin: '0px',
+      },
+      children: [],
+      componentType: 'Block',
+      parent: null,
+      name: 'Index',
+    },
+    future: [],
+  }],
+  pages: [0],
+  totalComponents: 1,
+};
+
 const routes = (routes = emptyCanvas, action) => {
   const { actionType, value, key, id, type } = action;
+  
   const newTree = _.cloneDeep(routes);
   const currentPage = store ? store.getState().pageSelected : 0;
   let parent;
@@ -37,6 +62,7 @@ const routes = (routes = emptyCanvas, action) => {
         };
         update(pagePath.present);
       }
+      
       return newTree;
 
     case UPDATE_INFOS:
