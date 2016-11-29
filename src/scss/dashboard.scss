@@ -1,7 +1,6 @@
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
-@mixin gradientBorder($width) {
-  border: $width solid transparent;
+@mixin gradientBorder {
   -moz-border-image: -moz-linear-gradient(right, rgba(255, 127, 80, .3) 0%, coral 100%);
   -webkit-border-image: -webkit-linear-gradient(right, rgba(255, 127, 80, .3) 0%, coral 100%);
   border-image: linear-gradient(to right, rgba(255, 127, 80, .3) 0%, coral 100%);
@@ -23,10 +22,11 @@ body {
     align-items: center;
     justify-content: flex-end;
     height: 60px;
-    width: calc(100vw - 6px);
+    width: 100vw;
     background: white;
-    box-shadow: 0px 10px 10px -10px rgba(0,0,0,0.5);
-    @include gradientBorder(3px);
+    box-shadow: 0px 10px 10px -10px rgba(0,0,0,0.3);
+    border-bottom: 3px solid transparent;
+    @include gradientBorder;
 
     .logo {
       position: absolute;
@@ -124,7 +124,8 @@ body {
         align-items: center;
         justify-content: center;
         background: white;
-        @include gradientBorder(2px);
+        border: 2px solid transparent;
+        @include gradientBorder;
         color: coral;
         margin-right: 20px;
       }
