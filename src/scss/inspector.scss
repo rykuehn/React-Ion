@@ -51,6 +51,28 @@
   width: 30%;
 }
 
+.inspector-image-input, .inspector-link-input {
+  display: inline-block;
+  margin: 5px;
+  width: 60%;
+}
+
+.inspector-image {
+  width: 100%;
+}
+
+.inspector-clear-button {
+  display: inline-block;
+  width: 30%;
+}
+
+.inspector-text-input {
+  display: inline-block;
+  width: 93%;
+  height: 100px;
+  margin: 5px;
+}
+
 .save-button {
   width: 100px;
   height: 21px;
