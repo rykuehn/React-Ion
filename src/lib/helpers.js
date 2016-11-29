@@ -138,3 +138,13 @@ export function mapComponents(components, selected) {
 
   return mapped;
 }
+
+export function rebuildTree(tree) {
+  const newTree = _.cloneDeep(tree);
+  newTree.children.forEach((child) => {
+    child.parent = this;
+    rebuildTree(child);
+  });
+
+  return newTree;
+}

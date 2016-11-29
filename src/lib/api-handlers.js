@@ -6,7 +6,7 @@ import {
   removeProject,
 } from './api-methods';
 
-const formTreeData = (routes) => {
+const formTreeData = (routes, nextId) => {
   const newRoutes = _.cloneDeep(routes);
   const newTree = [];
   let totalComponents = 0;
@@ -25,20 +25,22 @@ const formTreeData = (routes) => {
     total: totalComponents,
     router: 1,
     routes: newTree,
+    nextId,
   };
 
+  console.log('treeData', treeData);
   return treeData;
 };
 
-export function handleProjectDownload(routes) {
-  const treeData = formTreeData(routes);
+export function handleProjectDownload(routes, nextId) {
+  const treeData = formTreeData(routes, nextId);
   download(treeData);
 }
 
-export function handleProjectCreate(permissionId, name, routes) {
+export function handleProjectCreate(permissionId, name, routes, nextId) {
   const projectProps = {
     name,
-    project_tree: JSON.stringify(formTreeData(routes)),
+    project_tree: JSON.stringify(formTreeData(routes, nextId)),
   };
   createProject(permissionId, projectProps)
     .then((project) => {
@@ -50,11 +52,11 @@ export function handleProjectCreate(permissionId, name, routes) {
     }).catch(err => console.log(err));
 }
 
-export function handleProjectSave(name, routes) {
-  const projectId = window.location.href.match(/\/[^/]+$/)[0].slice(1);
+export function handleProjectSave(name, routes, nextId) {
+  const projectId = +window.location.href.match(/\/[^/]+$/)[0].slice(1);
   const projectProps = {
     name,
-    project_tree: JSON.stringify(formTreeData(routes)),
+    project_tree: JSON.stringify(formTreeData(routes, nextId)),
   };
   updateProject(projectId, projectProps)
     .then((project) => {
