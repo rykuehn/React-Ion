@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Draggable from 'react-draggable';
 import { mapComponents, rebuildTree } from '../../lib/helpers';
-import { getProject } from '../../lib/api-methods';
+import { getProject, getUserInfo, getProjectOwner } from '../../lib/api-methods';
 import TextInputModal from '../../containers/tool_component/text/TextInputModal';
 import TextListInputModal from '../../containers/tool_component/text/TextListInputModal';
 import PreviewModal from '../../containers/tool_component/modals/PreviewModal';
@@ -28,12 +28,25 @@ class Editor extends React.Component {
   componentWillMount() {
     let projectId = window.location.href.match(/\/[^/]*$/)[0].slice(1);
     if (projectId !== 'editor' && projectId !== '') {
-      projectId = +projectId;
-      getProject(projectId).then((project) => {
-        if (project.data) {
-          this.deconstructTreeData(project.data.project_tree);
+      getUserInfo().then((userInfo) => {
+        if (!userInfo.data) {
+          window.location.href = '/';
+        } else {
+          projectId = +projectId;
+          const username = userInfo.data.username;
+          getProjectOwner(projectId).then((ownerInfo) => {
+            if (ownerInfo.data.username === username) {
+              getProject(projectId).then((project) => {
+                if (project.data) {
+                  this.deconstructTreeData(project.data.project_tree);
+                }
+              }).catch(err => console.error(err));
+            } else {
+              window.location.href = '/';
+            }
+          });
         }
-      }).catch(err => console.error(err));
+      });
     }
   }
 
