@@ -1,8 +1,16 @@
 import React, { PropTypes } from 'react';
 
-const RowColumnPicker = ({ updateProps, selected }) => (
+const RowColumnPicker = ({
+  updateProps,
+  selected,
+  direction,
+}) => (
   <div className="row-column-picker">
     <button
+      className={direction === 'row'
+        ? 'row-column-selected'
+        : null
+      }
       onClick={() => updateProps(
         'flexDirection',
         'row',
@@ -11,6 +19,10 @@ const RowColumnPicker = ({ updateProps, selected }) => (
     > ROW
     </button>
     <button
+      className={direction === 'column'
+        ? 'row-column-selected'
+        : null
+      }
       onClick={() => updateProps(
         'flexDirection',
         'column',
