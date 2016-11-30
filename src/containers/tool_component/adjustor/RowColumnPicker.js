@@ -6,6 +6,7 @@ import RowColumnPicker from '../../../components/tool_component/adjustor/RowColu
 const mapStateToProps = state => (
   {
     selected: state.selected,
+    direction: state.info.props.flexDirection,
   }
 );
 const mapDispatchToProps = dispatch => (
