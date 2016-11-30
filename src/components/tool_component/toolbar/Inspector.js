@@ -16,12 +16,10 @@ class Inspector extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    console.log('DID THE PROPS REALLY UPDATE MUO', newProps)
     this.convertProps(newProps);
   }
 
   convertProps(prop) {
-    console.log('THE PROP', prop)
     const props = prop.info.props;
     const w = props.width ? (props.width[0] + props.width[1]) : '100%';
     const h = props.height ? (props.height[0] + props.height[1]) : '20px';
@@ -107,7 +105,6 @@ class Inspector extends React.Component {
   }
 
   onChange(key, event) {
-    //console.log(key, event.target.value);
     const tempInfo = this.state.info;
     const changeInfo = this.state.changed;
     
@@ -217,7 +214,6 @@ class Inspector extends React.Component {
 
   render() {
     const context = this;
-    console.log('WHERE ARE MY PROPS', this.state.info)
     const propList = Object.keys(this.state.info).map((key, index) => {
       let standard = true;
       if (key === 'backgroundImage' ||
