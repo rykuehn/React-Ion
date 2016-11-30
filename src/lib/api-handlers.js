@@ -6,7 +6,7 @@ import {
   removeProject,
 } from './api-methods';
 
-const formTreeData = (routes, nextId) => {
+export function formTreeData(routes, nextId) {
   const newRoutes = _.cloneDeep(routes);
   const newTree = [];
   let totalComponents = 0;
@@ -30,7 +30,7 @@ const formTreeData = (routes, nextId) => {
 
   console.log('treeData', treeData);
   return treeData;
-};
+}
 
 export function handleProjectDownload(routes, nextId) {
   const treeData = formTreeData(routes, nextId);
