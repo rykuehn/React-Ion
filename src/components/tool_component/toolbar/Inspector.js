@@ -185,7 +185,7 @@ class Inspector extends React.Component {
             <div key={index}>
               <input className="inspector-image-input" value={context.state.info[key]} onChange={this.onChange.bind(this, key)} />
               <button className="inspector-clear-button" onClick={this.clearInput.bind(this, key)}>Clear</button>
-              <img className="inspection-image" src={context.state.info[key]} />
+              <div className="inspector-image-container" ><img className="inspection-image" src={context.state.info[key]} /></div>
             </div>
             : null
         }
@@ -194,7 +194,7 @@ class Inspector extends React.Component {
             <div key={index}>
               <input className="inspector-image-input" value={context.state.info[key]} onChange={this.onChange.bind(this, key)} />
               <button className="inspector-clear-button" onClick={this.clearInput.bind(this, key)}>Clear</button>
-              <img className="inspection-image" src={context.state.info[key]} />
+              <div className="inspector-image-container" ><img className="inspection-image" src={context.state.info[key]} /></div>
             </div>
             : null
         }
