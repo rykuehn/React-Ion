@@ -46,6 +46,7 @@ $dark-gray: rgba(0,0,0,.8);
 }
 
 .inspector-label {
+  color: $dark-gray;
   display: inline-block;
   font-weight: bold;
   margin: 5px;
@@ -101,7 +102,7 @@ $dark-gray: rgba(0,0,0,.8);
 
 .save-button {
   cursor: pointer;
-  width: 200px;
+  width: 94%;
   height: 40px;
   margin: 20px;
   font-weight: 200;

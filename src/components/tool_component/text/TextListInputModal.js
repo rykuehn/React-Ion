@@ -12,7 +12,7 @@ class ListTextInputModal extends React.Component {
   addToList(item) {
     const list = this.state.list;
     list.push(item);
-    this.setState({ list: list });
+    this.setState({ list });
   }
 
   render() {
@@ -23,11 +23,9 @@ class ListTextInputModal extends React.Component {
       className = showing ? 'modal-wrapper' : 'modal-hidden';
     }
 
-    const listNode = this.state.list.map((list, index) => {
-      return (
-        <div key={index}>{list}</div>
-      );
-    });
+    const listNode = this.state.list.map((list, index) => (
+      <li key={index}>{list}</li>
+    ));
 
     return (
       <div className={className}>
@@ -41,35 +39,39 @@ class ListTextInputModal extends React.Component {
             }}
           > <i className="fa fa-window-close" aria-hidden="true" />
           </button>
-          <div>{listNode}</div>
-          <input
-            placeholder={placeholder.toUpperCase()}
-            type="text"
-            ref={i => (this.text = i)}
-          />
-          <button
-            className="submit-button"
-            onClick={(e) => {
-              e.preventDefault();
-              () => console.log(this.text.value)
-              this.addToList(this.text.value);
-              this.text.value = '';
-            }}
-          > ADD
-          </button>
-          <button
-            className="submit-button"
-            type="submit"
-            onClick={(e) => {
-              e.preventDefault();
-              () => console.log(this.text.value)
-              callback(this.state.list);
-              this.setState({ list: [] });
-              closeTextModal();
-              this.text.value = '';
-            }}
-          > SUBMIT
-          </button>
+          <div className="list-modal">
+            <div className="list-side">
+              <ul>{listNode}</ul>
+            </div>
+            <div className="input-side">
+              <input
+                placeholder={placeholder.toUpperCase()}
+                type="text"
+                ref={i => (this.text = i)}
+              />
+              <button
+                className="submit-button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  this.addToList(this.text.value);
+                  this.text.value = '';
+                }}
+              > ADD
+              </button>
+              <button
+                className="submit-button"
+                type="submit"
+                onClick={(e) => {
+                  e.preventDefault();
+                  callback(this.state.list);
+                  this.setState({ list: [] });
+                  closeTextModal();
+                  this.text.value = '';
+                }}
+              > SUBMIT
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );
