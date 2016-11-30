@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateProps } from '../../../actions/routes';
+import { updateProps, updateInfos } from '../../../actions/routes';
 import Inspector from '../../../components/tool_component/toolbar/Inspector';
 
 const mapStateToProps = state => (
@@ -14,6 +14,7 @@ const mapStateToProps = state => (
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
     updateProps,
+    updateInfos,
   }, dispatch)
 );
 

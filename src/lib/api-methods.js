@@ -1,7 +1,8 @@
 import { host } from './api-config';
 
 module.exports.download = (projectTree) => {
-  window.location.href = `${host}/api/project/generate?tree=${encodeURIComponent(JSON.stringify(projectTree))}`;
+  //window.location.href = `${host}/api/project/generate?tree=${encodeURIComponent(JSON.stringify(projectTree))}`;
+  
 };
 
 module.exports.getUserProjects = () => {
@@ -12,6 +13,28 @@ module.exports.getUserProjects = () => {
 
   return fetch(`${host}/api/user/projects`, options)
     .then(projects => projects.json())
+    .catch(err => err);
+};
+
+module.exports.getUserInfo = () => {
+  const options = {
+    method: 'GET',
+    credentials: 'include',
+  };
+
+  return fetch(`${host}/api/user/info`, options)
+    .then(userInfo => userInfo.json())
+    .catch(err => err);
+};
+
+module.exports.getProjectOwner = (projectId) => {
+  const options = {
+    method: 'GET',
+    credentials: 'include',
+  };
+
+  return fetch(`${host}/api/project/${projectId}/owner`, options)
+    .then(username => username.json())
     .catch(err => err);
 };
 

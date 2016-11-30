@@ -1,4 +1,5 @@
 const emptyCanvas = {
+  projectName: '',
   appPages: [{
     past: [],
     present: {

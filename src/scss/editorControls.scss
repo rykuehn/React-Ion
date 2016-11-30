@@ -52,6 +52,10 @@ $light-gray: rgba(0,0,0,.05);
     width: 300px;
   }
 
+  .project-name {
+    max-width: 200px;
+  }
+
   .add-page {
     width: 200px;
 
@@ -93,7 +97,6 @@ $light-gray: rgba(0,0,0,.05);
   }
 
   .delete {
-    margin-left: 70px;
     max-width: 100px;
 
     i {

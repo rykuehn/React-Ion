@@ -27,6 +27,7 @@ class Inspector extends React.Component {
 
     if (prop.info.componentType === 'Image') {
       info = {
+        componentName: prop.info.name,
         flex: props.flex || 1,
         backgroundColor: props.backgroundColor || 'black',
         display: props.display || 'flex',
@@ -42,8 +43,12 @@ class Inspector extends React.Component {
         boxSizing: props.boxSizing || 'border-box',
         url: props.url,
       };
-    } else if (prop.info.componentType === 'Text') {
+    } else if (prop.info.componentType === 'Text' ||
+               prop.info.componentType === 'List' ||
+               prop.info.componentType === 'Radio' ||
+               prop.info.componentType === 'DropDown') {
       info = {
+        componentName: prop.info.name,
         fontSize: props.fontSize ? `${props.fontSize}px` : '100px',
         color: props.color || 'rgb(2, 255, 22)',
         width: 'calc(100% - 0px)',
@@ -55,6 +60,7 @@ class Inspector extends React.Component {
       };
     } else {
       info = {
+        componentName: prop.info.name,
         flex: props.flex || 1,
         backgroundColor: props.backgroundColor || 'black',
         display: props.display || 'flex',
@@ -103,13 +109,30 @@ class Inspector extends React.Component {
 
   }
 
-  savePropChanges() {
+  saveChanges() {
+
     Object.keys(this.state.changed).map((key) => {
-      this.props.updateProps(
-        `${key}`,
-        this.state.changed[key],
-        this.props.selected,
-      );
+      let tempValue = this.state.changed[key];
+      if ((this.props.info.componentType === 'List' ||
+           this.props.info.componentType === 'Radio' ||
+           this.props.info.componentType === 'DropDown') &&
+           key === 'content') {
+        tempValue = tempValue.split(',');
+      }
+
+      if (key === 'componentName') {
+        this.props.updateInfos(
+          'name',
+          tempValue,
+          this.props.selected,
+        );
+      } else {
+        this.props.updateProps(
+          `${key}`,
+          tempValue,
+          this.props.selected,
+        );
+      }
     });
   }
 
@@ -190,7 +213,7 @@ class Inspector extends React.Component {
           Inspector
         </div>
         {propList}
-        <button className="save-button" onClick={this.savePropChanges.bind(this)}>Save</button>
+        <button className="save-button" onClick={this.saveChanges.bind(this)}>Save</button>
       </div>
     );
   }
