@@ -111,7 +111,6 @@ const routes = (routes = emptyCanvas, action) => {
       if (action.componentType !== 'Text') {
         newTree.totalComponents += 1;
       }
-
       return newTree;
 
     case ADD_PAGE:

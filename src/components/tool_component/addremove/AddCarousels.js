@@ -9,6 +9,7 @@ const AddCarousels = ({ selected, nextId, addChild, toggleTextModal }) => {
         width: [20, '%'],
         settings: {
           slideInterval: 2000,
+          startIndex: 0,
           infinite: true,
           disableThumbnailScroll: true,
           showBullets: true,
@@ -18,7 +19,7 @@ const AddCarousels = ({ selected, nextId, addChild, toggleTextModal }) => {
           autoPlay: true,
           slideOnThumbnailHover: false,
           disableArrowKeys: false,
-          startIndex: 0,
+          showThumbnails: true,
         },
       },
       `Carousels${nextId}`,
@@ -32,7 +33,7 @@ const AddCarousels = ({ selected, nextId, addChild, toggleTextModal }) => {
       <button
         onClick={() => toggleTextModal(
           'Add Main Picture URL',
-          'list',
+          'carousels',
           callback,
         )}
       > <i className="fa fa-circle-thin" aria-hidden="true" /> CAROUSEL
