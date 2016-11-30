@@ -144,6 +144,9 @@ $light-gray: rgba(0,0,0,.05);
    justify-content: center;
    transition: all .3s;
    font-size: 12px;
+   text-transform: uppercase !important;
+   font-weight: 200;
+   letter-spacing: 1px;
 
    i {
     font-size: 12px;
@@ -178,6 +181,8 @@ $light-gray: rgba(0,0,0,.05);
       border: 0px;
       background-color: transparent;
       text-transform: uppercase !important;
+      font-weight: 200;
+      letter-spacing: 1px;
       transition: color .5s;
 
       &:hover {
