@@ -5,7 +5,7 @@ const DropDown = ({ selected, nextId, addChild, toggleTextModal }) => {
     addChild(
       'DropDown',
       { content: value, fontSize: 12, color: 'white' },
-      `dropdown${nextId}`,
+      `Dropdown${nextId}`,
       selected,
       nextId,
     );
