@@ -40,7 +40,6 @@ class Editor extends React.Component {
         return window;
       }).then((project) => {
         if (project.data) {
-          console.log(project.data)
           this.deconstructTreeData(project.data);
         }
       }).catch(err => console.error(err));

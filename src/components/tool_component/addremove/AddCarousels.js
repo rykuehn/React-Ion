@@ -11,7 +11,6 @@ const AddCarousels = ({ selected, nextId, addChild, toggleTextModal }) => {
           slideInterval: 2000,
           startIndex: 0,
           infinite: true,
-          disableThumbnailScroll: true,
           showBullets: true,
           showFullscreenButton: true,
           showPlayButton: true,

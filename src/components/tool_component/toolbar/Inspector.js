@@ -11,14 +11,17 @@ class Inspector extends React.Component {
   }
 
   componentWillMount() {
+
     this.convertProps(this.props);
   }
 
   componentWillReceiveProps(newProps) {
+    console.log('DID THE PROPS REALLY UPDATE MUO', newProps)
     this.convertProps(newProps);
   }
 
   convertProps(prop) {
+    console.log('THE PROP', prop)
     const props = prop.info.props;
     const w = props.width ? (props.width[0] + props.width[1]) : '100%';
     const h = props.height ? (props.height[0] + props.height[1]) : '20px';
@@ -58,18 +61,20 @@ class Inspector extends React.Component {
         content: props.content || '',
       };
     } else if (prop.info.componentType === 'Carousels') {
+
+
       info = {
         slideInterval: props.settings.slideInterval || 2000,
-        infinite: props.settings.infinite || true,
-        disableThumbnailScroll: props.settings.disableThumbnailScroll || true,
-        showBullets: props.settings.showBullets || true,
-        showFullscreenButton: props.settings.showFullScreenButton || true,
-        showPlayButton: props.settings.showPlayButton || true,
-        showIndex: props.settings.showIndex || true,
-        autoPlay: props.settings.autoPlay || true,
-        slideOnThumbnailHover: props.settings.slideOnThumbnailHover || true,
-        disableArrowKeys: props.settings.disableArrowKeys || false,
         startIndex: props.settings.startIndex || 0,
+        infinite: props.settings.infinite,
+        showBullets: props.settings.showBullets,
+        showFullscreenButton: props.settings.showFullscreenButton,
+        showPlayButton: props.settings.showPlayButton,
+        showIndex: props.settings.showIndex,
+        autoPlay: props.settings.autoPlay,
+        slideOnThumbnailHover: props.settings.slideOnThumbnailHover,
+        disableArrowKeys: props.settings.disableArrowKeys,
+        showThumbnails: props.settings.showThumbnails,
       };
     } else {
       info = {
@@ -102,15 +107,35 @@ class Inspector extends React.Component {
   }
 
   onChange(key, event) {
+    //console.log(key, event.target.value);
     const tempInfo = this.state.info;
     const changeInfo = this.state.changed;
-    console.log('ON CHANGE', tempInfo, changeInfo)
+    
     if (key === 'height' || key === 'width') {
       if (event.target.value.slice(-2) === 'px') {
         changeInfo[key] = [event.target.value.substring(0, event.target.value.length - 2), event.target.value.slice(-2)];
       } else if (event.target.value.slice(-1) === '%') {
         changeInfo[key] = [event.target.value.substring(0, event.target.value.length - 1), event.target.value.slice(-1)];
       }
+    } else if (
+          key === 'showPlayButton' ||
+          key === 'infinite' ||
+          key === 'showBullets' ||
+          key === 'showIndex' ||
+          key === 'autoPlay' ||
+          key === 'slideOnThumbnailHover' ||
+          key === 'disableArrowKeys' ||
+          key === 'showFullscreenButton' ||
+          key === 'showThumbnails') {
+        if (event.target.value === 'true') {
+          changeInfo[key] = false;
+          tempInfo[key] = false;
+        }
+
+        if (event.target.value === 'false') {
+          changeInfo[key] = true;
+          tempInfo[key] = true;
+        }
     } else {
       changeInfo[key] = event.target.value;
     }
@@ -125,7 +150,6 @@ class Inspector extends React.Component {
 
   saveChanges() {
     if (this.props.info.componentType === 'Carousels') {
-      console.log('IN SAVE CHANGES CAROUSELS')
       Object.keys(this.state.changed).map((key) => {
         let tempValue = this.state.changed[key];
         
@@ -133,8 +157,12 @@ class Inspector extends React.Component {
           tempValue = tempValue.split(',');
         }
 
-        if (tempValue === 'true' || tempValue === 'false') {
-          tempValue = Boolean(tempValue);
+        if (tempValue === 'true') {
+          tempValue = true;
+        }
+
+        if (tempValue === 'false') {
+          tempValue = false;
         }
 
         if (key === 'componentName') {
@@ -154,7 +182,6 @@ class Inspector extends React.Component {
         }
       });
     } else {
-       console.log('IN SAVE CHANGES ELSE NOT CAROUSELS')
       Object.keys(this.state.changed).map((key) => {
 
         let tempValue = this.state.changed[key];
@@ -163,7 +190,7 @@ class Inspector extends React.Component {
              this.props.info.componentType === 'DropDown') &&
              key === 'content') {
           tempValue = tempValue.split(',');
-        } 
+        }
 
         if (key === 'componentName') {
           this.props.updateInfos(
@@ -172,7 +199,6 @@ class Inspector extends React.Component {
             this.props.selected,
           );
         } else {
-          console.log('IN ELSE UPDATE')
           this.props.updateProps(
             `${key}`,
             tempValue,
@@ -191,6 +217,7 @@ class Inspector extends React.Component {
 
   render() {
     const context = this;
+    console.log('WHERE ARE MY PROPS', this.state.info)
     const propList = Object.keys(this.state.info).map((key, index) => {
       let standard = true;
       if (key === 'backgroundImage' ||
@@ -198,12 +225,34 @@ class Inspector extends React.Component {
           key === 'link' ||
           key === 'color' ||
           key === 'backgroundColor' ||
-          key === 'url') {
+          key === 'url' ||
+          key === 'showPlayButton' ||
+          key === 'infinite' ||
+          key === 'showBullets' ||
+          key === 'showIndex' ||
+          key === 'autoPlay' ||
+          key === 'slideOnThumbnailHover' ||
+          key === 'disableArrowKeys' ||
+          key === 'showFullscreenButton' ||
+          key === 'showThumbnails') {
         standard = false;
       }
       return (
         <div key={`${index}-container`} className="inspector-container">
         <label key={`${index}-label`} className="inspector-label">{key}</label>
+        {
+          key === 'showPlayButton' ||
+          key === 'infinite' ||
+          key === 'showBullets' ||
+          key === 'showIndex' ||
+          key === 'autoPlay' ||
+          key === 'slideOnThumbnailHover' ||
+          key === 'disableArrowKeys' ||
+          key === 'showFullscreenButton' ||
+          key === 'showThumbnails' ?
+            <input key={index} className="inspector-input" type="checkbox" checked={this.state.info[key]} value={context.state.info[key]} onChange={this.onChange.bind(this, key)} />
+            : null
+        }
         {
           key === 'backgroundColor' ?
             <input key={index} className="inspector-input" type="color" value={context.state.info[key]} onChange={this.onChange.bind(this, key)} />
