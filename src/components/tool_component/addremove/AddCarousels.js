@@ -1,6 +1,11 @@
 import React, { PropTypes } from 'react';
 
-const AddPhotoCarousel = ({ selected, nextId, addChild, toggleTextModal }) => {
+const AddPhotoCarousel = ({
+  selected,
+  nextId,
+  addChild,
+  toggleTextModal,
+}) => {
   const callback = (value) => {
     addChild(
       'Carousels',

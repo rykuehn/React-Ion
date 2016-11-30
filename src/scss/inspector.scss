@@ -24,7 +24,7 @@
   .top-bar {
     height: 30px;
     width: 100%;
-    background-color: darkgrey;
+    background-color: rgba(0,0,0,.1);
     cursor: move;
     border-radius: 2px;
     justify-content: center;
@@ -76,7 +76,24 @@
 }
 
 .save-button {
-  width: 100px;
-  height: 21px;
+  cursor: pointer;
+  width: 200px;
+  height: 40px;
   margin: 30px;
+  background-color: transparent;
+  border: 1px solid coral;
+  color: coral;
+  font-size: 20px;
+  border-radius: 2px;
+  transition: .3s ease;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    color: white;
+    background-color: coral;
+  }
 }
+

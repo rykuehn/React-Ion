@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const AddBtn = ({
-  toggleDraggableModal,
-}) => (
+const AddBtn = ({ toggleDraggableModal }) => (
   <div className="add-btn">
     <button
       onClick={() => {
@@ -13,5 +11,8 @@ const AddBtn = ({
   </div>
 );
 
+AddBtn.propTypes = {
+  toggleDraggableModal: PropTypes.func.isRequired,
+};
 
 export default AddBtn;

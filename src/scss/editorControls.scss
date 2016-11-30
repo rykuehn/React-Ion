@@ -173,6 +173,7 @@ $light-gray: rgba(0,0,0,.05);
       margin: 0px;
       border: 0px;
       background-color: transparent;
+      text-transform: uppercase !important;
       transition: color .5s;
 
       &:hover {
