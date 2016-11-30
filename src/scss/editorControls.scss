@@ -114,6 +114,10 @@ $light-gray: rgba(0,0,0,.05);
 
   .row-column-picker {
     max-width: 200px;
+
+    .row-column-selected {
+      color: coral !important;
+    }
   }
 
   .font-size {
