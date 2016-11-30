@@ -5,7 +5,7 @@ const RadioInput = ({ selected, nextId, addChild, toggleTextModal }) => {
     addChild(
       'Radio',
       { content: value, fontSize: 12, color: 'white', height: [50, '%'], width: [20, '%'] },
-      `radio${nextId}`,
+      `Radio${nextId}`,
       selected,
       nextId,
     );
