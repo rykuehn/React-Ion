@@ -31,6 +31,10 @@ export function getValue(key, id, routes) {
   return value;
 }
 
+export function linkTo(path) {
+  window.location.href = `/${path}`;
+}
+
 export function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
