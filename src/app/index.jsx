@@ -43,6 +43,7 @@ class Home extends React.Component {
         if (user.data) {
           this.setState({ loggedIn: true });
           this.toggleForm();
+          window.sessionStorage.accessToken = user.data.token;
         } else {
           this.setState({ signupError: true });
           setTimeout(() => this.setState({ signupError: false }), 5000);
@@ -60,6 +61,7 @@ class Home extends React.Component {
         if (user.data) {
           this.setState({ loggedIn: true });
           this.toggleForm();
+          window.sessionStorage.accessToken = user.data.token;
         } else {
           this.setState({ loginError: true });
           setTimeout(() => this.setState({ loginError: false }), 5000);
@@ -68,12 +70,8 @@ class Home extends React.Component {
   }
 
   logoutHandler() {
-    logout()
-      .then((user) => {
-        if (user.data) {
-          this.setState({ loggedIn: false });
-        }
-      });
+    this.setState({ loggedIn: false });
+    window.sessionStorage.accessToken = null;
   }
 
   render() {
