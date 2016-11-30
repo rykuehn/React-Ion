@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Carousel from 'nuka-carousel';
+import ImageGallery from 'react-image-gallery';
+import '../../../node_modules/react-image-gallery/styles/scss/image-gallery.scss';
 
 class Carousels extends Component {
 
@@ -8,13 +9,12 @@ class Carousels extends Component {
   }
 
   render() {
-    const { urls, setSelected, selected, id, settings } = this.props;
-    const images = urls.map((picture, index) => {
-      return (
-        <img role="presentation" src={picture} key={index} />
-      );
+    const arrayOfImages = this.props.images.map((image, index) => {
+      return { original: image, thumbnail: image };
     });
 
+    const { settings, setSelected, selected, id } = this.props;
+    
     const divStyles = {
       width: '100%',
       padding: '10px',
@@ -25,11 +25,12 @@ class Carousels extends Component {
     };
 
     return (
-      <div onClick={e => setSelected(e, id)} style={divStyles}>
-        <Carousel {...settings} >
-          {images}
-        </Carousel>
-      </div>
+      <div style={divStyles} onClick={e => setSelected(e, id)}>
+        <ImageGallery
+          items={arrayOfImages}
+          {...settings}
+          />
+        </div>
     );
   }
 }
