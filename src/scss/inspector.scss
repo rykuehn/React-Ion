@@ -35,7 +35,7 @@
 
 .inspector-container {
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 3px;
 }
 
 .inspector-label {
@@ -61,6 +61,12 @@
 
 .inspector-image {
   width: 100%;
+}
+
+.inspector-image-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 6em;
 }
 
 .inspector-clear-button {

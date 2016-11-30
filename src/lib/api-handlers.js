@@ -13,7 +13,11 @@ export function formTreeData(routes, nextId) {
 
   const countComponents = (route) => {
     route.parent = null;
-    if (route.componentType !== 'Text' && route.componentType !== 'List') { totalComponents += 1; }
+    if (route.componentType !== 'Text' &&
+        route.componentType !== 'List' &&
+        route.componentType !== 'DropDown') {
+      totalComponents += 1;
+  }
     route.children.forEach(child => countComponents(child));
   };
 
