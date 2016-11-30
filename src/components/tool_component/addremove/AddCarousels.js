@@ -4,7 +4,7 @@ const AddCarousels = ({ selected, nextId, addChild, toggleTextModal }) => {
   const callback = (value) => {
     addChild(
       'Carousels',
-      { images: value,
+      { content: value,
         height: [50, '%'],
         width: [20, '%'],
         settings: {
@@ -16,12 +16,12 @@ const AddCarousels = ({ selected, nextId, addChild, toggleTextModal }) => {
           showPlayButton: true,
           showIndex: true,
           autoPlay: true,
-          slideOnThumbnailHover: true,
+          slideOnThumbnailHover: false,
           disableArrowKeys: false,
           startIndex: 0,
         },
       },
-      `carousels${nextId}`,
+      `Carousels${nextId}`,
       selected,
       nextId,
     );

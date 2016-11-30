@@ -9,7 +9,8 @@ class Carousels extends Component {
   }
 
   render() {
-    const arrayOfImages = this.props.images.map((image, index) => {
+    
+    const arrayOfImages = this.props.content.map((image, index) => {
       return { original: image, thumbnail: image };
     });
 
