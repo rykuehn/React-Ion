@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import '../../../scss/inspector.scss';
+import { createHtml } from './InspectorHelper';
 
 class Inspector extends React.Component {
   constructor(props) {
@@ -107,37 +108,21 @@ class Inspector extends React.Component {
   onChange(key, event) {
     const tempInfo = this.state.info;
     const changeInfo = this.state.changed;
-    
+    let value = event.target.value;
     if (key === 'height' || key === 'width') {
       if (event.target.value.slice(-2) === 'px') {
         changeInfo[key] = [event.target.value.substring(0, event.target.value.length - 2), event.target.value.slice(-2)];
       } else if (event.target.value.slice(-1) === '%') {
         changeInfo[key] = [event.target.value.substring(0, event.target.value.length - 1), event.target.value.slice(-1)];
       }
-    } else if (
-          key === 'showPlayButton' ||
-          key === 'infinite' ||
-          key === 'showBullets' ||
-          key === 'showIndex' ||
-          key === 'autoPlay' ||
-          key === 'slideOnThumbnailHover' ||
-          key === 'disableArrowKeys' ||
-          key === 'showFullscreenButton' ||
-          key === 'showThumbnails') {
-        if (event.target.value === 'true') {
-          changeInfo[key] = false;
-          tempInfo[key] = false;
-        }
-
-        if (event.target.value === 'false') {
-          changeInfo[key] = true;
-          tempInfo[key] = true;
-        }
+    } else if (event.target.value === 'false' || event.target.value === 'true') {
+      value = !JSON.parse(event.target.value);
+      changeInfo[key] = value;
     } else {
       changeInfo[key] = event.target.value;
     }
 
-    tempInfo[key] = event.target.value;
+    tempInfo[key] = value;
     this.setState({
       info: tempInfo,
       changed: changeInfo,
@@ -154,12 +139,8 @@ class Inspector extends React.Component {
           tempValue = tempValue.split(',');
         }
 
-        if (tempValue === 'true') {
-          tempValue = true;
-        }
-
-        if (tempValue === 'false') {
-          tempValue = false;
+        if (tempValue === 'true' || tempValue === 'false') {
+          tempValue = !JSON.parse(tempValue);
         }
 
         if (key === 'componentName') {
@@ -212,89 +193,78 @@ class Inspector extends React.Component {
     this.setState({ info: tempInfo });
   }
 
+  createHtml(index, key) {
+    if (typeof this.state.info[key] === 'boolean') {
+      return (
+        <input key={index} className="inspector-input" type="checkbox" checked={this.state.info[key]} value={this.state.info[key]} onChange={this.onChange.bind(this, key)} />
+      )
+    } else {
+      switch (key) {
+        case 'backgroundColor':
+          return (
+            <input key={index} className="inspector-input" type="color" value={this.state.info[key]} onChange={this.onChange.bind(this, key)} />
+          )
+          break;
+        case 'color':
+          return (
+            <input key={index} className="inspector-input" type="color" value={this.state.info[key]} onChange={this.onChange.bind(this, key)} />
+          )
+          break;
+        case 'link':
+          return (
+            <div key={index}>
+              <input className="inspector-link-input" value={this.state.info[key]} onChange={this.onChange.bind(this, key)} />
+              <button className="inspector-clear-button" onClick={this.clearInput.bind(this, key)}>Clear</button>
+            </div>
+          )
+          break;
+        case 'content':
+          return (
+            <textarea key={index} className="inspector-text-input" value={this.state.info[key]} onChange={this.onChange.bind(this, key)} />
+          )
+          break;
+        case 'url':
+          return (
+            <div key={index}>
+              <input className="inspector-image-input" value={this.state.info[key]} onChange={this.onChange.bind(this, key)} />
+              <button className="inspector-clear-button" onClick={this.clearInput.bind(this, key)}>Clear</button>
+              <div className="inspector-image-container" ><img className="inspection-image" src={this.state.info[key]} /></div>
+            </div>
+          )
+          break;
+        case 'backgroundImage':
+          return (
+            <div key={index}>
+              <input className="inspector-image-input" value={this.state.info[key]} onChange={this.onChange.bind(this, key)} />
+              <button className="inspector-clear-button" onClick={this.clearInput.bind(this, key)}>Clear</button>
+              <div className="inspector-image-container" ><img className="inspection-image" src={this.state.info[key]} /></div>
+            </div>
+          )
+          break;
+        default:
+          return (
+            <input
+              key={index}
+              className="inspector-input"
+              value={this.state.info[key]}
+              onChange={this.onChange.bind(this, key)}
+            />
+          );
+          break;
+      }
+    }
+  }
+
   render() {
     const context = this;
+
+
+
     const propList = Object.keys(this.state.info).map((key, index) => {
-      let standard = true;
-      if (key === 'backgroundImage' ||
-          key === 'content' ||
-          key === 'link' ||
-          key === 'color' ||
-          key === 'backgroundColor' ||
-          key === 'url' ||
-          key === 'showPlayButton' ||
-          key === 'infinite' ||
-          key === 'showBullets' ||
-          key === 'showIndex' ||
-          key === 'autoPlay' ||
-          key === 'slideOnThumbnailHover' ||
-          key === 'disableArrowKeys' ||
-          key === 'showFullscreenButton' ||
-          key === 'showThumbnails') {
-        standard = false;
-      }
       return (
         <div key={`${index}-container`} className="inspector-container">
         <label key={`${index}-label`} className="inspector-label">{key}</label>
-        {
-          key === 'showPlayButton' ||
-          key === 'infinite' ||
-          key === 'showBullets' ||
-          key === 'showIndex' ||
-          key === 'autoPlay' ||
-          key === 'slideOnThumbnailHover' ||
-          key === 'disableArrowKeys' ||
-          key === 'showFullscreenButton' ||
-          key === 'showThumbnails' ?
-            <input key={index} className="inspector-input" type="checkbox" checked={this.state.info[key]} value={context.state.info[key]} onChange={this.onChange.bind(this, key)} />
-            : null
-        }
-        {
-          key === 'backgroundColor' ?
-            <input key={index} className="inspector-input" type="color" value={context.state.info[key]} onChange={this.onChange.bind(this, key)} />
-            : null
-        }
-        {
-          key === 'color' ?
-            <input key={index} className="inspector-input" type="color" value={context.state.info[key]} onChange={this.onChange.bind(this, key)} />
-            : null
-        }
-        {
-          key === 'link' ?
-            <div key={index}>
-              <input className="inspector-link-input" value={context.state.info[key]} onChange={this.onChange.bind(this, key)} />
-              <button className="inspector-clear-button" onClick={this.clearInput.bind(this, key)}>Clear</button>
-            </div>
-            : null
-        }
-        {
-          key === 'content' ?
-            <textarea key={index} className="inspector-text-input" value={context.state.info[key]} onChange={this.onChange.bind(this, key)} />
-            : null
-        }
-        {
-          key === 'url' ?
-            <div key={index}>
-              <input className="inspector-image-input" value={context.state.info[key]} onChange={this.onChange.bind(this, key)} />
-              <button className="inspector-clear-button" onClick={this.clearInput.bind(this, key)}>Clear</button>
-              <div className="inspector-image-container" ><img className="inspection-image" src={context.state.info[key]} /></div>
-            </div>
-            : null
-        }
-        {
-          key === "backgroundImage" ?
-            <div key={index}>
-              <input className="inspector-image-input" value={context.state.info[key]} onChange={this.onChange.bind(this, key)} />
-              <button className="inspector-clear-button" onClick={this.clearInput.bind(this, key)}>Clear</button>
-              <div className="inspector-image-container" ><img className="inspection-image" src={context.state.info[key]} /></div>
-            </div>
-            : null
-        }
-        {
-          standard ?
-            <input key={index} className="inspector-input" value={context.state.info[key]} onChange={this.onChange.bind(this, key)} />
-            : null
-        }
+          {this.createHtml(index, key)}
         </div>
       );
     });
