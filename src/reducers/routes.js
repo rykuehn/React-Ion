@@ -3,31 +3,6 @@ import { UPDATE_TREE_INFO, UPDATE_ROUTES, UPDATE_PROPS, UPDATE_INFOS, ADD_CHILD,
 import store from '../store/store';
 import emptyCanvas from '../lib/emptyCanvas';
 
-const initialState = {
-  projectName: '',
-  appPages: [{
-    past: [],
-    present: {
-      id: 0,
-      props: {
-        backgroundColor: 'rgba(255,255,255,.1)',
-        flex: 1,
-        height: [1080, 'px'],
-        width: null,
-        flexDirection: 'column',
-        margin: '0px',
-      },
-      children: [],
-      componentType: 'Block',
-      parent: null,
-      name: 'Index',
-    },
-    future: [],
-  }],
-  pages: [0],
-  totalComponents: 1,
-};
-
 const routes = (routes = emptyCanvas, action) => {
   const { actionType, value, key, id, type } = action;
 
@@ -52,6 +27,17 @@ const routes = (routes = emptyCanvas, action) => {
          if (_.isEqual(pagePath.past[pagePath.past.length - 1], pagePath.present)) {
            pagePath.past.pop();
          }
+      } else if (actionType === 'Carousels') {
+        moveToPast(pagePath, routes, actionType);
+        const update = (tree) => {
+          if (tree.id === id) {
+           tree.props.settings[key] = value;
+          } else {
+            tree.children.forEach(child => update(child));
+          }
+        };
+        update(pagePath.present);
+        return newTree;
       } else {
         moveToPast(pagePath, routes, actionType);
         const update = (tree) => {
@@ -98,7 +84,6 @@ const routes = (routes = emptyCanvas, action) => {
       if (action.componentType !== 'Text') {
         newTree.totalComponents += 1;
       }
-
       return newTree;
 
     case ADD_PAGE:
