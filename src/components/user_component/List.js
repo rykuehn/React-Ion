@@ -9,6 +9,7 @@ const List = ({
   fontSize,
   fontFamily,
   textAlign,
+  padding,
 }) => {
   const textStyle = {
     textAlign,
@@ -16,7 +17,7 @@ const List = ({
     fontSize,
     color,
     width: 'calc(100% - 0px)',
-    padding: '10px',
+    padding,
     flexWrap: 'wrap',
     whiteSpace: 'initial',
     boxShadow: selected === id ? 'inset 0 0 0 1px #93FE3F' : 'inset 0 0 0 1px coral',

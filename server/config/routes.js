@@ -2,7 +2,7 @@ const path = require('path');
 const { getProjectOwner, getUserInfo, authenticate } = require('./helpers');
 
 module.exports = (app) => {
-  app.get('/editor', (req, res) => {
+  app.get('/editor/*', (req, res) => {
     res.sendFile(path.join(__dirname, '../../dist/editor.html'));
   });
 
@@ -30,6 +30,5 @@ module.exports = (app) => {
       }
     });
   });
-
   app.get('/*', (req, res) => { res.status(404).send('404 Invalid Request'); });
 };

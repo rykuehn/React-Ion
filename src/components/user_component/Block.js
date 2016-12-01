@@ -12,6 +12,7 @@ const Block = ({
   children,
   backgroundImage,
   margin,
+  padding,
   aUrl,
 }) => {
   const boxStyle = {
@@ -28,12 +29,13 @@ const Block = ({
     width: width ? width[0] + width[1] : null,
     maxHeight: '100%',
     maxWidth: '100%',
-    padding: '20px',
+    padding,
     margin,
     flexWrap: 'wrap',
     cursor: 'pointer',
     boxSizing: 'border-box',
     borderRadius: 2,
+    overflowY: 'auto',
     boxShadow: selected === id ? 'inset 0 0 0 2px #93FE3F' : 'inset 0 0 0 2px coral',
   };
 

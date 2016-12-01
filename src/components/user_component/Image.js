@@ -11,6 +11,7 @@ const Image = ({
   flexDirection,
   backgroundImage,
   margin,
+  padding,
   url,
 }) => {
   const boxStyle = {

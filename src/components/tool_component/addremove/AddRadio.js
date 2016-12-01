@@ -5,7 +5,7 @@ const RadioInput = ({ selected, nextId, addChild, toggleTextModal }) => {
     addChild(
       'Radio',
       { content: value, fontSize: 12, color: 'white', height: [50, '%'], width: [20, '%'] },
-      `radio${nextId}`,
+      `Radio${nextId}`,
       selected,
       nextId,
     );
@@ -19,7 +19,7 @@ const RadioInput = ({ selected, nextId, addChild, toggleTextModal }) => {
           'list',
           callback,
         )}
-      > <i className="fa fa-bullseye" aria-hidden="true" /> Radio
+      > <i className="fa fa-bullseye" aria-hidden="true" /> RADIO
       </button>
     </div>
   );

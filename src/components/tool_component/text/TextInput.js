@@ -19,7 +19,7 @@ const TextInput = ({ selected, nextId, addChild, toggleTextModal }) => {
           'text',
           callback,
         )}
-      > <i className="fa fa-plus" aria-hidden="true" /> TEXT
+      > <i className="fa fa-font" aria-hidden="true" /> TEXT
       </button>
     </div>
   );

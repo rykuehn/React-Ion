@@ -6,14 +6,18 @@ import {
   removeProject,
 } from './api-methods';
 
-const formTreeData = (routes, nextId) => {
+export function formTreeData(routes, nextId) {
   const newRoutes = _.cloneDeep(routes);
   const newTree = [];
   let totalComponents = 0;
 
   const countComponents = (route) => {
     route.parent = null;
-    if (route.componentType !== 'Text' && route.componentType !== 'List') { totalComponents += 1; }
+    if (route.componentType !== 'Text' &&
+        route.componentType !== 'List' &&
+        route.componentType !== 'DropDown') {
+      totalComponents += 1;
+  }
     route.children.forEach(child => countComponents(child));
   };
 
@@ -29,7 +33,7 @@ const formTreeData = (routes, nextId) => {
   };
 
   return treeData;
-};
+}
 
 export function handleProjectDownload(routes, nextId) {
   const treeData = formTreeData(routes, nextId);

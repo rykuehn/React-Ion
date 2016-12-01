@@ -52,6 +52,10 @@ $light-gray: rgba(0,0,0,.05);
     width: 300px;
   }
 
+  .project-name {
+    max-width: 200px;
+  }
+
   .add-page {
     width: 200px;
 
@@ -93,7 +97,6 @@ $light-gray: rgba(0,0,0,.05);
   }
 
   .delete {
-    margin-left: 70px;
     max-width: 100px;
 
     i {
@@ -111,6 +114,10 @@ $light-gray: rgba(0,0,0,.05);
 
   .row-column-picker {
     max-width: 200px;
+
+    .row-column-selected {
+      color: coral !important;
+    }
   }
 
   .font-size {
@@ -137,6 +144,9 @@ $light-gray: rgba(0,0,0,.05);
    justify-content: center;
    transition: all .3s;
    font-size: 12px;
+   text-transform: uppercase !important;
+   font-weight: 200;
+   letter-spacing: 1px;
 
    i {
     font-size: 12px;
@@ -170,6 +180,9 @@ $light-gray: rgba(0,0,0,.05);
       margin: 0px;
       border: 0px;
       background-color: transparent;
+      text-transform: uppercase !important;
+      font-weight: 200;
+      letter-spacing: 1px;
       transition: color .5s;
 
       &:hover {

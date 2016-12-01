@@ -27,6 +27,7 @@ class Radio extends Component {
       fontSize,
       fontFamily,
       textAlign,
+      padding,
     } = this.props;
 
     const textStyle = {
@@ -35,7 +36,7 @@ class Radio extends Component {
       fontSize,
       color,
       width: 'calc(100% - 0px)',
-      padding: '10px',
+      padding,
       flexWrap: 'wrap',
       whiteSpace: 'initial',
       boxShadow: selected === id ? 'inset 0 0 0 1px #93FE3F' : 'inset 0 0 0 1px coral',
@@ -49,7 +50,6 @@ class Radio extends Component {
       display: 'inline-block',
     }
 
-    console.log('SELECTED OPTION', this.state.selectedOption)
     return (
       <form
         style={textStyle}

@@ -1,6 +1,11 @@
 import React, { PropTypes } from 'react';
 
-const NameInput = ({ toggleTextModal, updateInfos, selected, setSelected }) => {
+const NameInput = ({
+  toggleTextModal,
+  updateInfos,
+  selected,
+  setSelected,
+}) => {
   const capitalizeFirstLetter = s => s.charAt(0).toUpperCase() + s.slice(1);
   const makeComponentName = string => string.split(' ').map(word => capitalizeFirstLetter(word)).join('');
 

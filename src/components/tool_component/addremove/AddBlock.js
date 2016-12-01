@@ -14,13 +14,14 @@ const AddBlock = ({
           height: [50, '%'],
           width: [20, '%'],
           margin: '20px',
+          padding: '20px',
           flexDirection: 'row' },
           `Block${nextId}`,
           selected,
           nextId,
         );
       }}
-    > <i className="fa fa-plus" aria-hidden="true" /> BLOCK
+    > <i className="fa fa-square-o" aria-hidden="true" /> BLOCK
     </button>
   </div>
 );
