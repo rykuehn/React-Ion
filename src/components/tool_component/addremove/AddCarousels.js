@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 
 const AddCarousels = ({ selected, nextId, addChild, toggleTextModal }) => {
   const callback = (value) => {
+    console.log("asdf");
     addChild(
       'Carousels',
       { images: value,
@@ -9,6 +10,7 @@ const AddCarousels = ({ selected, nextId, addChild, toggleTextModal }) => {
         width: [20, '%'],
         settings: {
           slideInterval: 2000,
+          startIndex: 0,
           infinite: true,
           disableThumbnailScroll: true,
           showBullets: true,
@@ -18,7 +20,7 @@ const AddCarousels = ({ selected, nextId, addChild, toggleTextModal }) => {
           autoPlay: true,
           slideOnThumbnailHover: true,
           disableArrowKeys: false,
-          startIndex: 0,
+          showThumbnails: false,
         },
       },
       `carousels${nextId}`,

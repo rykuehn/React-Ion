@@ -29,8 +29,8 @@ class Carousels extends Component {
         <ImageGallery
           items={arrayOfImages}
           {...settings}
-          />
-        </div>
+        />
+      </div>
     );
   }
 }
