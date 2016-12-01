@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { signup, login, logout, authenticate } from '../lib/api-methods';
+import { signup, login, getUserInfo, authenticate } from '../lib/api-methods';
+import { createCookie } from '../lib/helpers';
 import '../scss/HomePage.scss';
 import '../scss/index.scss';
 
@@ -41,6 +42,7 @@ class Home extends React.Component {
     signup(username, password)
       .then((user) => {
         if (user.data) {
+          createCookie('access_token', user.data.token, 7200);
           this.setState({ loggedIn: true });
           this.toggleForm();
         } else {
@@ -58,8 +60,7 @@ class Home extends React.Component {
     login(username, password)
       .then((user) => {
         if (user.data) {
-          document.cookie = `access_token=${user.data.token}`;
-          
+          createCookie('access_token', user.data.token, 7200);
           this.setState({ loggedIn: true });
           this.toggleForm();
         } else {
