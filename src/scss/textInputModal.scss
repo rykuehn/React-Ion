@@ -86,5 +86,61 @@
         border-bottom: 2px solid coral;
       }
     }
+
+    .list-modal {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      height: 90%;
+      width: 90%;
+
+      .input-side {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        height: 100%;
+
+        input {
+          width: 80%;
+          margin-bottom: 10px;
+        }
+
+        button {
+          width: 80%;
+          margin-top: 10px !important;
+        }
+      }
+
+      .list-side {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: 50%;
+        height: 100%;
+        background-color: rgba(0,0,0,.1);
+        overflow: auto;
+
+        ul {
+          width: calc(100% - 80px);
+          padding: 0px;
+        }
+
+        li {
+          list-style: none;
+          margin: 0px;
+          height: 20px;
+          border-radius: 2px;
+          padding: 5px;
+          margin-bottom: 10px;
+          background-color: white;
+          text-align: center;
+          color: rgba(0,0,0,.8);
+        }
+      }
+    }
   }
 }

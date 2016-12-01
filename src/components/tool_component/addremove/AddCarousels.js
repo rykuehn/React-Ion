@@ -1,29 +1,33 @@
 import React, { PropTypes } from 'react';
 
-const AddCarousels = ({ selected, nextId, addChild, toggleTextModal }) => {
+const AddCarousels = ({
+  selected,
+  nextId,
+  addChild,
+  toggleTextModal,
+}) => {
   const callback = (value) => {
     console.log("asdf");
     addChild(
       'Carousels',
-      { images: value,
+      { content: value,
         height: [50, '%'],
         width: [20, '%'],
         settings: {
           slideInterval: 2000,
           startIndex: 0,
           infinite: true,
-          disableThumbnailScroll: true,
           showBullets: true,
           showFullscreenButton: true,
           showPlayButton: true,
           showIndex: true,
           autoPlay: true,
-          slideOnThumbnailHover: true,
+          slideOnThumbnailHover: false,
           disableArrowKeys: false,
-          showThumbnails: false,
+          showThumbnails: true,
         },
       },
-      `carousels${nextId}`,
+      `Carousels${nextId}`,
       selected,
       nextId,
     );
@@ -34,7 +38,7 @@ const AddCarousels = ({ selected, nextId, addChild, toggleTextModal }) => {
       <button
         onClick={() => toggleTextModal(
           'Add Main Picture URL',
-          'list',
+          'carousels',
           callback,
         )}
       > <i className="fa fa-circle-thin" aria-hidden="true" /> CAROUSEL

@@ -2,20 +2,23 @@ import React, { PropTypes } from 'react';
 import { updateProject } from '../../../lib/api-methods';
 import '../../../scss/projectInfo.scss';
 
-const ProjectInfo = ({ routes, toggleTextModal, updateTreeInfo }) => {
+const ProjectInfo = ({
+  routes,
+  toggleTextModal,
+  updateTreeInfo,
+}) => {
   const callback = (value) => {
-    let projectId = window.location.href.match(/\/[^/]*$/)[0].slice(1);
+    const projectId = window.location.href.match(/\/[^/]*$/)[0].slice(1);
     const projectProps = {
       name: value,
     };
 
-    updateProject(projectId, projectProps).then((project) => {
+    updateProject(projectId, projectProps).then(() => {
       updateTreeInfo(
         'projectName',
         value,
       );
-    })
-
+    });
   };
 
   return (
@@ -27,7 +30,12 @@ const ProjectInfo = ({ routes, toggleTextModal, updateTreeInfo }) => {
           callback,
         )}
       >
-      PROJECT NAME <br /> {routes.projectName} <i className="fa fa-pencil" aria-hidden="true" />
+        PROJECT NAME{' '}
+        <i className="fa fa-pencil" aria-hidden="true" />
+        <br />
+        <span className="project-name">
+          {"'"}{routes.projectName}{"'"}
+        </span>
       </button>
     </div>
   );
