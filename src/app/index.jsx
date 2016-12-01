@@ -58,6 +58,8 @@ class Home extends React.Component {
     login(username, password)
       .then((user) => {
         if (user.data) {
+          document.cookie = `access_token=${user.data.token}`;
+          
           this.setState({ loggedIn: true });
           this.toggleForm();
         } else {
