@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addChild, removeChild } from '../../../actions/routes';
-import { toggleTextModal } from '../../../actions/toggleTextModal';
+import { toggleCarouselModal } from '../../../actions/toggleTextModal';
 import AddCarousels from '../../../components/tool_component/addremove/AddCarousels';
 
 const mapStateToProps = state => (
@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => (
   bindActionCreators({
     addChild,
     removeChild,
-    toggleTextModal,
+    toggleCarouselModal,
   }, dispatch)
 );
 

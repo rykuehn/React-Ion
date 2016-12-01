@@ -4,10 +4,9 @@ const AddCarousels = ({
   selected,
   nextId,
   addChild,
-  toggleTextModal,
+  toggleCarouselModal,
 }) => {
   const callback = (value) => {
-    console.log("asdf");
     addChild(
       'Carousels',
       { content: value,
@@ -36,8 +35,9 @@ const AddCarousels = ({
   return (
     <div className="add-text">
       <button
-        onClick={() => toggleTextModal(
+        onClick={() => toggleCarouselModal(
           'Add Main Picture URL',
+          'Add an image description',
           'carousels',
           callback,
         )}
@@ -51,7 +51,7 @@ AddCarousels.propTypes = {
   selected: PropTypes.number.isRequired,
   nextId: PropTypes.number.isRequired,
   addChild: PropTypes.func.isRequired,
-  toggleTextModal: PropTypes.func.isRequired,
+  toggleCarouselModal: PropTypes.func.isRequired,
 };
 
 export default AddCarousels;
