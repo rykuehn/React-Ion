@@ -74,8 +74,10 @@ module.exports.removeProject = (projectId) => {
 module.exports.createProject = (permissionId, projectProps) => {
   const options = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ permissionId, projectProps }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
     credentials: 'include',
   };
 
@@ -87,8 +89,10 @@ module.exports.createProject = (permissionId, projectProps) => {
 module.exports.updateProject = (projectId, newProps) => {
   const options = {
     method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newProps),
+    headers: {
+      'Content-Type': 'application/json',
+    },
     credentials: 'include',
   };
 
@@ -125,13 +129,13 @@ module.exports.login = (username, password) => {
     .catch(err => err);
 };
 
-module.exports.logout = () => {
-  const options = { method: 'GET' };
+// module.exports.logout = () => {
+//   const options = { method: 'GET' };
 
-  return fetch(`${host}/logout`, options)
-    .then(user => user.json())
-    .catch(err => err);
-};
+//   return fetch(`${host}/logout`, options)
+//     .then(user => user.json())
+//     .catch(err => err);
+// };
 
 module.exports.authenticate = () => {
   const options = {
