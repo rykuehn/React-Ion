@@ -29,21 +29,21 @@ class Editor extends React.Component {
   }
 
   componentWillMount() {
-    let projectId = window.location.href.match(/\/[^/]*$/)[0].slice(1);
-    if (projectId !== 'editor' && projectId !== '') {
-      projectId = +projectId;
-      Promise.join(getUserInfo(), getProjectOwner(projectId), (userInfo, ownerInfo) => {
-        if (userInfo.data && (ownerInfo.data.username === userInfo.data.username)) {
-          return getProject(projectId);
-        }
-        window.location.href = '/';
-        return window;
-      }).then((project) => {
-        if (project.data) {
-          this.deconstructTreeData(project.data);
-        }
-      }).catch(err => console.error(err));
-    }
+    // let projectId = window.location.href.match(/\/[^/]*$/)[0].slice(1);
+    // if (projectId !== 'editor' && projectId !== '') {
+    //   projectId = +projectId;
+    //   Promise.join(getUserInfo(), getProjectOwner(projectId), (userInfo, ownerInfo) => {
+    //     if (userInfo.data && (ownerInfo.data.username === userInfo.data.username)) {
+    //       return getProject(projectId);
+    //     }
+    //     window.location.href = '/';
+    //     return window;
+    //   }).then((project) => {
+    //     if (project.data) {
+    //       this.deconstructTreeData(project.data);
+    //     }
+    //   }).catch(err => console.error(err));
+    // }
   }
 
   deconstructTreeData(treeData) {
