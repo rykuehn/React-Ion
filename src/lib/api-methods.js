@@ -7,9 +7,7 @@ module.exports.download = (projectTree) => {
 module.exports.getUserProjects = () => {
   const options = {
     method: 'GET',
-    headers: {
-      Authorization: `Bearer ${window.sessionStorage.accessToken}`,
-    },
+    credentials: 'include',
   };
 
   return fetch(`${host}/api/user/projects`, options)
@@ -20,9 +18,7 @@ module.exports.getUserProjects = () => {
 module.exports.getUserInfo = () => {
   const options = {
     method: 'GET',
-    headers: {
-      Authorization: `Bearer ${window.sessionStorage.accessToken}`,
-    },
+    credentials: 'include',
   };
 
   return fetch(`${host}/api/user/info`, options)
@@ -33,9 +29,7 @@ module.exports.getUserInfo = () => {
 module.exports.getProjectOwner = (projectId) => {
   const options = {
     method: 'GET',
-    headers: {
-      Authorization: `Bearer ${window.sessionStorage.accessToken}`,
-    },
+    credentials: 'include',
   };
 
   return fetch(`${host}/api/project/${projectId}/owner`, options)
@@ -46,9 +40,7 @@ module.exports.getProjectOwner = (projectId) => {
 module.exports.getProject = (projectId) => {
   const options = {
     method: 'GET',
-    headers: {
-      Authorization: `Bearer ${window.sessionStorage.accessToken}`,
-    },
+    credentials: 'include',
   };
 
   return fetch(`${host}/api/project/${projectId}`, options)
@@ -59,9 +51,7 @@ module.exports.getProject = (projectId) => {
 module.exports.getAllProjects = () => {
   const options = {
     method: 'GET',
-    headers: {
-      Authorization: `Bearer ${window.sessionStorage.accessToken}`,
-    },
+    credentials: 'include',
   };
 
   return fetch(`${host}/api/project/`, options)
@@ -72,9 +62,7 @@ module.exports.getAllProjects = () => {
 module.exports.removeProject = (projectId) => {
   const options = {
     method: 'DELETE',
-    headers: {
-      Authorization: `Bearer ${window.sessionStorage.accessToken}`,
-    },
+    credentials: 'include',
   };
 
   return fetch(`${host}/api/project/${projectId}`, options)
@@ -88,8 +76,8 @@ module.exports.createProject = (permissionId, projectProps) => {
     body: JSON.stringify({ permissionId, projectProps }),
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${window.sessionStorage.accessToken}`,
     },
+    credentials: 'include',
   };
 
   return fetch(`${host}/api/project/`, options)
@@ -103,8 +91,8 @@ module.exports.updateProject = (projectId, newProps) => {
     body: JSON.stringify(newProps),
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${window.sessionStorage.accessToken}`,
     },
+    credentials: 'include',
   };
 
   return fetch(`${host}/api/project/${projectId}`, options)
@@ -119,6 +107,7 @@ module.exports.signup = (username, password) => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, password }),
+    credentials: 'include',
   };
 
   return fetch(`${host}/signup`, options)
@@ -131,6 +120,7 @@ module.exports.login = (username, password) => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, password }),
+    credentials: 'include',
   };
 
   return fetch(`${host}/login`, options)
@@ -149,9 +139,7 @@ module.exports.login = (username, password) => {
 module.exports.authenticate = () => {
   const options = {
     method: 'GET',
-    headers: {
-      Authorization: `Bearer ${window.sessionStorage.accessToken}`,
-    },
+    credentials: 'include',
   };
 
   return fetch(`${host}/authenticate`, options)
