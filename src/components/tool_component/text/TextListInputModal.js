@@ -15,6 +15,12 @@ class ListTextInputModal extends React.Component {
     this.setState({ list });
   }
 
+  removeFromList(i) {
+    this.setState({
+      list: this.state.list.filter((item, index) => index !== i),
+    });
+  }
+
   render() {
     const { textModal, closeTextModal } = this.props;
     const { callback, showing, action, placeholder } = textModal;
@@ -24,7 +30,13 @@ class ListTextInputModal extends React.Component {
     }
 
     const listNode = this.state.list.map((list, index) => (
-      <li key={index}>{list}</li>
+      <li key={index}>
+        <button
+          onClick={() => this.removeFromList(index)}
+        > <i className="fa fa-window-close" aria-hidden="true" />
+        </button>
+        {list}
+      </li>
     ));
 
     return (

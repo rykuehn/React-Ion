@@ -73,6 +73,8 @@
 
     input {
       font-size: 20px;
+      font-weight: 200;
+      letter-spacing: 1px;
       flex: 1;
       width: 50%;
       max-height: 40px;
@@ -130,6 +132,8 @@
         }
 
         li {
+          font-weight: 200;
+          position: relative;
           list-style: none;
           margin: 0px;
           height: 20px;
@@ -139,6 +143,31 @@
           background-color: white;
           text-align: center;
           color: rgba(0,0,0,.8);
+          overflow-x: hidden;
+          padding-left: 30px;
+
+          button {
+            cursor: pointer;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            left: 5px;
+            width: 20px;
+            height: 20px;
+            font-size: 18px;
+            background-color: transparent;
+            color: rgba(0,0,0,.1);
+            border: 0px;
+            transition: color .3s;
+
+            &:hover {
+              color: coral;
+            }
+
+            &:focus {
+              outline: none;
+            }
+          }
         }
       }
     }
