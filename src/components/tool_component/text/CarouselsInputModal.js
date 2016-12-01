@@ -26,8 +26,9 @@ class CarouselsInputModal extends React.Component {
   }
 
   render() {
+    console.log('CAROUSEL', this.props);
     const { textModal, closeTextModal } = this.props;
-    const { callback, showing, action, placeholder } = textModal;
+    const { callback, showing, action, placeholder, placeholder2 } = textModal;
     let className = 'modal-hidden';
     if (action === 'carousels') {
       className = showing ? 'modal-wrapper' : 'modal-hidden';
@@ -66,7 +67,7 @@ class CarouselsInputModal extends React.Component {
                 ref={i => (this.url = i)}
               />
               <input
-                placeholder={placeholder.toUpperCase()}
+                placeholder={placeholder2 ? placeholder2.toUpperCase() : ''}
                 type="description"
                 ref={i => (this.description = i)}
               />

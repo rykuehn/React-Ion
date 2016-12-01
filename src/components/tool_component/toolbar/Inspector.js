@@ -137,7 +137,7 @@ class Inspector extends React.Component {
       changeInfo[key] = event.target.value;
     }
 
-    tempInfo[key] = event.target.value;
+    //tempInfo[key] = event.target.value;
     this.setState({
       info: tempInfo,
       changed: changeInfo,
