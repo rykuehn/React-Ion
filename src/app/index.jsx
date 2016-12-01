@@ -43,7 +43,6 @@ class Home extends React.Component {
         if (user.data) {
           this.setState({ loggedIn: true });
           this.toggleForm();
-          window.sessionStorage.accessToken = user.data.token;
         } else {
           this.setState({ signupError: true });
           setTimeout(() => this.setState({ signupError: false }), 5000);
@@ -61,7 +60,6 @@ class Home extends React.Component {
         if (user.data) {
           this.setState({ loggedIn: true });
           this.toggleForm();
-          window.sessionStorage.accessToken = user.data.token;
         } else {
           this.setState({ loginError: true });
           setTimeout(() => this.setState({ loginError: false }), 5000);
@@ -71,7 +69,16 @@ class Home extends React.Component {
 
   logoutHandler() {
     this.setState({ loggedIn: false });
-    window.sessionStorage.accessToken = null;
+
+    // need to destroy cookie.
+    const cookies = document.cookie.split(';');
+
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i];
+      const eqPos = cookie.indexOf('=');
+      const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+    }
   }
 
   render() {
