@@ -12,7 +12,6 @@ export function toggleTextModal(placeholder, action, callback) {
 }
 
 export function toggleCarouselModal(placeholder, placeholder2, action, callback) {
-  console.log('IN TOGGLE CAROUSEL', placeholder, placeholder2, action, callback)
   return {
     type: TOGGLE_CAROUSEL_MODAL,
     placeholder,

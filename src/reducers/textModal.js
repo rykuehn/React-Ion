@@ -15,7 +15,6 @@ export default function textModal(textModal = initialState, action) {
         showing: true,
       };
     case TOGGLE_CAROUSEL_MODAL:
-      console.log('IN REDUCER', action)
       return {
         callback: action.callback,
         placeholder: action.placeholder,

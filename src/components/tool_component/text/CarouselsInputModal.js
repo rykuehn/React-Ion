@@ -26,7 +26,6 @@ class CarouselsInputModal extends React.Component {
   }
 
   render() {
-    console.log('CAROUSEL', this.props);
     const { textModal, closeTextModal } = this.props;
     const { callback, showing, action, placeholder, placeholder2 } = textModal;
     let className = 'modal-hidden';
