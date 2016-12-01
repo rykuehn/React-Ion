@@ -68,12 +68,17 @@ class Home extends React.Component {
   }
 
   logoutHandler() {
-    logout()
-      .then((user) => {
-        if (user.data) {
-          this.setState({ loggedIn: false });
-        }
-      });
+    this.setState({ loggedIn: false });
+
+    // need to destroy cookie.
+    const cookies = document.cookie.split(';');
+
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i];
+      const eqPos = cookie.indexOf('=');
+      const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+    }
   }
 
   render() {

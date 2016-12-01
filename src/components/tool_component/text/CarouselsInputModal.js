@@ -9,28 +9,39 @@ class CarouselsInputModal extends React.Component {
     };
   }
 
-  addToList(item) {
+  addToList(description, value) {
     const list = this.state.list;
     list.push({
-      original: item,
-      thumbnail: item,
+      original: value,
+      thumbnail: value,
+      description,
     });
     this.setState({ list });
   }
 
+  removeFromList(i) {
+    this.setState({
+      list: this.state.list.filter((item, index) => index !== i),
+    });
+  }
+
   render() {
     const { textModal, closeTextModal } = this.props;
-    const { callback, showing, action, placeholder } = textModal;
+    const { callback, showing, action, placeholder, placeholder2 } = textModal;
     let className = 'modal-hidden';
     if (action === 'carousels') {
       className = showing ? 'modal-wrapper' : 'modal-hidden';
     }
 
-    const listNode = this.state.list.map((list, index) => {
-      return (
-        <div key={index}>{list.original}</div>
-      );
-    });
+    const listNode = this.state.list.map((list, index) => (
+      <li key={index}>
+        <button
+          onClick={() => this.removeFromList(index)}
+        > <i className="fa fa-window-close" aria-hidden="true" />
+        </button>
+        {list.description}
+      </li>
+    ));
 
     return (
       <div className={className}>
@@ -38,41 +49,51 @@ class CarouselsInputModal extends React.Component {
           <button
             className="close-button"
             onClick={() => {
-              this.text.value = '';
+              this.url.value = '';
               this.setState({ list: [] });
               closeTextModal();
             }}
           > <i className="fa fa-window-close" aria-hidden="true" />
           </button>
-          <div>{listNode}</div>
-          <input
-            placeholder={placeholder.toUpperCase()}
-            type="text"
-            ref={i => (this.text = i)}
-          />
-          <button
-            className="submit-button"
-            onClick={(e) => {
-              e.preventDefault();
-              () => console.log(this.text.value)
-              this.addToList(this.text.value);
-              this.text.value = '';
-            }}
-          > ADD
-          </button>
-          <button
-            className="submit-button"
-            type="submit"
-            onClick={(e) => {
-              e.preventDefault();
-              () => console.log(this.text.value)
-              callback(this.state.list);
-              this.setState({ list: [] });
-              closeTextModal();
-              this.text.value = '';
-            }}
-          > SUBMIT
-          </button>
+          <div className="list-modal">
+            <div className="list-side">
+              <ul>{listNode}</ul>
+            </div>
+            <div className="input-side">
+              <input
+                placeholder={placeholder.toUpperCase()}
+                type="text"
+                ref={i => (this.url = i)}
+              />
+              <input
+                placeholder={placeholder2 ? placeholder2.toUpperCase() : ''}
+                type="description"
+                ref={i => (this.description = i)}
+              />
+              <button
+                className="submit-button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  this.addToList(this.description.value, this.url.value);
+                  this.url.value = '';
+                  this.description.value = '';
+                }}
+              > ADD
+              </button>
+              <button
+                className="submit-button"
+                type="submit"
+                onClick={(e) => {
+                  e.preventDefault();
+                  callback(this.state.list);
+                  this.setState({ list: [] });
+                  closeTextModal();
+                  this.url.value = '';
+                }}
+              > SUBMIT
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );

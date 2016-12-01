@@ -32,7 +32,6 @@ export function formTreeData(routes, nextId) {
     nextId,
   };
 
-  console.log('treeData', treeData);
   return treeData;
 }
 

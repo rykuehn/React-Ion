@@ -123,7 +123,6 @@ class Inspector extends React.Component {
     }
 
     tempInfo[key] = value;
-
     this.setState({
       info: tempInfo,
       changed: changeInfo,

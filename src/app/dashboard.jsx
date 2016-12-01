@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { getUserProjects, authenticate } from '../lib/api-methods';
+import { getUserProjects } from '../lib/api-methods';
 import { handleProjectRemove, handleProjectCreate } from '../lib/api-handlers';
 import emptyCanvas from '../lib/emptyCanvas';
 import '../scss/dashboard.scss';
@@ -12,7 +12,6 @@ class Dashboard extends React.Component {
     this.newProjectClick = this.newProjectClick.bind(this);
 
     this.state = {
-      loggedIn: false,
       projects: [],
     };
   }
@@ -22,20 +21,13 @@ class Dashboard extends React.Component {
   }
 
   getProjects() {
-    return authenticate().then((status) => {
-      if (status.data) {
-        return getUserProjects().then((projects) => {
-          if (projects.data) {
-            return this.setState({
-              loggedIn: true,
-              projects: projects.data,
-            });
-          }
-          return 'No Projects';
-        }).catch(err => console.error(err));
+    getUserProjects().then((projects) => {
+      if (projects.data) {
+        return this.setState({
+          projects: projects.data,
+        });
       }
-      window.location.href = '/';
-      return 'Unauthorized';
+      return 'No Projects';
     }).catch(err => console.error(err));
   }
 
