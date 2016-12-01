@@ -7,7 +7,6 @@ const AddCarousels = ({
   toggleTextModal,
 }) => {
   const callback = (value) => {
-    console.log("asdf");
     addChild(
       'Carousels',
       { content: value,
