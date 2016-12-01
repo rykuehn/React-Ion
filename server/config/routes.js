@@ -1,7 +1,5 @@
 const path = require('path');
-const request = require('request');
-const { host } = require('../../src/lib/api-config');
-const { getProjectOwner, getUserInfo } = require('./helpers');
+const { getProjectOwner, getUserInfo, authenticate } = require('./helpers');
 
 module.exports = (app) => {
   app.get('/editor', (req, res) => {
@@ -24,16 +22,8 @@ module.exports = (app) => {
 
   app.get('/dashboard', (req, res) => {
     const token = req.cookies.access_token;
-    const options = {
-      method: 'GET',
-      uri: `${host}/authenticate`,
-      json: {},
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    request(options, (err, res2, body) => {
-      if (body.data) {
+    authenticate(token, (userInfo) => {
+      if (userInfo) {
         res.sendFile(path.join(__dirname, '../../dist/dashboard.html'));
       } else {
         res.sendFile(path.join(__dirname, '../../dist/404.html'));

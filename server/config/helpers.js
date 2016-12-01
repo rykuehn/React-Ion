@@ -28,3 +28,17 @@ module.exports.getUserInfo = (token, cb) => {
     cb(body.data);
   });
 };
+
+module.exports.authenticate = (token, cb) => {
+  const options = {
+    method: 'GET',
+    uri: `${host}/authenticate`,
+    json: {},
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  request(options, (err, res2, body) => {
+    cb(body.data);
+  });
+};
