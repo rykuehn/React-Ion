@@ -14,6 +14,7 @@ const AddBlock = ({
           height: [50, '%'],
           width: [20, '%'],
           margin: '20px',
+          padding: '20px',
           flexDirection: 'row' },
           `Block${nextId}`,
           selected,
