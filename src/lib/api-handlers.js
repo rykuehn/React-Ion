@@ -17,7 +17,7 @@ export function formTreeData(routes, nextId) {
         route.componentType !== 'List' &&
         route.componentType !== 'DropDown') {
       totalComponents += 1;
-  }
+    }
     route.children.forEach(child => countComponents(child));
   };
 
