@@ -167,3 +167,15 @@ export function rebuildTree(tree) {
 
   return newTree;
 }
+
+export function createCookie(name, value, time) {
+  let expires;
+  if (time) {
+    const date = new Date();
+    date.setTime(`${date.getTime()}${time * 1000}`);
+    expires = `; expires=${date.toGMTString()}`;
+  } else {
+    expires = '';
+  }
+  document.cookie = `${name}=${value}${expires}; path=/`;
+}

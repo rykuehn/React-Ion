@@ -1,14 +1,17 @@
 import { host } from './api-config';
 
-module.exports.download = (projectTree) => {
-  //window.location.href = `${host}/api/project/generate?tree=${encodeURIComponent(JSON.stringify(projectTree))}`;
-  
+const getToken = (key) => {
+  const token = document.cookie.match(`(^|;)\\s*${key}\\s*=\\s*([^;]+)`);
+  return token ? token.pop() : '';
 };
 
 module.exports.getUserProjects = () => {
   const options = {
     method: 'GET',
     credentials: 'include',
+    headers: {
+      Authorization: `Bearer ${getToken('access_token')}`,
+    },
   };
 
   return fetch(`${host}/api/user/projects`, options)
@@ -19,7 +22,10 @@ module.exports.getUserProjects = () => {
 module.exports.getUserInfo = () => {
   const options = {
     method: 'GET',
-    credentials: 'include',
+    // credentials: 'include',
+    headers: {
+      Authorization: `Bearer ${getToken('access_token')}`,
+    },
   };
 
   return fetch(`${host}/api/user/info`, options)
@@ -30,7 +36,10 @@ module.exports.getUserInfo = () => {
 module.exports.getProjectOwner = (projectId) => {
   const options = {
     method: 'GET',
-    credentials: 'include',
+    // credentials: 'include',
+    headers: {
+      Authorization: `Bearer ${getToken('access_token')}`,
+    },
   };
 
   return fetch(`${host}/api/project/${projectId}/owner`, options)
@@ -41,7 +50,10 @@ module.exports.getProjectOwner = (projectId) => {
 module.exports.getProject = (projectId) => {
   const options = {
     method: 'GET',
-    credentials: 'include',
+    // credentials: 'include',
+    headers: {
+      Authorization: `Bearer ${getToken('access_token')}`,
+    },
   };
 
   return fetch(`${host}/api/project/${projectId}`, options)
@@ -52,7 +64,10 @@ module.exports.getProject = (projectId) => {
 module.exports.getAllProjects = () => {
   const options = {
     method: 'GET',
-    credentials: 'include',
+    // credentials: 'include',
+    headers: {
+      Authorization: `Bearer ${getToken('access_token')}`,
+    },
   };
 
   return fetch(`${host}/api/project/`, options)
@@ -63,7 +78,10 @@ module.exports.getAllProjects = () => {
 module.exports.removeProject = (projectId) => {
   const options = {
     method: 'DELETE',
-    credentials: 'include',
+    // credentials: 'include',
+    headers: {
+      Authorization: `Bearer ${getToken('access_token')}`,
+    },
   };
 
   return fetch(`${host}/api/project/${projectId}`, options)
@@ -77,8 +95,9 @@ module.exports.createProject = (permissionId, projectProps) => {
     body: JSON.stringify({ permissionId, projectProps }),
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${getToken('access_token')}`,
     },
-    credentials: 'include',
+    // credentials: 'include',
   };
 
   return fetch(`${host}/api/project/`, options)
@@ -92,8 +111,9 @@ module.exports.updateProject = (projectId, newProps) => {
     body: JSON.stringify(newProps),
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${getToken('access_token')}`,
     },
-    credentials: 'include',
+    // credentials: 'include',
   };
 
   return fetch(`${host}/api/project/${projectId}`, options)
@@ -106,9 +126,12 @@ module.exports.updateProject = (projectId, newProps) => {
 module.exports.signup = (username, password) => {
   const options = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, password }),
-    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${getToken('access_token')}`,
+    },
+    // credentials: 'include',
   };
 
   return fetch(`${host}/signup`, options)
@@ -119,9 +142,12 @@ module.exports.signup = (username, password) => {
 module.exports.login = (username, password) => {
   const options = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, password }),
-    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${getToken('access_token')}`,
+    },
+    // credentials: 'include',
   };
 
   return fetch(`${host}/login`, options)
@@ -140,7 +166,10 @@ module.exports.login = (username, password) => {
 module.exports.authenticate = () => {
   const options = {
     method: 'GET',
-    credentials: 'include',
+    // credentials: 'include',
+    headers: {
+      Authorization: `Bearer ${getToken('access_token')}`,
+    },
   };
 
   return fetch(`${host}/authenticate`, options)
