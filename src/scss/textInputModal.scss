@@ -2,6 +2,8 @@
   opacity: 0;
   height: 0px;
   width: 0px;
+  max-height: 0px;
+  overflow: hidden;
 }
 
 .modal-wrapper {
@@ -14,7 +16,7 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(0,0,0, .9);
-  transition: opacity .8s;
+  transition: opacity .2s;
 
   .modal {
     background-color: white;
@@ -27,6 +29,14 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    &.preview-modal {
+      height: 100%;
+      width: 100%;
+      div, img, form {
+        box-shadow: none !important;
+      }
+    }
 
     .submit-button {
       cursor: pointer;
@@ -45,6 +55,7 @@
     }
 
     .close-button {
+      z-index: 100;
       cursor: pointer;
       background-color: transparent;
       border: none;
@@ -62,6 +73,8 @@
 
     input {
       font-size: 20px;
+      font-weight: 200;
+      letter-spacing: 1px;
       flex: 1;
       width: 50%;
       max-height: 40px;
@@ -73,6 +86,89 @@
       &:focus {
         outline: none;
         border-bottom: 2px solid coral;
+      }
+    }
+
+    .list-modal {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      height: 90%;
+      width: 90%;
+
+      .input-side {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        height: 100%;
+
+        input {
+          width: 80%;
+          margin-bottom: 10px;
+        }
+
+        button {
+          width: 80%;
+          margin-top: 10px !important;
+        }
+      }
+
+      .list-side {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: 50%;
+        height: 100%;
+        background-color: rgba(0,0,0,.1);
+        overflow: auto;
+
+        ul {
+          width: calc(100% - 80px);
+          padding: 0px;
+        }
+
+        li {
+          font-weight: 200;
+          position: relative;
+          list-style: none;
+          margin: 0px;
+          height: 20px;
+          border-radius: 2px;
+          padding: 5px;
+          margin-bottom: 10px;
+          background-color: white;
+          text-align: center;
+          color: rgba(0,0,0,.8);
+          overflow-x: hidden;
+          padding-left: 30px;
+
+          button {
+            cursor: pointer;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            left: 5px;
+            width: 20px;
+            height: 20px;
+            font-size: 18px;
+            background-color: transparent;
+            color: rgba(0,0,0,.1);
+            border: 0px;
+            transition: color .3s;
+
+            &:hover {
+              color: coral;
+            }
+
+            &:focus {
+              outline: none;
+            }
+          }
+        }
       }
     }
   }

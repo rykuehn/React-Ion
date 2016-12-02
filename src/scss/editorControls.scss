@@ -9,7 +9,6 @@ $light-gray: rgba(0,0,0,.05);
   color: black !important;
   display: flex;
   height: 60px;
-  color: white;
   position: fixed;
   z-index: 200;
   top: 0px;
@@ -48,17 +47,77 @@ $light-gray: rgba(0,0,0,.05);
   .add-text {
     max-width: 100px;
   }
+  
+  .add-btn {
+    width: 300px;
+  }
+
+  .project-name {
+    max-width: 200px;
+  }
 
   .add-page {
     width: 200px;
+
+    .pages-tag {
+      margin-left: 10px;
+    }
+
+    select.page-select {
+      cursor: pointer;
+      -webkit-appearance: none;
+      border: 0px;
+      width: 100%;
+      border-bottom: 1px solid rgba(0,0,0,.1);
+      height: 20px;
+      border-radius: 0px !important;
+      background: white;
+      font-size: 12px;
+      transition: border-bottom .3s;
+      text-align-last:center;
+
+      option {
+        text-align: right !important;
+        text-transform: uppercase;
+      }
+
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        border-bottom: 1px solid coral;
+      }
+    }
+  }
+
+  .add-block, .add-image {
+    max-width: 100px;
+  }
+
+  .delete {
+    max-width: 100px;
+
+    i {
+      font-size: 20px;
+    }
   }
 
   .bg-image {
     max-width: 100px;
+
+    i {
+      font-size: 20px;
+    }
   }
 
   .row-column-picker {
     max-width: 200px;
+
+    .row-column-selected {
+      color: coral !important;
+    }
   }
 
   .font-size {
@@ -66,17 +125,28 @@ $light-gray: rgba(0,0,0,.05);
     padding-right: 10px;
   }
 
+  .link-button {
+    max-width: 100px;
+
+    i {
+      font-size: 20px;
+    }
+  }
+
   div {
+   color: rgba(0,0,0, .8);
    align-self: flex-start;
    flex: 1;
    border-right: 1px solid $light-gray;
-   border-bottom: 1px solid $light-gray;
    height: 100%;
    display: flex;
    align-items: center;
    justify-content: center;
    transition: all .3s;
    font-size: 12px;
+   text-transform: uppercase !important;
+   font-weight: 200;
+   letter-spacing: 1px;
 
    i {
     font-size: 12px;
@@ -110,9 +180,13 @@ $light-gray: rgba(0,0,0,.05);
       margin: 0px;
       border: 0px;
       background-color: transparent;
+      text-transform: uppercase !important;
+      font-weight: 200;
+      letter-spacing: 1px;
+      transition: color .5s;
 
       &:hover {
-        background-color: $light-gray;
+        color: coral;
       }
 
       &:focus {
@@ -123,9 +197,10 @@ $light-gray: rgba(0,0,0,.05);
 
   .color-picker {
     cursor: pointer;
-    max-width: 60px;
+    max-width: 100px;
 
     input {
+      cursor: pointer;
       background-color: $light-gray;
       max-width: 40px;
     }
